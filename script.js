@@ -250,7 +250,7 @@ async function handleSubmit(e) {
     } catch {
       btn.textContent = orig;
       btn.disabled    = false;
-      if (note) note.textContent = 'Something went wrong — try WhatsApp instead.';
+      if (note) note.textContent = 'Something went wrong. Please try WhatsApp instead.';
     }
   } else {
     // Fallback: hand off to the visitor's email app — nothing is sent until they hit send there
@@ -261,7 +261,7 @@ async function handleSubmit(e) {
     window.location.href = `mailto:shadab18ali@gmail.com?subject=${subject}&body=${body}`;
     btn.textContent = orig;
     btn.disabled    = false;
-    if (note) note.textContent = 'Your email app should open with this message — press send there to deliver it.';
+    if (note) note.textContent = 'Your email app should open with this message. Press send there to deliver it.';
   }
 }
 

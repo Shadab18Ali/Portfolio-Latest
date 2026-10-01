@@ -1,21 +1,34 @@
 # Shadab Ali — Portfolio
 
-Portfolio for Shadab Ali, Shopify developer focused on performance, conversion and automation.
+Portfolio for Shadab Ali, Shopify Developer & eCommerce Specialist.
 Live at <https://portfolionew-omega-rouge.vercel.app/>.
 
 ## Stack
 
-Plain static site — no build step, no frameworks, no animation libraries.
+Static HTML, one stylesheet and one small vanilla JS file. No frameworks, no animation libraries, no third-party fonts (fonts are self-hosted in `assets/fonts/`).
 
-- `index.html` — hero, proof metrics, featured projects, specialisations, capabilities, experience preview, testimonials, recruiter/client CTA
-- `projects.html` — Shopify case-study overview, then WordPress/WooCommerce projects
-- `case-diviniti.html`, `case-portrait-on-gold.html`, `case-ratanarpan.html` — full case studies
-- `experience.html`, `services.html`, `about.html`, `skills.html`, `work-with-me.html`, `contact.html`
-- `style.css` — all styles; light/dark themes via `[data-theme]`; the `v8` section at the end holds the current layout components
-- `script.js` — theme toggle, navigation, scroll reveal (IntersectionObserver), contact form, FAQ, screenshot gallery
-- `assets/` — portrait (`profile.webp`, `profile-680.webp`), social image (`og-image.jpg`), project screenshots
+The HTML files in the repository root are **generated**. Edit the sources, then rebuild:
 
-Every page repeats the same `<head>` metadata pattern, header, mobile menu and footer. When you change navigation or footer links, change them on every page.
+```sh
+python3 tools/build.py
+```
+
+| Source | What it controls |
+| --- | --- |
+| `src/data/site.json` | Site URL, contact links, navigation, each page's title and meta description |
+| `src/data/projects.json` | Every project: homepage/projects cards **and** the full case-study page (`case-*.html`) |
+| `src/pages/<page>.html` | The `<main>` content of regular pages (home, projects, services, about, …) |
+| `tools/build.py` | Shared `<head>` (SEO, Open Graph, JSON-LD), header, mobile menu, footer, card and case-study templates; also writes `sitemap.xml` and `robots.txt` |
+
+Markers you can use inside `src/pages/*.html`: `<!-- @cards:featured -->`, `<!-- @cards:shopify -->`, `<!-- @cards:wordpress -->`, `<!-- @process -->`, and `{{resume}}`, `{{whatsapp}}`, `{{linkedin}}`, `{{github}}`, `{{email}}`.
+
+Commit the generated HTML along with the sources: Vercel serves the files as they are, with no build step. `.vercelignore` keeps `src/` and `tools/` out of the deployment.
+
+### Adding a project
+
+1. Add screenshots to `assets/projects/` named `<slug>-desktop.webp`, `<slug>-mobile.webp`, `<slug>-desktop-thumb.webp`, `<slug>-mobile-thumb.webp` (see below).
+2. Add an entry to `src/data/projects.json` under `projects`, and add the slug to `order` (and to `featured` to show it on the homepage).
+3. Run `python3 tools/build.py`.
 
 ## Run locally
 
@@ -26,7 +39,7 @@ python3 -m http.server 8000
 
 ## Deploy
 
-Hosted on Vercel; pushing to the default branch deploys. `vercel.json` only sets the sitemap content type.
+Hosted on Vercel; pushing to the default branch deploys. `vercel.json` sets cache headers (fonts: 1 year, other assets: 1 week) and the sitemap content type.
 
 ## Contact form
 
@@ -55,8 +68,7 @@ convert name-mobile.webp  -resize 720x -crop 720x1280+0+0 +repage -quality 80 na
 
 ## SEO checklist when adding a page
 
-- Add it to `sitemap.xml`
-- Give it a unique `<title>` and meta description, a canonical URL, Open Graph/Twitter tags and a `BreadcrumbList` in its JSON-LD, like the existing pages
+- Add it to `pages` in `src/data/site.json` with a unique title and description; the build adds canonical, Open Graph/Twitter tags, JSON-LD and the sitemap entry
 - Keep one `<h1>` and don't skip heading levels
 
 ## Content rules
