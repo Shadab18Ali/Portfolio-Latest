@@ -1,0 +1,21 @@
+{
+  "name": "Shadab Ali — Shopify & WordPress Developer",
+  "short_name": "Shadab Ali",
+  "description": "Shopify & WordPress Developer. I build fast, high-converting eCommerce stores.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f8f8f4",
+  "theme_color": "#3d7a00",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

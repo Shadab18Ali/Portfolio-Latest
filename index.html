@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shadab Ali — Shopify & WordPress Developer | eCommerce CRO Specialist</title>
+<meta name="description" content="Shadab Ali is a Shopify & WordPress Developer based in Delhi, India. I build fast, high-converting eCommerce stores for global brands. 15+ projects, 3+ years experience.">
+<meta name="author" content="Shadab Ali">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://shadab-ali-portfolio.vercel.app/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://shadab-ali-portfolio.vercel.app/">
+<meta property="og:title" content="Shadab Ali — Shopify & WordPress Developer">
+<meta property="og:description" content="I build fast, high-converting Shopify & WordPress stores. 15+ projects delivered.">
+<meta property="og:image" content="https://shadab-ali-portfolio.vercel.app/assets/profile.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Shadab Ali — Shopify & WordPress Developer">
+<meta name="twitter:description" content="I build fast, high-converting Shopify & WordPress stores.">
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Shadab Ali",
+  "jobTitle": "Shopify & WordPress Developer",
+  "email": "shadab18ali@gmail.com",
+  "telephone": "+919931394885",
+  "url": "https://shadab-ali-portfolio.vercel.app",
+  "address": {"@type": "PostalAddress", "addressLocality": "Delhi", "addressCountry": "IN"},
+  "sameAs": ["https://linkedin.com/in/shadab-ali-7b0261238", "https://github.com/Shadab18Ali"]
+}
+</script>
+
+<!-- Favicons -->
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="manifest" href="site.webmanifest">
+
+<!-- Preloads -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ── SCROLL PROGRESS ────────────────────────── -->
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+<!-- ── BACK TO TOP ────────────────────────────────────────── -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+<!-- ── FLOATING WHATSAPP ──────────────────────── -->
+<a href="https://wa.me/919931394885?text=Hi%20Shadab%2C%20I%20found%20your%20portfolio%20and%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener" class="wa-float" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- ── TOP BAR: logo + social ─────────────────── -->
+<nav id="nav" role="navigation" aria-label="Main navigation">
+  <a href="index.html#hero" class="logo" aria-label="Shadab Ali Home">shadab <span>ali.</span></a>
+
+  <div class="nav-right">
+    <div class="nav-social">
+      <a href="https://linkedin.com/in/shadab-ali-7b0261238" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+      </a>
+      <a href="https://github.com/Shadab18Ali" target="_blank" rel="noopener" aria-label="GitHub" class="gh">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.98 5.24.98 11.52c0 5.02 3.26 9.28 7.78 10.78.57.1.78-.25.78-.55v-2.1c-3.17.69-3.84-1.36-3.84-1.36-.52-1.3-1.27-1.65-1.27-1.65-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.75 2.68 1.24 3.34.95.1-.74.4-1.24.72-1.53-2.53-.29-5.19-1.27-5.19-5.63 0-1.24.44-2.26 1.17-3.06-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.15 1.17a10.9 10.9 0 0 1 5.74 0c2.19-1.48 3.15-1.17 3.15-1.17.62 1.57.23 2.73.11 3.02.73.8 1.17 1.82 1.17 3.06 0 4.37-2.67 5.33-5.21 5.62.41.35.77 1.04.77 2.1v3.11c0 .3.2.66.79.55A11.03 11.03 0 0 0 23 11.52C23 5.24 18.27.5 12 .5Z"/></svg>
+      </a>
+    </div>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+    <a href="contact.html" class="btn btn-primary nav-cta">Hire Me</a>
+    <button class="hbg" aria-label="Toggle mobile menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ── VERTICAL ICON RAIL (primary nav, desktop) ── -->
+<div class="icon-rail" role="navigation" aria-label="Page navigation">
+  <a href="index.html" class="active"><span class="rail-tip">Home</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
+  </a>
+  <a href="about.html"><span class="rail-tip">About</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>
+  </a>
+  <a href="experience.html"><span class="rail-tip">Experience</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+  </a>
+  <a href="projects.html"><span class="rail-tip">Projects</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+  </a>
+  <a href="skills.html"><span class="rail-tip">Skills</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="20" x2="5" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="19" y1="20" x2="19" y2="14"/></svg>
+  </a>
+  <a href="services.html"><span class="rail-tip">Services</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg>
+  </a>
+  <a href="work-with-me.html"><span class="rail-tip">Work With Me</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41 11 3.83A2 2 0 0 0 9.59 3.24L4 3a1 1 0 0 0-1 1l.24 5.59a2 2 0 0 0 .58 1.41l9.59 9.59a2 2 0 0 0 2.83 0l4.35-4.35a2 2 0 0 0 0-2.83Z"/><circle cx="7.5" cy="7.5" r="1.2" fill="currentColor" stroke="none"/></svg>
+  </a>
+  <a href="contact.html"><span class="rail-tip">Contact</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+  </a>
+</div>
+
+<!-- ── MOBILE MENU ────────────────────────────── -->
+<div class="mob-menu" id="mobMenu" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+  <button class="mob-close" id="mobClose" aria-label="Close menu">✕</button>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="experience.html">Experience</a>
+  <a href="projects.html">Projects</a>
+  <a href="skills.html">Skills</a>
+  <a href="services.html">Services</a>
+  <a href="work-with-me.html">Work With Me</a>
+  <a href="contact.html">Contact</a>
+  <div class="mob-actions">
+    <a href="contact.html" class="btn btn-primary">Hire Me →</a>
+    <a href="https://wa.me/919931394885" target="_blank" rel="noopener" class="btn btn-wa">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp
+    </a>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     HERO
+══════════════════════════════════════════════ -->
+<section id="hero" aria-label="Hero introduction">
+
+  <!-- Particle network background -->
+  <div class="particles-host" aria-hidden="true"><canvas class="particles-canvas"></canvas></div>
+
+  <!-- Decorative layer: network canvas + red glow + gold ring -->
+  <div class="hero-decor" aria-hidden="true">
+    <div class="hero-blob-glow"></div>
+    <div class="hero-ring-glow"></div>
+  </div>
+
+  <div class="hero-inner">
+
+    <!-- LEFT: Content -->
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="avail-dot"></span>
+        Available for new projects
+      </div>
+      <h1>
+        <span class="hero-title-top">Shopify & WordPress Developer</span>
+        <span class="hero-title-main-sm">Stores that <em class="accent-word">actually sell</em></span>
+      </h1>
+      <p class="hero-desc">I help businesses build fast, high-converting eCommerce stores — custom Liquid sections, WhatsApp automation, performance architecture, and measurable results.</p>
+
+      <div class="hero-actions">
+        <a href="contact.html" class="btn btn-primary">Hire Me →</a>
+        <a href="https://wa.me/919931394885?text=Hi%20Shadab%2C%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener" class="btn btn-wa">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp
+        </a>
+        <a href="https://drive.google.com/file/d/1aVT2Xns_39n1rnr4xn4aps-ab-A6pH6d/view" target="_blank" rel="noopener" class="btn btn-ghost">Resume ↗</a>
+      </div>
+
+      <!-- Orbit badge — rotating "My Projects" CTA -->
+      <a href="projects.html" class="orbit-badge" aria-label="View my projects">
+        <svg class="orbit-ring" viewBox="0 0 128 128">
+          <defs>
+            <path id="orbitPath" d="M 64,64 m -50,0 a 50,50 0 1,1 100,0 a 50,50 0 1,1 -100,0" />
+          </defs>
+          <text><textPath href="#orbitPath" startOffset="0%">• My Projects • My Projects • My Projects</textPath></text>
+        </svg>
+        <span class="orbit-badge-core">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
+        </span>
+      </a>
+    </div>
+
+    <!-- RIGHT: Portrait -->
+    <div class="hero-visual">
+      <div class="hero-photo-wrap">
+        <div class="hero-photo-tilt">
+          <picture>
+            <source srcset="assets/profile.webp" type="image/webp">
+            <img
+              src="assets/profile.webp"
+              alt="Shadab Ali — Shopify & WordPress Developer"
+              class="hero-photo"
+              width="900" height="1046"
+              fetchpriority="high"
+              onerror="this.style.display='none';document.getElementById('photoFallback').style.display='flex'"
+            >
+          </picture>
+          <div class="hero-photo-fallback" id="photoFallback" aria-hidden="true" style="display:none"></div>
+        </div>
+      </div>
+
+      <div class="hero-badge-float hero-badge-shopify" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="#96bf48" width="16" height="16"><path d="M15.337 23.979l7.216-1.561s-2.604-17.609-2.625-17.739c-.018-.13-.13-.216-.252-.216-.121 0-2.299-.047-2.299-.047s-1.529-1.486-1.701-1.657v21.22z"/><path d="M12.872 7.016s-.854-.252-1.895-.252c-3.086 0-4.576 1.938-4.576 4.006 0 2.186 1.535 3.219 2.942 4.13 1.406.912 1.893 1.486 1.893 2.287 0 .914-.729 1.461-1.773 1.461-1.219 0-1.893-.729-1.893-.729l-.502 1.576s.699.913 2.117.913c1.703 0 3.469-1.094 3.469-3.162 0-2.025-1.424-2.996-2.781-3.865-1.35-.871-2.051-1.412-2.051-2.32 0-.729.574-1.461 1.902-1.461.912 0 1.646.34 1.646.34l.502-2.924zm-1.998-3.924c0-.026-.025-.026-.025-.026-.156 0-1.199.339-1.199.339s-.748-2.323-2.076-2.323c-.026 0-.078 0-.104.026C7.313.94 7.573 0 7.573 0c-.7.182-1.356.547-1.929 1.043L4.23 1.72S2.625 18.49 2.625 18.516l12.711 2.35-4.462-17.774z"/></svg>
+        Shopify
+      </div>
+      <div class="hero-badge-float hero-badge-wp" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="#21759b" width="16" height="16"><path d="M21.469 6.825c.606 1.472.949 3.043.949 4.7 0 5.368-3.191 10.01-7.831 12.021L21.469 6.825zM3.167 5.348c1.67-2.388 4.129-4.132 6.987-4.871L4.432 13.22c-.822-2.322-.869-4.91-1.265-7.872zM12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-.082 14.355l-3.507 10.185A12.032 12.032 0 0112 24.006c1.356 0 2.658-.225 3.875-.634l-.109-.197-3.848-9.82zM12 2.4c1.593 0 3.107.392 4.44 1.081L12 15.924 7.585 3.462A9.6 9.6 0 0112 2.4z"/></svg>
+        WordPress
+      </div>
+      <div class="hero-badge-float hero-badge-lcp" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        40% LCP ↑
+      </div>
+      <div class="hero-badge-float hero-badge-woo" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="#96588a" width="16" height="16"><path d="M21.791 0H2.207C.99 0 0 .99 0 2.208v19.584C0 23.01.99 24 2.207 24h19.584C23.01 24 24 23.01 24 21.792V2.208C24 .99 23.01 0 21.791 0zM12 17.457c-3.016 0-5.459-2.443-5.459-5.457 0-3.016 2.443-5.459 5.459-5.459s5.457 2.443 5.457 5.459c0 3.014-2.441 5.457-5.457 5.457z"/></svg>
+        WooCommerce
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-stats-bar container">
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <strong data-counter="15" data-suffix="+">15+</strong>
+        <span>Projects Completed</span>
+      </div>
+      <div class="hero-stat">
+        <strong data-counter="3" data-suffix="+">3+</strong>
+        <span>Years Experience</span>
+      </div>
+      <div class="hero-stat">
+        <strong data-counter="40" data-suffix="%">40%</strong>
+        <span>Performance Gain</span>
+      </div>
+      <div class="hero-stat">
+        <strong>100%</strong>
+        <span>Client Satisfaction</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     EXPLORE — TEASER GRID LINKING TO ALL PAGES
+══════════════════════════════════════════════ -->
+<section id="explore" aria-label="Explore the site">
+  <div class="container">
+    <div class="section-eyebrow">Find Your Way Around</div>
+    <div class="section-header">
+      <h2 class="section-title reveal">A Closer <em>Look</em></h2>
+      <p>Each section below has its own dedicated page with a lot more depth than a single scroll could hold.</p>
+    </div>
+
+    <div class="teaser-grid">
+
+      <a href="projects.html" class="teaser-card teaser-card-lg reveal">
+        <div class="teaser-num">01</div>
+        <div class="teaser-body">
+          <h3>Projects</h3>
+          <p>Four full case studies — the brief, the build, the decisions, and the measurable results behind each store I've shipped.</p>
+          <div class="teaser-meta">
+            <span class="teaser-stat"><strong>4</strong> case studies</span>
+            <span class="teaser-link">Explore →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="about.html" class="teaser-card reveal" style="transition-delay:.05s">
+        <div class="teaser-num">02</div>
+        <div class="teaser-body">
+          <h3>About</h3>
+          <p>My story, background, and how I approach a project from brief to launch.</p>
+          <div class="teaser-meta">
+            <span class="teaser-stat"><strong>B.Tech</strong> CSE</span>
+            <span class="teaser-link">Read →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="experience.html" class="teaser-card reveal" style="transition-delay:.1s">
+        <div class="teaser-num">03</div>
+        <div class="teaser-body">
+          <h3>Experience</h3>
+          <p>A detailed timeline of every role — what I owned, built, and shipped.</p>
+          <div class="teaser-meta">
+            <span class="teaser-stat"><strong>4</strong> roles</span>
+            <span class="teaser-link">View →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="skills.html" class="teaser-card reveal" style="transition-delay:.15s">
+        <div class="teaser-num">04</div>
+        <div class="teaser-body">
+          <h3>Skills</h3>
+          <p>Everything I work with, grouped by category, with real proficiency levels.</p>
+          <div class="teaser-meta">
+            <span class="teaser-stat"><strong>20+</strong> tools</span>
+            <span class="teaser-link">See all →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="services.html" class="teaser-card teaser-card-lg reveal" style="transition-delay:.2s">
+        <div class="teaser-num">05</div>
+        <div class="teaser-body">
+          <h3>Services</h3>
+          <p>What I offer end-to-end — store builds, performance work, automation, and CRO — plus how I run a project from discovery to launch and the questions clients ask most.</p>
+          <div class="teaser-meta">
+            <span class="teaser-stat"><strong>9</strong> services</span>
+            <span class="teaser-link">See how I work →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="work-with-me.html" class="teaser-card reveal" style="transition-delay:.25s">
+        <div class="teaser-num">06</div>
+        <div class="teaser-body">
+          <h3>Work With Me</h3>
+          <p>Open to full-time roles, contract opportunities, and selected freelance projects.</p>
+          <div class="teaser-meta">
+            <span class="teaser-stat"><strong>Available</strong> for opportunities</span>
+            <span class="teaser-link">Explore →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="contact.html" class="teaser-card reveal" style="transition-delay:.3s">
+        <div class="teaser-num">07</div>
+        <div class="teaser-body">
+          <h3>Contact</h3>
+          <p>Start a project — email, WhatsApp, or the form. I reply within 24h.</p>
+          <div class="teaser-meta">
+            <span class="teaser-stat avail-status-mini"><span class="avail-dot"></span> Available now</span>
+            <span class="teaser-link">Say hi →</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     TESTIMONIALS (condensed proof)
+══════════════════════════════════════════════ -->
+<section id="testimonials" aria-label="Client testimonials">
+  <div class="container">
+    <div class="section-eyebrow">Social Proof</div>
+    <h2 class="section-title reveal">What Clients <em>Say</em></h2>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="testi-stars" aria-label="5 stars">★★★★★</div>
+        <blockquote>"Shadab rebuilt our Shopify store and significantly improved mobile performance. The LCP improvements made our ad campaigns noticeably more effective."</blockquote>
+        <div class="testi-author">
+          <div class="testi-avatar" aria-hidden="true">DV</div>
+          <div>
+            <div class="testi-name">Diviniti</div>
+            <div class="testi-role">Luxury eCommerce · Shopify 2.0</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card reveal" style="transition-delay:.08s">
+        <div class="testi-stars" aria-label="5 stars">★★★★★</div>
+        <blockquote>"Strong understanding of Shopify customisation and very fast delivery. The WhatsApp checkout flow he built converted immediately after launch."</blockquote>
+        <div class="testi-author">
+          <div class="testi-avatar" aria-hidden="true">PG</div>
+          <div>
+            <div class="testi-name">Portrait on Gold</div>
+            <div class="testi-role">eCommerce Store · Shopify 2.0</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card reveal" style="transition-delay:.16s">
+        <div class="testi-stars" aria-label="5 stars">★★★★★</div>
+        <blockquote>"Handled the complete website professionally from design to launch. Clean code, zero bloat, and explained every decision clearly."</blockquote>
+        <div class="testi-author">
+          <div class="testi-avatar" aria-hidden="true">MI</div>
+          <div>
+            <div class="testi-name">The Majestic India</div>
+            <div class="testi-role">WordPress Platform · Elementor</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     CTA BANNER
+══════════════════════════════════════════════ -->
+<section class="cta-banner" aria-label="Call to action">
+  <div class="container">
+    <div class="section-eyebrow">Let's Work Together</div>
+    <h2 class="reveal">Got a project in <em>mind?</em></h2>
+    <p>I'm available for freelance projects, full-time roles, and long-term partnerships — starting now.</p>
+    <div class="hero-actions">
+      <a href="contact.html" class="btn btn-primary">Start a Project →</a>
+      <a href="https://wa.me/919931394885?text=Hi%20Shadab%2C%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener" class="btn btn-wa">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="14" height="14"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Chat on WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo">shadab <span>ali.</span></div>
+        <p>Shopify &amp; WordPress Developer helping businesses build fast, high-converting eCommerce stores. Based in Delhi — available globally.</p>
+        <div class="footer-social">
+          <a href="https://github.com/Shadab18Ali" target="_blank" rel="noopener" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          </a>
+          <a href="https://linkedin.com/in/shadab-ali-7b0261238" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="mailto:shadab18ali@gmail.com" aria-label="Email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <a href="projects.html">Projects</a>
+          <a href="about.html">About</a>
+          <a href="experience.html">Experience</a>
+          <a href="skills.html">Skills</a>
+          <a href="work-with-me.html">Work With Me</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <a href="services.html">Shopify Development</a>
+          <a href="services.html">WordPress Development</a>
+          <a href="services.html">WooCommerce</a>
+          <a href="services.html">Speed Optimization</a>
+          <a href="services.html">WhatsApp Automation</a>
+          <a href="services.html">SEO &amp; Analytics</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Shadab Ali · All rights reserved</span>
+      <span>Delhi, India · Available Globally · Remote-first</span>
+      <a href="https://drive.google.com/file/d/1aVT2Xns_39n1rnr4xn4aps-ab-A6pH6d/view" target="_blank" rel="noopener" class="footer-resume">Download Resume ↗</a>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
