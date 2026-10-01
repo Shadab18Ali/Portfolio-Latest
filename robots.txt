@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://shadab-ali-portfolio.vercel.app/sitemap.xml
+Sitemap: https://portfolionew-omega-rouge.vercel.app/sitemap.xml

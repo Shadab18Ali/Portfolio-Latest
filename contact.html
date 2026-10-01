@@ -1,20 +1,98 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-IN">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact — Shadab Ali | Shopify & WordPress Developer</title>
-<meta name="description" content="Get in touch with Shadab Ali for Shopify or WordPress development. Available for freelance projects, full-time roles, and contract work. Replies within 24h.">
+<title>Contact Shadab Ali | Start a Shopify Project</title>
+<meta name="description" content="Discuss a Shopify, performance, CRO or automation project, or a full-time role. Email, WhatsApp or the form — replies within 24 hours.">
 <meta name="author" content="Shadab Ali">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://shadab-ali-portfolio.vercel.app/contact.html">
+<meta name="theme-color" content="#fff8f3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#090a14" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://portfolionew-omega-rouge.vercel.app/contact.html">
 
+<!-- Open Graph / social -->
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://shadab-ali-portfolio.vercel.app/contact.html">
-<meta property="og:title" content="Contact — Shadab Ali">
-<meta property="og:description" content="Start a project — email, WhatsApp, or the form. I reply within 24h.">
-<meta property="og:image" content="https://shadab-ali-portfolio.vercel.app/assets/profile.webp">
+<meta property="og:site_name" content="Shadab Ali — Shopify Developer">
+<meta property="og:locale" content="en_IN">
+<meta property="og:url" content="https://portfolionew-omega-rouge.vercel.app/contact.html">
+<meta property="og:title" content="Contact Shadab Ali | Start a Shopify Project">
+<meta property="og:description" content="Discuss a Shopify, performance, CRO or automation project, or a full-time role. Email, WhatsApp or the form — replies within 24 hours.">
+<meta property="og:image" content="https://portfolionew-omega-rouge.vercel.app/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Shadab Ali — Shopify Developer focused on performance, conversion and automation">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Contact Shadab Ali | Start a Shopify Project">
+<meta name="twitter:description" content="Discuss a Shopify, performance, CRO or automation project, or a full-time role. Email, WhatsApp or the form — replies within 24 hours.">
+<meta name="twitter:image" content="https://portfolionew-omega-rouge.vercel.app/assets/og-image.jpg">
+
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Person",
+   "@id": "https://portfolionew-omega-rouge.vercel.app/#person",
+   "name": "Shadab Ali",
+   "jobTitle": "Shopify Developer",
+   "url": "https://portfolionew-omega-rouge.vercel.app/",
+   "image": "https://portfolionew-omega-rouge.vercel.app/assets/profile.webp",
+   "email": "mailto:shadab18ali@gmail.com",
+   "telephone": "+919931394885",
+   "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Delhi",
+    "addressCountry": "IN"
+   },
+   "worksFor": {
+    "@type": "Organization",
+    "name": "Kairali Ayurvedic"
+   },
+   "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "Jamia Hamdard"
+   },
+   "knowsAbout": [
+    "Shopify",
+    "Liquid",
+    "Shopify theme development",
+    "JavaScript",
+    "Core Web Vitals",
+    "Conversion rate optimisation",
+    "Google Tag Manager",
+    "Google Analytics 4",
+    "Meta Conversions API",
+    "WhatsApp automation",
+    "Shopify Admin GraphQL API",
+    "WordPress",
+    "WooCommerce"
+   ],
+   "sameAs": [
+    "https://linkedin.com/in/shadab-ali-7b0261238",
+    "https://github.com/Shadab18Ali"
+   ]
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://portfolionew-omega-rouge.vercel.app/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Contact",
+     "item": "https://portfolionew-omega-rouge.vercel.app/contact.html"
+    }
+   ]
+  }
+ ]
+}
+</script>
 
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -22,125 +100,90 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
-
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Instrument+Serif:ital@1&family=Outfit:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
 </head>
 <body>
-
-<!-- ── SCROLL PROGRESS ────────────────────────── -->
+<a class="skip-link" href="#main">Skip to content</a>
 <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+<button class="back-to-top" id="backToTop" type="button" aria-label="Back to top">↑</button>
+<a href="https://wa.me/919931394885?text=Hi%20Shadab%2C%20I%20found%20your%20portfolio%20and%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener" class="wa-float" aria-label="Chat on WhatsApp (opens in a new tab)"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
 
-<!-- ── BACK TO TOP ────────────────────────────────────────── -->
-<button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
-
-<!-- ── FLOATING WHATSAPP ──────────────────────── -->
-<a href="https://wa.me/919931394885?text=Hi%20Shadab%2C%20I%20found%20your%20portfolio%20and%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener" class="wa-float" aria-label="Chat on WhatsApp">
-  <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-</a>
-
-<!-- ── TOP BAR: logo + social ─────────────────── -->
-<nav id="nav" role="navigation" aria-label="Main navigation">
-  <a href="index.html" class="logo" aria-label="Shadab Ali Home">shadab <span>ali.</span></a>
-
+<nav id="nav" aria-label="Main navigation">
+  <a href="index.html" class="logo" aria-label="Shadab Ali — home">shadab <span>ali.</span></a>
+  <div class="nav-links-desk">
+    <a href="projects.html">Projects</a>
+    <a href="experience.html">Experience</a>
+    <a href="services.html">Services</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
   <div class="nav-right">
     <div class="nav-social">
-      
-      <a href="https://linkedin.com/in/shadab-ali-7b0261238" target="_blank" rel="noopener" aria-label="LinkedIn">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
-      </a>
-      <a href="https://github.com/Shadab18Ali" target="_blank" rel="noopener" aria-label="GitHub" class="gh">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.98 5.24.98 11.52c0 5.02 3.26 9.28 7.78 10.78.57.1.78-.25.78-.55v-2.1c-3.17.69-3.84-1.36-3.84-1.36-.52-1.3-1.27-1.65-1.27-1.65-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.75 2.68 1.24 3.34.95.1-.74.4-1.24.72-1.53-2.53-.29-5.19-1.27-5.19-5.63 0-1.24.44-2.26 1.17-3.06-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.15 1.17a10.9 10.9 0 0 1 5.74 0c2.19-1.48 3.15-1.17 3.15-1.17.62 1.57.23 2.73.11 3.02.73.8 1.17 1.82 1.17 3.06 0 4.37-2.67 5.33-5.21 5.62.41.35.77 1.04.77 2.1v3.11c0 .3.2.66.79.55A11.03 11.03 0 0 0 23 11.52C23 5.24 18.27.5 12 .5Z"/></svg>
-      </a>
+      <a href="https://linkedin.com/in/shadab-ali-7b0261238" target="_blank" rel="noopener" aria-label="LinkedIn (opens in a new tab)"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+      <a href="https://github.com/Shadab18Ali" target="_blank" rel="noopener" aria-label="GitHub (opens in a new tab)" class="gh"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.73.5.98 5.24.98 11.52c0 5.02 3.26 9.28 7.78 10.78.57.1.78-.25.78-.55v-2.1c-3.17.69-3.84-1.36-3.84-1.36-.52-1.3-1.27-1.65-1.27-1.65-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.75 2.68 1.24 3.34.95.1-.74.4-1.24.72-1.53-2.53-.29-5.19-1.27-5.19-5.63 0-1.24.44-2.26 1.17-3.06-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.15 1.17a10.9 10.9 0 0 1 5.74 0c2.19-1.48 3.15-1.17 3.15-1.17.62 1.57.23 2.73.11 3.02.73.8 1.17 1.82 1.17 3.06 0 4.37-2.67 5.33-5.21 5.62.41.35.77 1.04.77 2.1v3.11c0 .3.2.66.79.55A11.03 11.03 0 0 0 23 11.52C23 5.24 18.27.5 12 .5Z"/></svg></a>
     </div>
-    <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode">
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle light and dark theme">
       <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
       <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
     </button>
-    <a href="contact.html" class="btn btn-primary nav-cta">Hire Me</a>
-    <button class="hbg" aria-label="Toggle mobile menu" aria-expanded="false">
+    <a href="contact.html" class="btn btn-primary nav-cta">Let’s Work Together</a>
+    <button class="hbg" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobMenu">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
 
-<!-- ── VERTICAL ICON RAIL (primary nav, desktop) ── -->
-<div class="icon-rail" role="navigation" aria-label="Page navigation">
-  <a href="index.html"><span class="rail-tip">Home</span>
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
-  </a>
-  <a href="about.html"><span class="rail-tip">About</span>
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>
-  </a>
-  <a href="experience.html"><span class="rail-tip">Experience</span>
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
-  </a>
-  <a href="projects.html"><span class="rail-tip">Projects</span>
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-  </a>
-  <a href="skills.html"><span class="rail-tip">Skills</span>
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="20" x2="5" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="19" y1="20" x2="19" y2="14"/></svg>
-  </a>
-  <a href="services.html"><span class="rail-tip">Services</span>
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg>
-  </a>
-  <a href="work-with-me.html"><span class="rail-tip">Work With Me</span>
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41 11 3.83A2 2 0 0 0 9.59 3.24L4 3a1 1 0 0 0-1 1l.24 5.59a2 2 0 0 0 .58 1.41l9.59 9.59a2 2 0 0 0 2.83 0l4.35-4.35a2 2 0 0 0 0-2.83Z"/><circle cx="7.5" cy="7.5" r="1.2" fill="currentColor" stroke="none"/></svg>
-  </a>
-  <a href="contact.html"><span class="rail-tip">Contact</span>
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
-  </a>
-</div>
-
-<!-- ── MOBILE MENU ────────────────────────────── -->
-<div class="mob-menu" id="mobMenu" role="dialog" aria-modal="true" aria-label="Mobile navigation">
-  <button class="mob-close" id="mobClose" aria-label="Close menu">✕</button>
+<div class="mob-menu" id="mobMenu" role="dialog" aria-modal="true" aria-label="Site menu">
+  <button class="mob-close" id="mobClose" type="button" aria-label="Close menu">✕</button>
   <a href="index.html">Home</a>
-  <a href="about.html">About</a>
-  <a href="experience.html">Experience</a>
   <a href="projects.html">Projects</a>
-  <a href="skills.html">Skills</a>
+  <a href="experience.html">Experience</a>
   <a href="services.html">Services</a>
+  <a href="about.html">About</a>
+  <a href="skills.html">Skills</a>
   <a href="work-with-me.html">Work With Me</a>
   <a href="contact.html">Contact</a>
   <div class="mob-actions">
-    <a href="contact.html" class="btn btn-primary">Hire Me →</a>
-    <a href="https://wa.me/919931394885" target="_blank" rel="noopener" class="btn btn-wa">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      WhatsApp
-    </a>
+    <a href="contact.html" class="btn btn-primary">Start a Project →</a>
+    <a href="https://wa.me/919931394885?text=Hi%20Shadab%2C%20I%20found%20your%20portfolio%20and%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener" class="btn btn-wa"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp</a>
+  </div>
+  <div class="mob-social">
+    <a href="https://linkedin.com/in/shadab-ali-7b0261238" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://github.com/Shadab18Ali" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://drive.google.com/file/d/1XDjqB1naPcnu_d_-gUdThH2xrl1sOy2U/view" target="_blank" rel="noopener">Résumé</a>
   </div>
 </div>
-<div class="page-hero" aria-label="Contact page intro">
-  <div class="particles-host" aria-hidden="true"><canvas class="particles-canvas"></canvas></div>
+
+<main id="main">
+<div class="page-hero">
   <div class="page-hero-inner">
-    <div class="breadcrumb">
-      <a href="index.html">Home</a><span class="sep">/</span><span class="current">Contact</span>
-    </div>
-    <div class="page-hero-num">07 — Let's Work Together</div>
-    <h1>Start A<br><em>Project</em></h1>
-    <p class="page-hero-desc">Looking for a Shopify or WordPress developer who delivers real results? Let's talk. I'm available for freelance projects, full-time roles, and long-term partnerships.</p>
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html">Home</a><span class="sep" aria-hidden="true">/</span><span class="current" aria-current="page">Contact</span>
+    </nav>
+    <p class="page-hero-num">Contact</p>
+    <h1>Start a<br><em>Project</em></h1>
+    <p class="page-hero-desc">A Shopify build, a performance or conversion problem, automation — or a role you’re hiring for. Send a message and I’ll reply within 24 hours.</p>
     <div class="page-hero-stats">
-      <div class="hero-stat"><strong>24h</strong><span>Reply Time</span></div>
-      <div class="hero-stat"><strong>100%</strong><span>Client Satisfaction</span></div>
+      <div class="hero-stat"><strong>24h</strong><span>Reply time</span></div>
+      <div class="hero-stat"><strong>WhatsApp</strong><span>Fastest route</span></div>
     </div>
   </div>
 </div>
 
 <section aria-label="Contact details and form">
-  <div class="container">
+  <div class="container" style="padding-top:4.5rem;">
     <div class="contact-grid">
       <div class="contact-left reveal">
-        <div class="section-eyebrow">Reach Out</div>
-        <h2 class="section-title">Pick What's <em>Easiest</em></h2>
-        <p>WhatsApp is the fastest way to reach me. For anything detailed, email or the form on this page works just as well — either way, expect a reply within 24 hours.</p>
+        <div class="section-eyebrow">Reach out</div>
+        <h2 class="section-title">Pick What’s <em>Easiest</em></h2>
+        <p>WhatsApp is the fastest way to reach me. For anything detailed, use email or the form — either way, expect a reply within 24 hours.</p>
 
         <div class="contact-methods">
-          <a href="mailto:shadab18ali@gmail.com" class="contact-method">
+          <div class="contact-method">
+          <a href="mailto:shadab18ali@gmail.com" class="cm-link">
             <div class="cm-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
             </div>
@@ -148,9 +191,10 @@
               <div class="cm-label">Email</div>
               <div class="cm-val">shadab18ali@gmail.com</div>
             </div>
-            <button class="copy-btn" data-copy="shadab18ali@gmail.com" aria-label="Copy email">Copy</button>
           </a>
-          <a href="https://wa.me/919931394885" target="_blank" rel="noopener" class="contact-method">
+          <button class="copy-btn" type="button" data-copy="shadab18ali@gmail.com" aria-label="Copy email address">Copy</button>
+          </div>
+          <a href="https://wa.me/919931394885" target="_blank" rel="noopener" class="contact-method cm-link">
             <div class="cm-icon green">
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             </div>
@@ -159,16 +203,16 @@
               <div class="cm-val">+91 99313 94885</div>
             </div>
           </a>
-          <a href="https://linkedin.com/in/shadab-ali-7b0261238" target="_blank" rel="noopener" class="contact-method">
+          <a href="https://linkedin.com/in/shadab-ali-7b0261238" target="_blank" rel="noopener" class="contact-method cm-link">
             <div class="cm-icon">
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
             </div>
             <div>
               <div class="cm-label">LinkedIn</div>
-              <div class="cm-val">linkedin.com/in/shadab-ali</div>
+              <div class="cm-val">linkedin.com/in/shadab-ali-7b0261238</div>
             </div>
           </a>
-          <a href="https://github.com/Shadab18Ali" target="_blank" rel="noopener" class="contact-method">
+          <a href="https://github.com/Shadab18Ali" target="_blank" rel="noopener" class="contact-method cm-link">
             <div class="cm-icon">
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
             </div>
@@ -180,114 +224,129 @@
         </div>
 
         <div class="avail-status">
-          <span class="avail-dot"></span>
+          <span class="avail-dot" aria-hidden="true"></span>
           <div>
-            <strong>Available Now</strong>
-            <span>Freelance · Full-Time · Contract</span>
+            <strong>Open to</strong>
+            <span>Full-time · Contract · Freelance projects</span>
           </div>
         </div>
       </div>
 
-      <div class="contact-form-wrap reveal" style="transition-delay:.1s">
-        <form class="contact-form" id="contactForm" novalidate>
-          <h3>Send a Message</h3>
+      <div class="contact-form-wrap reveal">
+        <form class="contact-form" id="contactForm" novalidate aria-labelledby="form-title">
+          <h3 id="form-title">Send a Message</h3>
           <div class="form-row-2">
             <div class="form-group">
-              <label for="f-name">Your Name *</label>
+              <label for="f-name">Name *</label>
               <input type="text" id="f-name" name="name" placeholder="Your name" autocomplete="name" required>
             </div>
             <div class="form-group">
-              <label for="f-email">Email Address *</label>
+              <label for="f-email">Email *</label>
               <input type="email" id="f-email" name="email" placeholder="you@company.com" autocomplete="email" required>
             </div>
           </div>
           <div class="form-group">
-            <label for="f-service">What Do You Need?</label>
+            <label for="f-service">What do you need help with?</label>
             <select id="f-service" name="service">
-              <option value="">Select a service...</option>
-              <option>WordPress Informational Website</option>
-              <option>WordPress / WooCommerce Store</option>
-              <option>Shopify Store Development</option>
-              <option>Advanced Shopify eCommerce</option>
-              <option>Speed / LCP Optimisation</option>
-              <option>WhatsApp Automation (WATI)</option>
-              <option>CRO Audit &amp; Improvements</option>
-              <option>SEO &amp; Analytics Setup</option>
-              <option>Free Store Audit</option>
-              <option>Full-Time / Contract Role</option>
-              <option>Custom / Other</option>
+              <option value="">Select an option…</option>
+              <option>Full-time opportunity</option>
+              <option>Contract opportunity</option>
+              <option>Shopify development</option>
+              <option>Shopify performance / CRO</option>
+              <option>Shopify automation</option>
+              <option>WordPress / WooCommerce</option>
+              <option>Other</option>
             </select>
           </div>
           <div class="form-group">
-            <label for="f-url">Store / Site URL (optional)</label>
-            <input type="url" id="f-url" name="url" placeholder="https://yourstore.com">
+            <label for="f-url">Website URL <span class="form-optional">(optional)</span></label>
+            <input type="url" id="f-url" name="url" placeholder="https://yourstore.com" autocomplete="url" inputmode="url">
+          </div>
+          <div class="form-row-2">
+            <div class="form-group">
+              <label for="f-budget">Budget <span class="form-optional">(optional)</span></label>
+              <select id="f-budget" name="budget">
+                <option value="">Select…</option>
+              <option>Below ₹25k</option>
+              <option>₹25k–₹50k</option>
+              <option>₹50k–₹1L</option>
+              <option>₹1L+</option>
+              <option>Not sure yet</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="f-timeline">Timeline <span class="form-optional">(optional)</span></label>
+              <select id="f-timeline" name="timeline">
+                <option value="">Select…</option>
+              <option>ASAP</option>
+              <option>1–2 weeks</option>
+              <option>Within a month</option>
+              <option>Flexible</option>
+              </select>
+            </div>
           </div>
           <div class="form-group">
             <label for="f-message">Message *</label>
-            <textarea id="f-message" name="message" placeholder="Tell me about your project, timeline, and what's not working right now..." required></textarea>
+            <textarea id="f-message" name="message" placeholder="What are you working on, and what isn’t working right now?" required></textarea>
           </div>
-          <button type="submit" class="btn btn-primary btn-full" id="submitBtn">Send Message →</button>
-          <p class="form-note" id="formNote">Replies within 24h · Or WhatsApp for fastest response</p>
+          <button type="submit" class="btn btn-primary btn-full" id="submitBtn">Send Message</button>
+          <p class="form-note" id="formNote" role="status" aria-live="polite">Replies within 24 hours · WhatsApp for the fastest response</p>
         </form>
-        <div class="form-success" id="formSuccess">
-          <div>✅</div>
-          <h4>Message Sent!</h4>
-          <p>I'll reply to <strong id="replyEmail"></strong> within 24 hours.</p>
+        <div class="form-success" id="formSuccess" role="status" aria-live="polite">
+          <div aria-hidden="true">✅</div>
+          <h4>Message sent</h4>
+          <p>Thanks — I’ll reply within 24 hours.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
-<!-- ══════════════════════════════════════════════
-     FOOTER
-══════════════════════════════════════════════ -->
+</main>
+
 <footer>
   <div class="footer-inner">
     <div class="footer-top">
       <div class="footer-brand">
         <div class="logo">shadab <span>ali.</span></div>
-        <p>Shopify &amp; WordPress Developer helping businesses build fast, high-converting eCommerce stores. Based in Delhi — available globally.</p>
+        <p>Shopify developer focused on performance, conversion and automation. Based in Delhi, India — working with brands remotely.</p>
         <div class="footer-social">
-          <a href="https://github.com/Shadab18Ali" target="_blank" rel="noopener" aria-label="GitHub">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-          </a>
-          <a href="https://linkedin.com/in/shadab-ali-7b0261238" target="_blank" rel="noopener" aria-label="LinkedIn">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
-          </a>
-          <a href="mailto:shadab18ali@gmail.com" aria-label="Email">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
-          </a>
+          <a href="https://linkedin.com/in/shadab-ali-7b0261238" target="_blank" rel="noopener" aria-label="LinkedIn (opens in a new tab)"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+          <a href="https://github.com/Shadab18Ali" target="_blank" rel="noopener" aria-label="GitHub (opens in a new tab)"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.73.5.98 5.24.98 11.52c0 5.02 3.26 9.28 7.78 10.78.57.1.78-.25.78-.55v-2.1c-3.17.69-3.84-1.36-3.84-1.36-.52-1.3-1.27-1.65-1.27-1.65-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.75 2.68 1.24 3.34.95.1-.74.4-1.24.72-1.53-2.53-.29-5.19-1.27-5.19-5.63 0-1.24.44-2.26 1.17-3.06-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.15 1.17a10.9 10.9 0 0 1 5.74 0c2.19-1.48 3.15-1.17 3.15-1.17.62 1.57.23 2.73.11 3.02.73.8 1.17 1.82 1.17 3.06 0 4.37-2.67 5.33-5.21 5.62.41.35.77 1.04.77 2.1v3.11c0 .3.2.66.79.55A11.03 11.03 0 0 0 23 11.52C23 5.24 18.27.5 12 .5Z"/></svg></a>
+          <a href="mailto:shadab18ali@gmail.com" aria-label="Email shadab18ali@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg></a>
         </div>
       </div>
       <div class="footer-links">
         <div class="footer-col">
-          <h4>Navigation</h4>
-          <a href="projects.html">Projects</a>
-          <a href="about.html">About</a>
+          <h2 class="footer-h">Work</h2>
+          <a href="projects.html">All Projects</a>
+          <a href="case-diviniti.html">Diviniti</a>
+          <a href="case-portrait-on-gold.html">Portrait on Gold</a>
+          <a href="case-ratanarpan.html">Ratanarpan</a>
+        </div>
+        <div class="footer-col">
+          <h2 class="footer-h">Site</h2>
           <a href="experience.html">Experience</a>
+          <a href="services.html">Services</a>
+          <a href="about.html">About</a>
           <a href="skills.html">Skills</a>
           <a href="work-with-me.html">Work With Me</a>
           <a href="contact.html">Contact</a>
         </div>
         <div class="footer-col">
-          <h4>Services</h4>
-          <a href="services.html">Shopify Development</a>
-          <a href="services.html">WordPress Development</a>
-          <a href="services.html">WooCommerce</a>
-          <a href="services.html">Speed Optimization</a>
-          <a href="services.html">WhatsApp Automation</a>
-          <a href="services.html">SEO &amp; Analytics</a>
+          <h2 class="footer-h">Connect</h2>
+          <a href="https://linkedin.com/in/shadab-ali-7b0261238" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a href="https://github.com/Shadab18Ali" target="_blank" rel="noopener">GitHub ↗</a>
+          <a href="mailto:shadab18ali@gmail.com">Email</a>
+          <a href="https://wa.me/919931394885?text=Hi%20Shadab%2C%20I%20found%20your%20portfolio%20and%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener">WhatsApp ↗</a>
+          <a href="https://drive.google.com/file/d/1XDjqB1naPcnu_d_-gUdThH2xrl1sOy2U/view" target="_blank" rel="noopener">Résumé ↗</a>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 Shadab Ali · All rights reserved</span>
-      <span>Delhi, India · Available Globally · Remote-first</span>
-      <a href="https://drive.google.com/file/d/1XDjqB1naPcnu_d_-gUdThH2xrl1sOy2U/view" target="_blank" rel="noopener" class="footer-resume">Download Resume ↗</a>
+      <span>© <span data-year>2026</span> Shadab Ali</span>
+      <span>Shopify Developer · Delhi, India</span>
     </div>
   </div>
 </footer>
-
-<script src="script.js"></script>
 </body>
 </html>
