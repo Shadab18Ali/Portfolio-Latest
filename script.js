@@ -12,7 +12,7 @@ window.addEventListener('load', () => {
   setTimeout(() => initRevealFallback(), 900);
 });
 
-/* ── EmailJS config (replace with your real keys) ─────────── */
+/* ── EmailJS config (public key — restrict allowed origins in the EmailJS dashboard) ── */
 const EJS_KEY = '9N3i_f0SElYf7cada';
 const EJS_SERVICE = 'service_nvfzojd';
 const EJS_TEMPLATE = 'template_rwslztc';
@@ -68,8 +68,9 @@ function initTheme() {
   const html = document.documentElement;
   const btns = document.querySelectorAll('.theme-toggle');
 
-  // Restore saved theme or default to light
-  const saved = localStorage.getItem('sa_theme') || 'light';
+  // Restore saved theme or default to light (storage can throw in private mode)
+  let saved = 'light';
+  try { saved = localStorage.getItem('sa_theme') || 'light'; } catch {}
   html.setAttribute('data-theme', saved);
 
   if (!btns.length) return;
@@ -79,7 +80,7 @@ function initTheme() {
       const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
       document.body.classList.add('theme-transitioning');
       html.setAttribute('data-theme', next);
-      localStorage.setItem('sa_theme', next);
+      try { localStorage.setItem('sa_theme', next); } catch {}
       window.dispatchEvent(new CustomEvent('sa-theme-change', { detail: { theme: next } }));
       setTimeout(() => document.body.classList.remove('theme-transitioning'), 320);
     });
@@ -269,12 +270,15 @@ async function handleSubmit(e) {
       if (note) note.textContent = 'Something went wrong — try WhatsApp instead.';
     }
   } else {
-    // Fallback: open mailto
+    // Fallback: hand off to the visitor's email app — nothing is sent until they hit send there
+    const subject = encodeURIComponent(`Portfolio Enquiry — ${name}`);
     const body = encodeURIComponent(
       `Name: ${name}\nEmail: ${email}\nService: ${service || 'N/A'}\nURL: ${url || 'N/A'}\n\n${message}`
     );
-    window.open(`mailto:shadab18ali@gmail.com?subject=Portfolio Enquiry — ${name}&body=${body}`);
-    showSuccess(email);
+    window.location.href = `mailto:shadab18ali@gmail.com?subject=${subject}&body=${body}`;
+    btn.textContent = orig;
+    btn.disabled    = false;
+    if (note) note.textContent = 'Your email app should open with this message — press send there to deliver it.';
   }
 }
 
@@ -745,7 +749,8 @@ function initProjectGallery() {
     const title = el.dataset.galleryTitle || card.querySelector('h2, h3')?.textContent?.trim() || 'Project Preview';
     const url = el.dataset.galleryUrl || card.querySelector('.project-url')?.textContent?.trim() || '';
     const realImg = el.querySelector('img');
-    const src = el.dataset.gallerySrc || realImg?.currentSrc || realImg?.src || makePreviewSvg(title, url);
+    const fullSrc = (IS_MOBILE && el.dataset.gallerySrcMobile) || el.dataset.gallerySrc;
+    const src = fullSrc || realImg?.currentSrc || realImg?.src || makePreviewSvg(title, url);
     return { title, url, src };
   };
 
