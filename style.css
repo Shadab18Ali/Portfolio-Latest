@@ -1542,3 +1542,21 @@ nav.breadcrumb {
 .theme-toggle { color: var(--ink); width: 40px; height: 40px; border-color: var(--border2); }
 [data-theme="dark"] .theme-toggle { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.22); }
 .theme-toggle:hover { color: var(--accent-text); border-color: var(--accent-border); }
+
+/* Portrait: keep the dark jacket readable against the dark theme */
+.hero-photo-wrap { position: relative; }
+.hero-photo-wrap::before {
+  content: ''; position: absolute; inset: 8% 4% 0; z-index: -1; border-radius: 50% 50% 12px 12px;
+  background: radial-gradient(ellipse at 50% 40%, var(--accent-light), transparent 70%);
+}
+[data-theme="dark"] .hero-photo-wrap::before { background: radial-gradient(ellipse at 50% 40%, rgba(255,255,255,0.10), transparent 70%); }
+[data-theme="dark"] .hero-photo,
+[data-theme="dark"] .about-photo { filter: drop-shadow(0 0 1px rgba(255,255,255,0.45)) drop-shadow(0 24px 36px rgba(0,0,0,0.55)); }
+.hero-photo-tilt { position: relative; z-index: 1; }
+.hero-photo { -webkit-mask-image: linear-gradient(to bottom, #000 82%, transparent 100%); mask-image: linear-gradient(to bottom, #000 82%, transparent 100%); }
+[data-theme="dark"] .hero-photo-wrap::before { background: radial-gradient(ellipse at 50% 40%, rgba(255,255,255,0.07), transparent 68%); }
+/* Shadow lives on the wrapper so the img's bottom fade mask doesn't clip it */
+.hero-photo { filter: none; }
+.hero-photo-tilt { filter: drop-shadow(0 22px 28px rgba(0,0,0,0.22)); }
+[data-theme="dark"] .hero-photo { filter: none; }
+[data-theme="dark"] .hero-photo-tilt { filter: drop-shadow(0 0 1px rgba(255,255,255,0.45)) drop-shadow(0 24px 36px rgba(0,0,0,0.55)); }
