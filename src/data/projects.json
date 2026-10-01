@@ -1,0 +1,341 @@
+{
+  "featured": ["pog", "ratanarpan", "diviniti"],
+  "order": ["pog", "ratanarpan", "diviniti", "majestic", "uncostly"],
+  "projects": {
+    "pog": {
+      "file": "case-portrait-on-gold.html",
+      "name": "Portrait on Gold",
+      "url": "https://www.portraitongold.com",
+      "domain": "portraitongold.com",
+      "group": "shopify",
+      "card": {
+        "kicker": "Shopify 2.0 · Luxury gifting",
+        "position": "Custom Shopify commerce & COD automation",
+        "summary": "Every portrait is made to order, so an unconfirmed cash-on-delivery order costs real money. I built the size, frame and finish logic in Liquid, replaced a paid filter app with custom JavaScript, and added a WhatsApp check through WATI before anything goes into production.",
+        "role": "Shopify development: variant logic, filtering, WATI integration",
+        "metric": { "value": "30%", "label": "Fewer fake COD orders" },
+        "tags": ["Shopify", "Liquid", "JavaScript", "WATI", "COD Verification", "Custom Filtering"]
+      },
+      "seo": {
+        "title": "Portrait on Gold Case Study: Shopify COD Automation | Shadab Ali",
+        "description": "Custom Liquid variant logic, app-free JavaScript filtering and WhatsApp (WATI) COD verification for a made-to-order Shopify store. 30% fewer fake COD orders."
+      },
+      "hero": {
+        "h1": "Custom Shopify commerce &amp; <em>COD automation</em>",
+        "lede": "Portrait on Gold sells personalised, made-to-order portraits. The store needed complex product options without paid apps, and a way to stop fake cash-on-delivery orders before anything went into production."
+      },
+      "facts": [
+        ["Client", "Portrait on Gold"],
+        ["Industry", "Luxury gifting, made-to-order portraits"],
+        ["My role", "Shopify developer (Full Stack Developer at Diviniti)"],
+        ["Timeline", "During my role, Jan 2025 – Jun 2026"]
+      ],
+      "metrics": [
+        { "value": "30%", "label": "Reduction in fake COD orders", "primary": true },
+        { "value": "₹0", "label": "Paid filter-app fees. Filtering is custom JavaScript" },
+        { "value": "3", "label": "Product options combined in Liquid: size, frame and finish" }
+      ],
+      "sections": [
+        { "id": "overview", "title": "Overview",
+          "lead": "A made-to-order store where every product is personal, so every unconfirmed order has a real cost.",
+          "paras": ["Customers choose a portrait's size, frame and finish, and the store produces it to order. I built the product-option logic, the collection filtering and a WhatsApp-first order check, and optimised the storefront for mobile shoppers."] },
+        { "id": "challenge", "title": "The Challenge",
+          "items": [
+            "<strong>Complex variants.</strong> Size, frame and finish combinations had to be clear on the product page.",
+            "<strong>Filtering without another app.</strong> Collections needed filtering, but the store was avoiding paid Shopify apps.",
+            "<strong>Fake COD orders.</strong> Unconfirmed cash-on-delivery orders are a common problem for personalised products in India. Here, each one meant a portrait produced for nobody."
+          ] },
+        { "id": "constraints", "title": "Constraints",
+          "items": [
+            "No paid filter or variant apps. The store had to stay lean, without recurring subscriptions.",
+            "Verification had to happen <strong>before production</strong>, not after a failed delivery, because a personalised portrait can't be resold.",
+            "Most traffic for personalised gifting arrives from mobile ad clicks, so every flow had to work well on a phone."
+          ] },
+        { "id": "role", "title": "My Role",
+          "paras": ["I wrote the collection filtering in JavaScript, the product-option logic in Liquid and the WhatsApp verification flow through WATI, and tuned the storefront layout for mobile."] },
+        { "id": "built", "title": "What I Built",
+          "items": [
+            "<strong>App-free collection filtering</strong> in JavaScript, in place of a paid filter app.",
+            "<strong>Custom Liquid variant logic</strong> for the size, frame and finish combinations.",
+            "<strong>A WhatsApp-first COD verification flow</strong> through WATI, so orders are confirmed before fulfilment.",
+            "<strong>A mobile-optimised storefront</strong> for shoppers arriving from ads."
+          ] },
+        { "id": "improvements", "title": "Key Improvements",
+          "steps": [
+            ["Order placed", "A customer places a cash-on-delivery order for a personalised portrait."],
+            ["WhatsApp confirmation", "The order is followed up on WhatsApp through WATI, asking the customer to confirm."],
+            ["Confirmed before production", "The team only produces confirmed orders. Unconfirmed ones are caught before any material or time is spent."]
+          ] },
+        { "id": "hard", "title": "The Hard Part",
+          "paras": [
+            "<strong>Why custom code instead of another app?</strong> A filter app would have added a monthly fee and more third-party script to every collection page, on a store where most visitors arrive on mobile. Filtering in JavaScript against data the theme already outputs kept collection pages lean and under the store's control.",
+            "The verification step wasn't something a theme app could solve either. It has to connect an order to a WhatsApp conversation and a human decision <em>before</em> fulfilment, which makes it an integration problem (WATI wired into the order flow), not a storefront setting."
+          ],
+          "code": { "note": "Simplified sketch of the filtering approach, not the production code",
+            "html": "<span class=\"c\">{%- comment -%} Each product card carries its filterable values {%- endcomment -%}</span>\n&lt;li data-product-card\n    data-size=<span class=\"s\">\"{{ product.options_by_name['Size'].values | join: ',' }}\"</span>\n    data-frame=<span class=\"s\">\"{{ product.options_by_name['Frame'].values | join: ',' }}\"</span>&gt;\n\n<span class=\"c\">// Filter in the browser: no app, no page reload</span>\n<span class=\"k\">const</span> cards = [...document.querySelectorAll(<span class=\"s\">'[data-product-card]'</span>)];\n\n<span class=\"k\">function</span> applyFilters(active) {          <span class=\"c\">// e.g. { size: '8x10', frame: 'Gold' }</span>\n  cards.forEach(card =&gt; {\n    card.hidden = !Object.entries(active).every(([key, value]) =&gt;\n      !value || card.dataset[key].split(<span class=\"s\">','</span>).includes(value));\n  });\n}" } },
+        { "id": "results", "title": "Results",
+          "items": [
+            "<strong>30% reduction in fake COD orders.</strong>",
+            "<strong>No paid filter app.</strong> Collections filter with custom JavaScript.",
+            "<strong>Size, frame and finish</strong> chosen on the product page, handled by Liquid logic."
+          ],
+          "quote": { "text": "Strong understanding of Shopify customisation and very fast delivery. The WhatsApp checkout flow he built converted immediately after launch.", "by": "Portrait on Gold · client feedback" } }
+      ],
+      "stack": ["Shopify 2.0", "Liquid", "JavaScript", "WATI", "WhatsApp automation", "Mobile UI"],
+      "takeaway": "The most valuable change wasn't on the storefront. It was putting a verification step in the right place in the order flow. Custom code made sense where an app would have added cost or couldn't reach the problem."
+    },
+
+    "ratanarpan": {
+      "file": "case-ratanarpan.html",
+      "name": "Ratanarpan",
+      "url": "https://ratanarpan.com",
+      "domain": "ratanarpan.com",
+      "group": "shopify",
+      "card": {
+        "kicker": "Shopify · Festive & corporate gifting",
+        "position": "Shopify + AI-assisted eCommerce workflow",
+        "summary": "A gifting brand with a small team needed a full store and festival-timed content. I built the Shopify store, then set up scheduled tasks that request banners, draft SEO posts and refresh metadata every week. People still approve every post before it goes live.",
+        "role": "Store build and automation setup",
+        "metric": { "value": "24h", "label": "Human review before any post goes live", "qualitative": true },
+        "tags": ["Shopify", "SEO", "Automation", "Content Operations", "Product Management"]
+      },
+      "seo": {
+        "title": "Ratanarpan Case Study: Shopify + AI Content Workflow | Shadab Ali",
+        "description": "A gifting store built on Shopify, with scheduled AI-assisted content drafting, a 24-hour human review window and weekly SEO upkeep."
+      },
+      "hero": {
+        "h1": "Shopify + <em>AI-assisted</em> eCommerce workflow",
+        "lede": "Ratanarpan is a premium festive and corporate gifting brand. I built its Shopify store, then set up scheduled tasks that keep festival content and SEO on schedule, while the team stays in charge of design and every published post."
+      },
+      "facts": [
+        ["Client", "Ratanarpan"],
+        ["Industry", "Festive and corporate gifting"],
+        ["My role", "Shopify developer: store build and automation"],
+        ["Worked with", "The brand's design team, who create every banner"]
+      ],
+      "metrics": [
+        { "value": "24h", "label": "Human review window before any post publishes", "primary": true },
+        { "value": "800–1,200", "label": "Words in each SEO blog draft" },
+        { "value": "Weekly", "label": "SEO upkeep: meta titles, descriptions and image names" }
+      ],
+      "sections": [
+        { "id": "overview", "title": "Overview",
+          "lead": "A gifting brand with festival-driven demand and a small team.",
+          "paras": ["The brand needed a complete online store and a steady stream of festival-timed content. I built the store, then designed the scheduled tasks that plan, draft and maintain that content."] },
+        { "id": "challenge", "title": "The Challenge",
+          "paras": ["Festive and corporate gifting runs on deadlines. Each festival needs banners, featured products and blog content published on time, and the team was too small to brief, write, schedule and optimise all of it by hand."] },
+        { "id": "constraints", "title": "Constraints",
+          "items": [
+            "People keep the creative and editorial decisions. The design team makes every banner.",
+            "Nothing publishes without a chance for the team to edit or stop it.",
+            "New content must not duplicate what is already on the blog."
+          ] },
+        { "id": "built", "title": "What I Built",
+          "items": [
+            "<strong>The Shopify store</strong>: theme, homepage sections for collections, festive campaigns, bestsellers, the gifting process, corporate gifts and custom hampers, and every product listing, created through Claude's Shopify connector.",
+            "<strong>Scheduled tasks</strong> that request banners from the design team with a matched in-stock product, send deadline reminders and escalate overdue banners.",
+            "<strong>A blog workflow</strong> that turns banner emails and a festival and evergreen calendar into 800–1,200-word SEO drafts with product placements, checked for duplicates.",
+            "<strong>Weekly SEO upkeep</strong>: meta titles and descriptions refreshed from new keyword research, product images renamed, and a check that re-runs any missed task."
+          ] },
+        { "id": "improvements", "title": "Key Improvements",
+          "steps": [
+            ["Campaign planning", "A festival and evergreen calendar sets what to publish and when."],
+            ["Banner request", "Scheduled tasks ask the design team for each banner, with a matched in-stock product, reminders and escalation."],
+            ["AI-assisted draft", "The banner email and calendar entry become an SEO draft with product placements, checked against existing posts for duplicates."],
+            ["Human review", "Every draft waits 24 hours before it publishes, so the team can edit or stop it."],
+            ["Publish and maintain", "The post goes live on the store's blog. Weekly tasks refresh SEO metadata and re-run anything missed."]
+          ] },
+        { "id": "hard", "title": "The Key Decision",
+          "paras": ["Automate the routine work (briefs, drafts, scheduling and SEO upkeep) but keep people on the creative and editorial decisions. The safeguards make that practical: duplicate checks on every draft, a 24-hour review window before publishing, and a check that re-runs any task that was missed."] },
+        { "id": "results", "title": "Results",
+          "items": [
+            "A small team publishes on time for every festival.",
+            "People stay in charge of design and have a full day to review each post.",
+            "Meta titles, descriptions and image names are refreshed every week."
+          ] }
+      ],
+      "stack": ["Shopify", "Claude Cowork", "Claude's Shopify connector", "SEO", "Content automation"]
+    },
+
+    "diviniti": {
+      "file": "case-diviniti.html",
+      "name": "Diviniti",
+      "url": "https://www.diviniti.com",
+      "domain": "diviniti.com",
+      "group": "shopify",
+      "card": {
+        "kicker": "Shopify 2.0 · Luxury gifting",
+        "position": "500+ product Shopify store rebuild",
+        "summary": "A luxury catalogue of 500+ products where slow image loading held back page speed, and routine merchandising changes needed a developer. I rebuilt how images load, added 20+ Liquid sections the team edits without code, and set up GTM, Microsoft Clarity and on-page SEO.",
+        "role": "Theme sections, image performance, tracking and SEO",
+        "metric": { "value": "40%", "label": "LCP improvement" },
+        "tags": ["Shopify 2.0", "Liquid", "Performance", "GTM", "Clarity", "SEO"]
+      },
+      "seo": {
+        "title": "Diviniti Case Study: 500+ Product Shopify Rebuild | Shadab Ali",
+        "description": "How Shadab Ali rebuilt image delivery, 20+ schema-driven Liquid sections and tracking for Diviniti, a 500+ product Shopify 2.0 store, with a 40% LCP improvement."
+      },
+      "hero": {
+        "h1": "How I rebuilt and optimised a <em>500+ product</em> Shopify store",
+        "lede": "Diviniti is a luxury gifting brand with more than 500 products. I rebuilt how the store loads images, built a section system the merchandising team uses without a developer, and set up tracking and on-page SEO."
+      },
+      "facts": [
+        ["Client", "Diviniti"],
+        ["Industry", "Luxury gifting"],
+        ["My role", "Full Stack Developer at Diviniti (Shopify development)"],
+        ["Timeline", "During my role, Jan 2025 – Jun 2026"]
+      ],
+      "metrics": [
+        { "value": "40%", "label": "LCP improvement after the image-loading rebuild", "primary": true },
+        { "value": "500+", "label": "Products in the catalogue" },
+        { "value": "20+", "label": "Schema-driven Liquid sections the team edits without code" }
+      ],
+      "sections": [
+        { "id": "overview", "title": "Overview",
+          "lead": "A luxury catalogue where page speed and merchandising flexibility both mattered.",
+          "paras": ["The work covered the Shopify theme end to end: how images load, how pages are built and edited, and how customer behaviour is measured. With <strong>500+ products</strong>, any inefficiency in one image or section repeats across every collection and product page, so the fixes had to be systemic."] },
+        { "id": "challenge", "title": "The Challenge",
+          "items": [
+            "<strong>Slow image loading.</strong> The image setup was holding back load times on an image-heavy catalogue.",
+            "<strong>Merchandising depended on a developer.</strong> The theme had no flexible section system, so routine page changes needed code edits.",
+            "<strong>No structured tracking.</strong> The team had no clear view of how customers behaved on the site."
+          ] },
+        { "id": "role", "title": "My Role",
+          "paras": ["I owned the Shopify theme work: responsive image delivery, custom Liquid sections with merchant-facing settings, the analytics and behaviour-tracking setup, and on-page SEO across the catalogue. The merchandising team was the day-to-day user of the section system, so I built it for them to use on their own."] },
+        { "id": "built", "title": "What I Built",
+          "items": [
+            "<strong>Image-loading architecture</strong>: responsive sizes, a lazy-loading strategy and separate mobile and desktop images.",
+            "<strong>20+ custom Liquid sections</strong> with JSON schema settings, so the team can add, edit and reorder page content in the Shopify editor.",
+            "<strong>Google Tag Manager and Microsoft Clarity</strong> for structured event tracking and heatmaps.",
+            "<strong>Structured on-page SEO</strong> across the full catalogue."
+          ] },
+        { "id": "improvements", "title": "Key Improvements",
+          "lead": "<strong>40% LCP improvement.</strong> Largest Contentful Paint is the time until the main content of a page is visible.",
+          "steps": [
+            ["Responsive sizes", "Images are requested at widths that match where they're displayed, instead of one large file for every screen."],
+            ["Lazy-loading strategy", "Images further down the page wait until they're needed, so they don't compete with the main image for bandwidth."],
+            ["Mobile and desktop image pickers", "Separate images for mobile and desktop, so phones aren't sent desktop artwork."]
+          ] },
+        { "id": "hard", "title": "The Hard Part",
+          "paras": ["Speed and flexibility pull in opposite directions. A section system that lets anyone place any image anywhere can quietly undo performance work. So I treated the image setup and the section system as one problem: the mobile and desktop image pickers live in the section settings, and every page the team builds in the editor keeps the responsive behaviour."],
+          "code": { "note": "Simplified sketch of the pattern, not the production code",
+            "html": "<span class=\"c\">{%- comment -%} Banner section: separate art for mobile and desktop {%- endcomment -%}</span>\n<span class=\"k\">{%- liquid</span>\n  assign desktop = section.settings.image_desktop\n  assign mobile  = section.settings.image_mobile | default: desktop\n<span class=\"k\">-%}</span>\n&lt;picture&gt;\n  &lt;source media=<span class=\"s\">\"(max-width: 749px)\"</span>\n          srcset=<span class=\"s\">\"{{ mobile | image_url: width: 750 }}\"</span>&gt;\n  {{ desktop | image_url: width: 1600\n             | image_tag: widths: <span class=\"s\">'800, 1200, 1600'</span>, sizes: <span class=\"s\">'100vw'</span> }}\n&lt;/picture&gt;\n\n<span class=\"k\">{% schema %}</span>\n{ <span class=\"s\">\"name\"</span>: <span class=\"s\">\"Banner\"</span>, <span class=\"s\">\"settings\"</span>: [\n  { <span class=\"s\">\"type\"</span>: <span class=\"s\">\"image_picker\"</span>, <span class=\"s\">\"id\"</span>: <span class=\"s\">\"image_desktop\"</span>, <span class=\"s\">\"label\"</span>: <span class=\"s\">\"Desktop image\"</span> },\n  { <span class=\"s\">\"type\"</span>: <span class=\"s\">\"image_picker\"</span>, <span class=\"s\">\"id\"</span>: <span class=\"s\">\"image_mobile\"</span>,  <span class=\"s\">\"label\"</span>: <span class=\"s\">\"Mobile image\"</span> }\n] }\n<span class=\"k\">{% endschema %}</span>" } },
+        { "id": "impact", "title": "Business Impact",
+          "paras": [
+            "Improving landing-page performance reduces friction for paid and organic visitors and can decrease abandonment before users engage with the store. For a luxury catalogue promoted through ad campaigns, that friction is there on every visit.",
+            "The section system paid off differently. The merchandising team could ship page changes without waiting for a developer, and the tracking showed them how customers actually used the site."
+          ] },
+        { "id": "results", "title": "Results",
+          "items": [
+            "<strong>40% LCP improvement</strong> from the image-loading rebuild.",
+            "<strong>20+ sections</strong> the team edits and reorders in the Shopify editor, without code changes.",
+            "<strong>Behaviour tracking</strong> through Google Tag Manager and Microsoft Clarity.",
+            "<strong>Consistent on-page SEO</strong> across 500+ products."
+          ],
+          "quote": { "text": "Shadab rebuilt our Shopify store and significantly improved mobile performance. The LCP improvements made our ad campaigns noticeably more effective.", "by": "Diviniti · client feedback" } }
+      ],
+      "stack": ["Shopify 2.0", "Liquid", "JavaScript", "JSON schema", "Google Tag Manager", "Microsoft Clarity", "On-page SEO"],
+      "takeaway": "Performance work lasts longer when it's built into the tools the team uses every day. Because the responsive image behaviour lives inside the sections, pages the team builds later keep it without a developer checking each one."
+    },
+
+    "majestic": {
+      "file": "case-majestic-india.html",
+      "name": "The Majestic India",
+      "url": "https://themajesticindia.com",
+      "domain": "themajesticindia.com",
+      "group": "wordpress",
+      "card": {
+        "kicker": "WordPress · Pageant training",
+        "position": "Mobile-first program site with one clear action",
+        "summary": "A pageant training platform with four program tiers needed visitors to find their tier quickly and apply. I built a WordPress and Elementor site with a dedicated page per tier and one Apply Now path repeated at every decision point.",
+        "role": "Complete build, from design to launch",
+        "metric": { "value": "4", "label": "Program pages, one Apply Now path" },
+        "tags": ["WordPress", "Elementor", "UI/UX", "Mobile-first"]
+      },
+      "seo": {
+        "title": "The Majestic India Case Study: WordPress Build | Shadab Ali",
+        "description": "A mobile-first WordPress and Elementor site for a pageant training platform: four program pages and one clear Apply Now path."
+      },
+      "hero": {
+        "h1": "A mobile-first program site with <em>one clear action</em>",
+        "lede": "The Majestic India is a pageant training platform with four program and license tiers. The site had to explain each tier clearly and lead every visitor to apply, without feeling like a generic brochure."
+      },
+      "facts": [
+        ["Client", "The Majestic India"],
+        ["Industry", "Pageant training"],
+        ["My role", "Complete build, from design to launch"],
+        ["Platform", "WordPress + Elementor"]
+      ],
+      "metrics": [
+        { "value": "4", "label": "Dedicated program / license pages", "primary": true },
+        { "value": "1", "label": "Apply Now path, repeated at every decision point" }
+      ],
+      "sections": [
+        { "id": "challenge", "title": "The Challenge",
+          "paras": ["With four separate program tiers, the risk was visitors not knowing which path applied to them. Most prospective applicants were also browsing on phones."] },
+        { "id": "built", "title": "What I Built",
+          "items": [
+            "A custom WordPress and Elementor build with four program/license pages.",
+            "A mobile-first layout, because most applicants browse on their phones.",
+            "A consistent Apply Now flow, repeated at every key decision point."
+          ] },
+        { "id": "improvements", "title": "Key Improvements",
+          "paras": ["Four dedicated pages instead of one long page. Each visitor lands on content for their own tier and applies with one clear action."] },
+        { "id": "results", "title": "Results",
+          "items": ["Each tier has its own page and the same single Apply Now action.", "A layout designed for phones first."],
+          "quote": { "text": "Handled the complete website professionally from design to launch. Clean code, zero bloat, and explained every decision clearly.", "by": "The Majestic India · client feedback" } }
+      ],
+      "stack": ["WordPress", "Elementor", "UI/UX", "Mobile-first layout"]
+    },
+
+    "uncostly": {
+      "file": "case-uncostly.html",
+      "name": "Uncostly",
+      "url": "https://uncostly.in",
+      "domain": "uncostly.in",
+      "group": "wordpress",
+      "card": {
+        "kicker": "WooCommerce · Security equipment",
+        "position": "Purchase and rental in one catalogue",
+        "summary": "A security and surveillance retailer needed a WooCommerce catalogue across 12+ categories that handles both buying and renting, with comparison tables for spec-heavy decisions.",
+        "role": "Complete WooCommerce build",
+        "metric": { "value": "12+", "label": "Product categories" },
+        "tags": ["WooCommerce", "WordPress", "Elementor"]
+      },
+      "seo": {
+        "title": "Uncostly Case Study: WooCommerce Catalogue | Shadab Ali",
+        "description": "A WooCommerce catalogue for a security equipment retailer: 12+ categories, comparison tables, wishlist, order tracking and a separate rental flow."
+      },
+      "hero": {
+        "h1": "Purchase and rental in <em>one catalogue</em>",
+        "lede": "Uncostly sells and rents security and surveillance equipment. Buyers compare specs across several products before deciding, and some only want to rent."
+      },
+      "facts": [
+        ["Client", "Uncostly"],
+        ["Industry", "Security and surveillance equipment"],
+        ["My role", "Complete WooCommerce build"],
+        ["Platform", "WooCommerce + Elementor"]
+      ],
+      "metrics": [
+        { "value": "12+", "label": "Product categories", "primary": true },
+        { "value": "2", "label": "Flows: purchase and rental" }
+      ],
+      "sections": [
+        { "id": "challenge", "title": "The Challenge",
+          "paras": ["The catalogue had to span 12+ categories and support both outright purchase and equipment rental, with tools that help technical buyers compare specs side by side."] },
+        { "id": "built", "title": "What I Built",
+          "items": [
+            "WooCommerce catalogue structure across 12+ product categories.",
+            "Side-by-side comparison tables for spec-heavy purchase decisions.",
+            "Wishlist and order-tracking functionality.",
+            "A dedicated Rent section, separate from the standard purchase flow."
+          ] },
+        { "id": "improvements", "title": "Key Improvements",
+          "paras": ["Security equipment buyers usually compare specs across several products before committing, and part of the demand is short-term rental. Building both flows into the same catalogue, instead of bolting rental on later, kept the experience consistent for both kinds of customer."] },
+        { "id": "results", "title": "Results",
+          "items": ["One catalogue that serves both buyers and renters.", "Comparison tables for spec-heavy decisions."] }
+      ],
+      "stack": ["WooCommerce", "WordPress", "Elementor"]
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "url": "https://portfolionew-omega-rouge.vercel.app",
+  "name": "Shadab Ali",
+  "jobTitle": "Shopify Developer & eCommerce Specialist",
+  "email": "shadab18ali@gmail.com",
+  "phone": "+919931394885",
+  "phoneLabel": "+91 99313 94885",
+  "resume": "https://drive.google.com/file/d/1XDjqB1naPcnu_d_-gUdThH2xrl1sOy2U/view",
+  "linkedin": "https://linkedin.com/in/shadab-ali-7b0261238",
+  "github": "https://github.com/Shadab18Ali",
+  "whatsapp": "https://wa.me/919931394885?text=Hi%20Shadab%2C%20I%20found%20your%20portfolio%20and%20I%27d%20like%20to%20discuss%20a%20project.",
+  "ogImage": "assets/og-image.jpg",
+  "worksFor": "Kairali Ayurvedic",
+  "alumniOf": "Jamia Hamdard",
+  "knowsAbout": ["Shopify", "Shopify Liquid", "Shopify theme development", "Shopify metafields", "Shopify Admin GraphQL API",
+                 "eCommerce UX", "Conversion rate optimisation", "Core Web Vitals", "Technical SEO", "Google Tag Manager",
+                 "Google Analytics 4", "Meta Conversions API", "WhatsApp automation", "JavaScript", "React", "WordPress", "WooCommerce"],
+  "nav": [["index.html", "Home"], ["projects.html", "Projects"], ["services.html", "Services"], ["about.html", "About"], ["contact.html", "Contact"]],
+  "mobileNav": [["index.html", "Home"], ["projects.html", "Projects"], ["services.html", "Services"], ["about.html", "About"],
+                ["experience.html", "Experience"], ["skills.html", "Skills"], ["work-with-me.html", "Work With Me"], ["contact.html", "Contact"]],
+  "pages": {
+    "index.html": {
+      "title": "Shadab Ali | Shopify Developer & eCommerce Specialist, India",
+      "description": "Shopify developer in Delhi, India. I build and optimise Shopify stores: custom Liquid, theme work, performance, CRO, SEO and tracking. See case studies with real results.",
+      "priority": "1.0"
+    },
+    "projects.html": {
+      "title": "Shopify Projects & Case Studies | Shadab Ali",
+      "description": "Shopify and WooCommerce case studies: the problem, what I built and the result. COD verification, a 500+ product store rebuild and an automated content workflow.",
+      "crumb": "Projects", "priority": "0.9"
+    },
+    "services.html": {
+      "title": "Shopify Development, Optimisation & CRO Services | Shadab Ali",
+      "description": "Shopify store development, theme customisation, speed optimisation, CRO, SEO, analytics and integrations, plus WordPress and WooCommerce. Based in Delhi, India.",
+      "crumb": "Services", "priority": "0.8"
+    },
+    "about.html": {
+      "title": "About Shadab Ali | Shopify Developer, Delhi",
+      "description": "Shopify developer based in Delhi, India: frontend background, a year of ML and data work, and now full-time Shopify development at Kairali Ayurvedic.",
+      "crumb": "About", "ogType": "profile", "priority": "0.7"
+    },
+    "experience.html": {
+      "title": "Experience | Shadab Ali, Shopify Developer",
+      "description": "Shopify Developer at Kairali Ayurvedic, Full Stack Developer at Diviniti, plus machine-learning and frontend roles since 2023. Roles, responsibilities and stack.",
+      "crumb": "Experience", "priority": "0.8"
+    },
+    "skills.html": {
+      "title": "Skills | Shadab Ali, Shopify Liquid Developer",
+      "description": "Shopify, Liquid and JavaScript at the core, with Core Web Vitals, GA4, GTM, Meta CAPI, WATI, React, WordPress, WooCommerce and the Shopify Admin GraphQL API.",
+      "crumb": "Skills", "priority": "0.6"
+    },
+    "work-with-me.html": {
+      "title": "Work With Me | Shadab Ali, Shopify Developer",
+      "description": "Full-time roles, contract work or a freelance Shopify project: the ways to work with Shadab Ali, a Shopify developer in Delhi, India.",
+      "crumb": "Work With Me", "priority": "0.6"
+    },
+    "contact.html": {
+      "title": "Hire a Shopify Developer | Contact Shadab Ali",
+      "description": "Discuss a Shopify build, optimisation, CRO or automation project, or a full-time role. Email, WhatsApp or the form. Replies within 24 hours.",
+      "crumb": "Contact", "priority": "0.7",
+      "extraHead": "<script src=\"https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js\" defer></script>"
+    }
+  }
+}
