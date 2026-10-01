@@ -1513,3 +1513,28 @@ nav.breadcrumb {
 .mob-menu .mob-actions a.btn-wa { color: var(--green); }
 .mob-menu .mob-actions a.btn:hover { color: #fff; }
 .mob-menu .mob-actions a.btn-wa:hover { color: var(--green); }
+
+/* Featured cards: desktop + phone screenshot pair (no cover-cropping) */
+.feature-media {
+  position: relative; display: flex; align-items: center; justify-content: flex-start;
+  padding: clamp(1.25rem, 3vw, 2.25rem); overflow: hidden;
+  background: linear-gradient(160deg, var(--bg3), var(--bg2));
+}
+.feature-media .fm-desktop {
+  display: block; width: 84%; aspect-ratio: 16 / 10; border-radius: 8px; overflow: hidden;
+  background: #fff; border: 1px solid var(--border2); box-shadow: var(--shadow-md);
+}
+.feature-media .fm-mobile {
+  position: absolute; right: clamp(1rem, 2.6vw, 1.9rem); bottom: clamp(1rem, 2.6vw, 1.9rem);
+  display: block; width: 26%; aspect-ratio: 9 / 16; border-radius: 12px; overflow: hidden;
+  background: #fff; border: 3px solid #171018; box-shadow: var(--shadow-lg);
+}
+.feature-media .fm-desktop img, .feature-media .fm-mobile img {
+  display: block; width: 100%; height: 100%; object-fit: cover; object-position: top center;
+}
+.feature-card:hover .fm-desktop img, .feature-card:hover .fm-mobile img { transform: none; }
+@media (max-width: 1024px) {
+  .feature-media { aspect-ratio: auto; min-height: 0; padding: 1.5rem 1.5rem 2.25rem; }
+  .feature-media .fm-desktop { width: 82%; }
+  .feature-media .fm-mobile { width: 24%; right: 1.25rem; bottom: 1.25rem; }
+}
