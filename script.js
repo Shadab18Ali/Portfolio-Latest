@@ -1,15 +1,17 @@
 /* ============================================================
-   SHADAB ALI — script.js  v5  (Clean · Complete · No debt)
+   SHADAB ALI — script.js  v6
+   Theme, navigation, restrained scroll reveal, contact form,
+   FAQ and screenshot gallery. No animation libraries.
    ============================================================ */
 
-
-/* Safety: content should never stay invisible if JavaScript/CDN animation fails. */
+/* Content must never stay hidden: .reveal starts hidden only once JS runs,
+   and the safety net below shows everything if initReveal never ran. */
 document.documentElement.classList.add('js');
-function initRevealFallback() {
-  document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
-}
+let revealReady = false;
 window.addEventListener('load', () => {
-  setTimeout(() => initRevealFallback(), 900);
+  setTimeout(() => {
+    if (!revealReady) document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+  }, 1200);
 });
 
 /* ── EmailJS config (public key — restrict allowed origins in the EmailJS dashboard) ── */
@@ -17,11 +19,9 @@ const EJS_KEY = '9N3i_f0SElYf7cada';
 const EJS_SERVICE = 'service_nvfzojd';
 const EJS_TEMPLATE = 'template_rwslztc';
 
-/* ── Globals ──────────────────────────────────────────────── */
-const IS_MOBILE  = window.matchMedia('(max-width: 768px)').matches;
-const REDUCED    = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const IS_MOBILE = window.matchMedia('(max-width: 768px)').matches;
 
-/* ── Boot ─────────────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
   const safe = fn => {
     try { fn(); } catch (err) { console.warn('Portfolio init skipped:', err); }
@@ -32,27 +32,12 @@ document.addEventListener('DOMContentLoaded', () => {
   safe(initMobileMenu);
   safe(initScrollProgress);
   safe(initBackToTop);
-  safe(initCounters);
+  safe(initReveal);
   safe(initCopyEmail);
   safe(initContactForm);
   safe(initFAQ);
-  safe(initSkillBars);
-  safe(initParticles);
   safe(initProjectGallery);
-  safe(initMagneticCards);
-
-  try {
-    if (!REDUCED) {
-      initGSAP();
-      safe(initHeroParallax);
-      safe(initPageHero);
-    } else {
-      initRevealFallback();
-    }
-  } catch (err) {
-    console.warn('Animation fallback enabled:', err);
-    initRevealFallback();
-  }
+  safe(initFooterYear);
 
   safe(() => {
     if (typeof emailjs !== 'undefined' && EJS_KEY !== 'YOUR_PUBLIC_KEY') {
@@ -62,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ══════════════════════════════════════════════════════════
-   1. THEME  — light (default) / dark, localStorage, smooth transition
+   1. THEME  — light (default) / dark, localStorage
    ══════════════════════════════════════════════════════════ */
 function initTheme() {
   const html = document.documentElement;
@@ -88,19 +73,18 @@ function initTheme() {
 }
 
 /* ══════════════════════════════════════════════════════════
-   2. NAV  — scrolled state + active page highlight
+   2. NAV  — scrolled state + current page
    ══════════════════════════════════════════════════════════ */
 function initNav() {
-  const nav   = document.getElementById('nav');
-  const links = document.querySelectorAll('.icon-rail a, .mob-menu a');
+  const nav = document.getElementById('nav');
   if (!nav) return;
 
-  // Active link by current page filename (multi-page site)
-  const path    = window.location.pathname.split('/').pop();
-  const current = path === '' ? 'index.html' : path;
-  links.forEach(a => {
-    const href = (a.getAttribute('href') || '').split('/').pop();
-    a.classList.toggle('active', href === current);
+  // Case-study pages belong to the Projects section
+  const file = window.location.pathname.split('/').pop() || 'index.html';
+  const page = file.startsWith('case-') ? 'projects.html' : file;
+  document.querySelectorAll('.nav-links-desk a, .mob-menu a').forEach(a => {
+    const href = (a.getAttribute('href') || '').split('#')[0].split('/').pop();
+    if (href === page) a.setAttribute('aria-current', 'page');
   });
 
   const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 20);
@@ -109,7 +93,7 @@ function initNav() {
 }
 
 /* ══════════════════════════════════════════════════════════
-   3. MOBILE MENU
+   3. MOBILE MENU  — focus moves in on open, back on close
    ══════════════════════════════════════════════════════════ */
 function initMobileMenu() {
   const btn   = document.querySelector('.hbg');
@@ -119,21 +103,28 @@ function initMobileMenu() {
 
   const open = () => {
     menu.classList.add('open');
+    menu.removeAttribute('inert');
     btn.classList.add('open');
     btn.setAttribute('aria-expanded', 'true');
     document.body.style.overflow = 'hidden';
+    (close || menu.querySelector('a'))?.focus();
   };
-  const shut = () => {
+  const shut = (returnFocus = true) => {
+    if (!menu.classList.contains('open')) return;
     menu.classList.remove('open');
+    menu.setAttribute('inert', '');
     btn.classList.remove('open');
     btn.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
+    if (returnFocus) btn.focus();
   };
 
+  menu.setAttribute('inert', '');
   btn.addEventListener('click', () => menu.classList.contains('open') ? shut() : open());
-  close?.addEventListener('click', shut);
-  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', shut));
+  close?.addEventListener('click', () => shut());
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => shut(false)));
   document.addEventListener('keydown', e => { if (e.key === 'Escape') shut(); });
+  window.matchMedia('(min-width: 1024px)').addEventListener?.('change', e => { if (e.matches) shut(false); });
 }
 
 /* ══════════════════════════════════════════════════════════
@@ -165,37 +156,25 @@ function initBackToTop() {
 }
 
 /* ══════════════════════════════════════════════════════════
-   6. ANIMATED COUNTERS
+   6. SCROLL REVEAL  — one short fade/rise per element
    ══════════════════════════════════════════════════════════ */
-function initCounters() {
-  const els = document.querySelectorAll('[data-counter]');
+function initReveal() {
+  const els = document.querySelectorAll('.reveal');
+  revealReady = true;
   if (!els.length) return;
-
+  if (REDUCED || !('IntersectionObserver' in window)) {
+    els.forEach(el => el.classList.add('visible'));
+    return;
+  }
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) {
-        animateCounter(e.target);
+        e.target.classList.add('visible');
         io.unobserve(e.target);
       }
     });
-  }, { threshold: 0.6 });
-
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
   els.forEach(el => io.observe(el));
-}
-
-function animateCounter(el) {
-  const target   = parseFloat(el.getAttribute('data-counter'));
-  const suffix   = el.getAttribute('data-suffix') || '';
-  const duration = 1600;
-  const start    = performance.now();
-
-  const tick = now => {
-    const p  = Math.min((now - start) / duration, 1);
-    const ep = 1 - Math.pow(1 - p, 3); // ease-out cubic
-    el.textContent = Math.round(target * ep) + suffix;
-    if (p < 1) requestAnimationFrame(tick);
-  };
-  requestAnimationFrame(tick);
 }
 
 /* ══════════════════════════════════════════════════════════
@@ -240,6 +219,8 @@ async function handleSubmit(e) {
   const service = val('f-service');
   const url     = val('f-url');
   const message = val('f-message');
+  const budget   = val('f-budget');
+  const timeline = val('f-timeline');
   const btn     = document.getElementById('submitBtn');
   const note    = document.getElementById('formNote');
 
@@ -261,7 +242,9 @@ async function handleSubmit(e) {
         from_email: email,
         service:    service || 'Not specified',
         store_url:  url     || 'Not provided',
-        message,
+        message: withProjectDetails(message, budget, timeline),
+        budget:   budget   || 'Not specified',
+        timeline: timeline || 'Not specified',
       });
       showSuccess(email);
     } catch {
@@ -273,13 +256,23 @@ async function handleSubmit(e) {
     // Fallback: hand off to the visitor's email app — nothing is sent until they hit send there
     const subject = encodeURIComponent(`Portfolio Enquiry — ${name}`);
     const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nService: ${service || 'N/A'}\nURL: ${url || 'N/A'}\n\n${message}`
+      `Name: ${name}\nEmail: ${email}\nService: ${service || 'N/A'}\nURL: ${url || 'N/A'}\n\n${withProjectDetails(message, budget, timeline)}`
     );
     window.location.href = `mailto:shadab18ali@gmail.com?subject=${subject}&body=${body}`;
     btn.textContent = orig;
     btn.disabled    = false;
     if (note) note.textContent = 'Your email app should open with this message — press send there to deliver it.';
   }
+}
+
+/* Budget/timeline are appended to the message so they arrive even if the
+   EmailJS template only renders the original fields. */
+function withProjectDetails(message, budget, timeline) {
+  const extra = [
+    budget   ? `Budget: ${budget}`     : '',
+    timeline ? `Timeline: ${timeline}` : '',
+  ].filter(Boolean).join('\n');
+  return extra ? `${message}\n\n${extra}` : message;
 }
 
 function val(id) {
@@ -301,7 +294,7 @@ function showAlert(msg) {
   p.className = 'form-alert';
   p.textContent = '⚠ ' + msg;
   Object.assign(p.style, {
-    fontFamily: 'var(--mono)', fontSize: '.6rem', color: 'var(--red)',
+    fontFamily: 'var(--mono)', fontSize: '.72rem', color: 'var(--accent-text)',
     textTransform: 'uppercase', letterSpacing: '.1em',
     margin: '-.5rem 0 .65rem',
   });
@@ -314,389 +307,44 @@ function clearAlerts() {
 }
 
 /* ══════════════════════════════════════════════════════════
-   9. GSAP SCROLL ANIMATIONS
-   ══════════════════════════════════════════════════════════ */
-function initGSAP() {
-  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
-    initRevealFallback();
-    return;
-  }
-  gsap.registerPlugin(ScrollTrigger);
-
-  /* ── Hero entrance (home page only) ── */
-  if (document.getElementById('hero')) {
-    const heroTl = gsap.timeline({ delay: 0.1 });
-    heroTl
-      .from('.hero-badge',   { opacity: 0, y: 14, duration: 0.6, ease: 'power2.out' })
-      .from('.hero-title-top',    { opacity: 0, y: 30, duration: 0.7, ease: 'power3.out' }, '-=0.3')
-      .from('.hero-title-main-sm',{ opacity: 0, y: 40, skewY: 1.5, duration: 0.8, ease: 'power4.out' }, '-=0.4')
-      .from('.hero-desc',       { opacity: 0, y: 18, duration: 0.6, ease: 'power2.out' }, '-=0.35')
-      .from('.hero-actions .btn', { opacity: 0, y: 16, stagger: 0.07, duration: 0.55, ease: 'power2.out' }, '-=0.3')
-      .from('.orbit-badge',     { opacity: 0, scale: 0.8, duration: 0.6, ease: 'back.out(1.6)' }, '-=0.2')
-      .from('.hero-photo-wrap', { opacity: 0, x: 30, duration: 0.9, ease: 'power3.out' }, 0.15)
-      .from('.hero-badge-float', { opacity: 0, scale: 0.8, stagger: 0.12, duration: 0.6, ease: 'back.out(1.4)' }, 0.6)
-      .from('.hero-stats-bar .hero-stat', { opacity: 0, y: 16, stagger: 0.08, duration: 0.5, ease: 'power2.out' }, '-=0.3');
-  }
-
-  /* ── Generic .reveal via ScrollTrigger ── */
-  document.querySelectorAll('.reveal').forEach(el => {
-    gsap.fromTo(el,
-      { opacity: 0, y: 30, filter: 'blur(3px)' },
-      {
-        opacity: 1, y: 0, filter: 'blur(0px)',
-        duration: 0.75, ease: 'power3.out',
-        scrollTrigger: {
-          trigger: el,
-          start: 'top 88%',
-          toggleActions: 'play none none none',
-        },
-      }
-    );
-    el.classList.add('gsap-handled');
-  });
-
-  /* ── Section titles ── */
-  document.querySelectorAll('h2.section-title').forEach(h2 => {
-    gsap.fromTo(h2,
-      { opacity: 0, y: 36, skewY: 1.5 },
-      {
-        opacity: 1, y: 0, skewY: 0,
-        duration: 0.85, ease: 'power4.out',
-        scrollTrigger: { trigger: h2, start: 'top 87%', toggleActions: 'play none none none' },
-      }
-    );
-  });
-
-  /* ── Project cards — stagger in row ── */
-  gsap.utils.toArray('.project-card').forEach((card, i) => {
-    gsap.fromTo(card,
-      { opacity: 0, y: 40, scale: 0.97 },
-      {
-        opacity: 1, y: 0, scale: 1,
-        duration: 0.75, ease: 'power3.out', delay: (i % 2) * 0.1,
-        scrollTrigger: { trigger: card, start: 'top 88%', toggleActions: 'play none none none' },
-      }
-    );
-  });
-
-  /* ── Service cards ── */
-  gsap.utils.toArray('.service-card').forEach((card, i) => {
-    gsap.fromTo(card,
-      { opacity: 0, y: 32 },
-      {
-        opacity: 1, y: 0,
-        duration: 0.65, ease: 'power3.out', delay: (i % 3) * 0.08,
-        scrollTrigger: { trigger: card, start: 'top 90%', toggleActions: 'play none none none' },
-      }
-    );
-  });
-
-  /* ── Experience items ── */
-  gsap.utils.toArray('.exp-item').forEach((item, i) => {
-    gsap.fromTo(item,
-      { opacity: 0, x: -28 },
-      {
-        opacity: 1, x: 0,
-        duration: 0.65, ease: 'power2.out', delay: i * 0.07,
-        scrollTrigger: { trigger: item, start: 'top 90%', toggleActions: 'play none none none' },
-      }
-    );
-  });
-
-  /* ── Testimonial cards ── */
-  gsap.utils.toArray('.testi-card').forEach((card, i) => {
-    gsap.fromTo(card,
-      { opacity: 0, y: 35, scale: 0.97 },
-      {
-        opacity: 1, y: 0, scale: 1,
-        duration: 0.7, ease: 'power3.out', delay: i * 0.09,
-        scrollTrigger: { trigger: card, start: 'top 88%', toggleActions: 'play none none none' },
-      }
-    );
-  });
-
-  /* ── Tech tags scatter ── */
-  gsap.utils.toArray('.tech-tag').forEach((tag, i) => {
-    gsap.fromTo(tag,
-      { opacity: 0, scale: 0.8, y: 8 },
-      {
-        opacity: 1, scale: 1, y: 0,
-        duration: 0.4, ease: 'back.out(2)', delay: i * 0.03,
-        scrollTrigger: { trigger: tag, start: 'top 95%', toggleActions: 'play none none none' },
-      }
-    );
-  });
-
-  /* ── Stats count + scale (about page stats only; hero/page-hero stats handled in their own timelines) ── */
-  gsap.utils.toArray('.about-stat').forEach((stat, i) => {
-    gsap.fromTo(stat,
-      { opacity: 0, scale: 0.88, y: 16 },
-      {
-        opacity: 1, scale: 1, y: 0,
-        duration: 0.55, ease: 'back.out(1.4)', delay: i * 0.09,
-        scrollTrigger: { trigger: stat, start: 'top 92%', toggleActions: 'play none none none' },
-      }
-    );
-  });
-
-  /* ── Why cards ── */
-  gsap.utils.toArray('.why-card').forEach((card, i) => {
-    gsap.fromTo(card,
-      { opacity: 0, y: 30 },
-      {
-        opacity: 1, y: 0,
-        duration: 0.65, ease: 'power3.out', delay: i * 0.1,
-        scrollTrigger: { trigger: card, start: 'top 88%', toggleActions: 'play none none none' },
-      }
-    );
-  });
-
-  /* ── Pricing cards ── */
-  gsap.utils.toArray('.price-card').forEach((card, i) => {
-    gsap.fromTo(card,
-      { opacity: 0, y: 24 },
-      {
-        opacity: 1, y: 0,
-        duration: 0.6, ease: 'power2.out', delay: i * 0.08,
-        scrollTrigger: { trigger: card, start: 'top 90%', toggleActions: 'play none none none' },
-      }
-    );
-  });
-
-  /* ── Footer brand ── */
-  const footerBrand = document.querySelector('.footer-brand');
-  if (footerBrand) {
-    gsap.fromTo(footerBrand,
-      { opacity: 0, y: 20 },
-      {
-        opacity: 1, y: 0, duration: 0.7, ease: 'power2.out',
-        scrollTrigger: { trigger: footerBrand, start: 'top 92%', toggleActions: 'play none none none' },
-      }
-    );
-  }
-
-}
-
-/* ══════════════════════════════════════════════════════════
-   10. SCROLL REVEAL FALLBACK (no GSAP)
-   ══════════════════════════════════════════════════════════ */
-
-/* ══════════════════════════════════════════════════════════
-   11. HERO MOUSE PARALLAX (floating badges + photo)
-   ══════════════════════════════════════════════════════════ */
-function initHeroParallax() {
-  if (IS_MOBILE || !('ontouchstart' in window) === false) return;
-
-  const hero   = document.getElementById('hero');
-  const photo  = document.querySelector('.hero-photo-tilt');
-  const badges = document.querySelectorAll('.hero-badge-float');
-  if (!hero || !photo) return;
-
-  let mx = 0, my = 0, cx = 0, cy = 0, rafId;
-  const MAX_TILT = 10; // degrees
-
-  hero.addEventListener('mousemove', e => {
-    const r = hero.getBoundingClientRect();
-    mx = (e.clientX - r.left - r.width  / 2) / (r.width  / 2);
-    my = (e.clientY - r.top  - r.height / 2) / (r.height / 2);
-  }, { passive: true });
-
-  hero.addEventListener('mouseleave', () => { mx = 0; my = 0; });
-
-  const loop = () => {
-    cx += (mx - cx) * 0.07;
-    cy += (my - cy) * 0.07;
-    const rotY =  cx * MAX_TILT;   // left/right mouse movement -> rotate around Y
-    const rotX = -cy * MAX_TILT;   // up/down mouse movement -> rotate around X
-    photo.style.transform =
-      `perspective(1400px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateZ(0) translate(${cx * 8}px, ${cy * 5}px)`;
-    badges.forEach((b, i) => {
-      const f = (i % 2 === 0) ? -1 : 1;
-      b.style.transform = `translate(${cx * 9 * f}px, ${cy * 6 * f}px) translateZ(40px)`;
-    });
-    rafId = requestAnimationFrame(loop);
-  };
-  loop();
-
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) cancelAnimationFrame(rafId);
-    else loop();
-  });
-}
-
-/* ══════════════════════════════════════════════════════════
-   12. PAGE HERO ENTRANCE (subpages)
-   ══════════════════════════════════════════════════════════ */
-function initPageHero() {
-  if (typeof gsap === 'undefined') return;
-  const hero = document.querySelector('.page-hero');
-  if (!hero) return;
-
-  const tl = gsap.timeline({ delay: 0.1 });
-  tl.from('.breadcrumb', { opacity: 0, y: -10, duration: 0.5, ease: 'power2.out' })
-    .from('.page-hero-num', { opacity: 0, y: 14, duration: 0.5, ease: 'power2.out' }, '-=0.2')
-    .from('.page-hero h1', { opacity: 0, y: 36, skewY: 1.5, duration: 0.8, ease: 'power4.out' }, '-=0.25')
-    .from('.page-hero-desc', { opacity: 0, y: 16, duration: 0.6, ease: 'power2.out' }, '-=0.4')
-    .from('.page-hero-stats .hero-stat', { opacity: 0, y: 16, stagger: 0.08, duration: 0.5, ease: 'power2.out' }, '-=0.3');
-}
-
-/* ══════════════════════════════════════════════════════════
-   13. FAQ ACCORDION (services page)
+   9. FAQ ACCORDION (services page)
    ══════════════════════════════════════════════════════════ */
 function initFAQ() {
-  document.querySelectorAll('.faq-item').forEach(item => {
+  document.querySelectorAll('.faq-item').forEach((item, i) => {
     const q = item.querySelector('.faq-q');
+    const a = item.querySelector('.faq-a');
     if (!q) return;
+    if (a) {
+      a.id = a.id || `faq-a-${i}`;
+      q.setAttribute('aria-controls', a.id);
+    }
+    q.setAttribute('aria-expanded', String(item.classList.contains('open')));
     q.addEventListener('click', () => {
       const wasOpen = item.classList.contains('open');
       item.closest('.faq-list')?.querySelectorAll('.faq-item.open').forEach(o => {
-        if (o !== item) o.classList.remove('open');
+        if (o !== item) {
+          o.classList.remove('open');
+          o.querySelector('.faq-q')?.setAttribute('aria-expanded', 'false');
+        }
       });
       item.classList.toggle('open', !wasOpen);
+      q.setAttribute('aria-expanded', String(!wasOpen));
     });
   });
 }
 
 /* ══════════════════════════════════════════════════════════
-   14. SKILL PROFICIENCY BARS (skills page)
+   10. FOOTER YEAR
    ══════════════════════════════════════════════════════════ */
-function initSkillBars() {
-  const bars = document.querySelectorAll('.skill-bar-fill');
-  if (!bars.length) return;
-
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        const level = e.target.getAttribute('data-level') || '0';
-        e.target.style.width = level + '%';
-        io.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.4 });
-
-  bars.forEach(b => io.observe(b));
+function initFooterYear() {
+  document.querySelectorAll('[data-year]').forEach(el => { el.textContent = new Date().getFullYear(); });
 }
 
 /* ══════════════════════════════════════════════════════════
-   15. PARTICLE / CONSTELLATION NETWORK BACKGROUND
+   11. SCREENSHOT GALLERY MODAL
    ══════════════════════════════════════════════════════════ */
-function initParticles() {
-  const canvases = document.querySelectorAll('.particles-canvas');
-  if (!canvases.length) return;
-  if (REDUCED) return; // skip animation for reduced-motion users
-
-  canvases.forEach(canvas => {
-    const ctx = canvas.getContext('2d');
-    let w, h, particles, rafId;
-    let rgb = getParticleRGB();
-    const density = IS_MOBILE ? 22000 : 13000; // px^2 per particle (fewer on mobile)
-    const maxDist = IS_MOBILE ? 110 : 150;
-
-    function getParticleRGB() {
-      const v = getComputedStyle(document.documentElement).getPropertyValue('--particle-rgb').trim();
-      return v || '217,164,65';
-    }
-
-    function resize() {
-      const rect = canvas.parentElement.getBoundingClientRect();
-      w = canvas.width  = Math.max(1, rect.width);
-      h = canvas.height = Math.max(1, rect.height);
-      const count = Math.max(18, Math.min(90, Math.floor((w * h) / density)));
-      particles = Array.from({ length: count }, () => ({
-        x: Math.random() * w,
-        y: Math.random() * h,
-        vx: (Math.random() - 0.5) * 0.28,
-        vy: (Math.random() - 0.5) * 0.28,
-        r: Math.random() * 1.6 + 0.6
-      }));
-    }
-
-    function step() {
-      ctx.clearRect(0, 0, w, h);
-
-      // Update + draw dots
-      particles.forEach(p => {
-        p.x += p.vx; p.y += p.vy;
-        if (p.x < 0 || p.x > w) p.vx *= -1;
-        if (p.y < 0 || p.y > h) p.vy *= -1;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${rgb},0.6)`;
-        ctx.fill();
-      });
-
-      // Draw connecting lines
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const a = particles[i], b = particles[j];
-          const dx = a.x - b.x, dy = a.y - b.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < maxDist) {
-            ctx.beginPath();
-            ctx.moveTo(a.x, a.y);
-            ctx.lineTo(b.x, b.y);
-            ctx.strokeStyle = `rgba(${rgb},${0.28 * (1 - dist / maxDist)})`;
-            ctx.lineWidth = 0.6;
-            ctx.stroke();
-          }
-        }
-      }
-
-      rafId = requestAnimationFrame(step);
-    }
-
-    resize();
-    step();
-
-    let resizeTimer;
-    window.addEventListener('resize', () => {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(() => {
-        cancelAnimationFrame(rafId);
-        resize();
-        step();
-      }, 200);
-    }, { passive: true });
-
-    window.addEventListener('sa-theme-change', () => { rgb = getParticleRGB(); });
-  });
-}
-
-/* ══════════════════════════════════════════════════════════
-   Project section: 3D magnetic hover + gallery modal
-   Static HTML adaptation of the scroll-expansion/gallery idea.
-   ══════════════════════════════════════════════════════════ */
-function initMagneticCards() {
-  const cards = document.querySelectorAll('.project-card, .case-study, .price-card, .addon-card, .service-card, .teaser-card, .why-card');
-  if (!cards.length || REDUCED) return;
-
-  cards.forEach(card => {
-    card.addEventListener('pointermove', event => {
-      const rect = card.getBoundingClientRect();
-      const x = event.clientX - rect.left;
-      const y = event.clientY - rect.top;
-      const px = x / rect.width;
-      const py = y / rect.height;
-      const rx = (0.5 - py) * 7;
-      const ry = (px - 0.5) * 9;
-
-      card.style.setProperty('--mx', `${px * 100}%`);
-      card.style.setProperty('--my', `${py * 100}%`);
-      card.style.setProperty('--rx', `${rx}deg`);
-      card.style.setProperty('--ry', `${ry}deg`);
-    });
-
-    card.addEventListener('pointerleave', () => {
-      card.style.setProperty('--mx', '50%');
-      card.style.setProperty('--my', '50%');
-      card.style.setProperty('--rx', '0deg');
-      card.style.setProperty('--ry', '0deg');
-    });
-  });
-}
-
 function initProjectGallery() {
-  const items = Array.from(document.querySelectorAll('.project-img-wrap, .case-side-img'));
+  const items = Array.from(document.querySelectorAll('.project-img-wrap, .case-side-img, .cs-shots .shot'));
   if (!items.length) return;
 
   const modal = document.createElement('div');
@@ -708,7 +356,7 @@ function initProjectGallery() {
     <button class="gallery-close" type="button" aria-label="Close project preview">&times;</button>
     <button class="gallery-nav gallery-prev" type="button" aria-label="Previous project">‹</button>
     <figure class="gallery-frame">
-      <img alt="Project preview" loading="lazy">
+      <img alt="Project preview" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
       <figcaption></figcaption>
     </figure>
     <button class="gallery-nav gallery-next" type="button" aria-label="Next project">›</button>
@@ -721,6 +369,7 @@ function initProjectGallery() {
   const prevBtn = modal.querySelector('.gallery-prev');
   const nextBtn = modal.querySelector('.gallery-next');
   let activeIndex = 0;
+  let opener = null;
 
   const makePreviewSvg = (title, url) => {
     const safeTitle = String(title || 'Project').replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
@@ -755,6 +404,7 @@ function initProjectGallery() {
   };
 
   const openAt = (index) => {
+    if (!modal.classList.contains('open')) opener = document.activeElement;
     activeIndex = (index + items.length) % items.length;
     const data = getData(items[activeIndex]);
     img.src = data.src;
@@ -768,12 +418,13 @@ function initProjectGallery() {
   const close = () => {
     modal.classList.remove('open');
     document.body.style.overflow = '';
+    opener?.focus?.({ preventScroll: true });
   };
 
   items.forEach((item, index) => {
     item.setAttribute('tabindex', '0');
     item.setAttribute('role', 'button');
-    item.setAttribute('aria-label', 'Open project preview gallery');
+    item.setAttribute('aria-label', `Open ${item.dataset.galleryTitle || 'project'} screenshot`);
     if (!item.querySelector('.gallery-hint')) {
       const hint = document.createElement('span');
       hint.className = 'gallery-hint';
