@@ -131,7 +131,7 @@ def header():
     return f'''<body>
 <a class="skip-link" href="#main">Skip to content</a>
 <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
-<button class="back-to-top" id="backToTop" type="button" aria-label="Back to top">↑</button>
+<button class="back-to-top" id="backToTop" type="button" aria-label="Back to top"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 15 12 9 18 15"/></svg></button>
 <a href="{wa}" target="_blank" rel="noopener" class="wa-float" aria-label="Chat on WhatsApp (opens in a new tab)">{ICON['wa']}</a>
 
 <nav id="nav" aria-label="Main navigation">
@@ -206,11 +206,11 @@ def footer():
         </div>
         <div class="footer-col">
           <h2 class="footer-h">Connect</h2>
-          <a href="{SITE['linkedin']}" target="_blank" rel="noopener">LinkedIn ↗</a>
-          <a href="{SITE['github']}" target="_blank" rel="noopener">GitHub ↗</a>
+          <a href="{SITE['linkedin']}" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="{SITE['github']}" target="_blank" rel="noopener">GitHub</a>
           <a href="mailto:{SITE['email']}">Email</a>
-          <a href="{SITE['whatsapp']}" target="_blank" rel="noopener">WhatsApp ↗</a>
-          <a href="{SITE['resume']}" target="_blank" rel="noopener">Résumé ↗</a>
+          <a href="{SITE['whatsapp']}" target="_blank" rel="noopener">WhatsApp</a>
+          <a href="{SITE['resume']}" target="_blank" rel="noopener">Résumé</a>
         </div>
       </div>
     </div>
@@ -245,7 +245,7 @@ def card(slug):
           <ul class="project-tags" aria-label="Technologies">{tags}</ul>
           <div class="feature-actions">
             <a href="{p['file']}" class="btn btn-primary">View Case Study</a>
-            <a href="{p['url']}" target="_blank" rel="noopener" class="btn btn-ghost">Live Site ↗</a>
+            <a href="{p['url']}" target="_blank" rel="noopener" class="btn btn-ghost">Live Site</a>
           </div>
         </div>
         <a class="feature-media" href="{p['file']}" tabindex="-1" aria-hidden="true">
@@ -343,7 +343,7 @@ def case_main(slug, index):
     sections.append(f'''      <section class="cs-section" aria-labelledby="live">
         <h2 id="live">Live Website</h2>
         <div class="cs-content">
-          <p><a class="inline-link" href="{p['url']}" target="_blank" rel="noopener">{p['domain']} ↗</a></p>
+          <p><a class="inline-link" href="{p['url']}" target="_blank" rel="noopener">{p['domain']}</a></p>
         </div>
       </section>''')
     return f'''<div class="page-hero cs-hero">
@@ -359,7 +359,7 @@ def case_main(slug, index):
     </dl>
     <div class="cs-hero-actions">
       <a href="contact.html" class="btn btn-primary">Start a Similar Project</a>
-      <a href="{p['url']}" target="_blank" rel="noopener" class="btn btn-outline">Visit Live Site ↗</a>
+      <a href="{p['url']}" target="_blank" rel="noopener" class="btn btn-outline">Visit Live Site</a>
     </div>
   </div>
 </div>
