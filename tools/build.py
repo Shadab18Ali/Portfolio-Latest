@@ -182,7 +182,7 @@ def footer():
     <div class="footer-top">
       <div class="footer-brand">
         <div class="logo">shadab <span>ali.</span></div>
-        <p>{SITE['jobTitle']}. I build and optimise Shopify stores for performance, user experience and conversions. Based in Delhi, India.</p>
+        <p>{SITE['jobTitle']} specialising in storefronts, APIs, headless commerce, integrations and e-commerce automation. Based in Delhi, India.</p>
         <div class="footer-social">
           <a href="{SITE['linkedin']}" target="_blank" rel="noopener" aria-label="LinkedIn (opens in a new tab)">{ICON['linkedin']}</a>
           <a href="{SITE['github']}" target="_blank" rel="noopener" aria-label="GitHub (opens in a new tab)">{ICON['github']}</a>
@@ -216,7 +216,7 @@ def footer():
     </div>
     <div class="footer-bottom">
       <span>© <span data-year>{date.today().year}</span> Shadab Ali</span>
-      <span>Shopify Developer · Delhi, India</span>
+      <span>Shopify Full-Stack Developer · Delhi, India</span>
     </div>
   </div>
 </footer>
@@ -245,7 +245,7 @@ def card(slug):
           <ul class="project-tags" aria-label="Technologies">{tags}</ul>
           <div class="feature-actions">
             <a href="{p['file']}" class="btn btn-primary">View Case Study</a>
-            <a href="{p['url']}" target="_blank" rel="noopener" class="btn btn-ghost">Live Site</a>
+            <a href="{p['url']}" target="_blank" rel="noopener" class="btn btn-ghost" aria-label="View live project: {esc(p['domain'])} (opens in a new tab)">View Live Project</a>
           </div>
         </div>
         <a class="feature-media" href="{p['file']}" tabindex="-1" aria-hidden="true">
@@ -298,6 +298,8 @@ def case_main(slug, index):
     metrics = '\n'.join(
         f'      <div class="cs-metric{" is-primary" if m.get("primary") else ""} reveal" role="listitem"><strong>{esc(m["value"])}</strong><span>{esc(m["label"])}</span></div>'
         for m in p['metrics'])
+    metrics_block = (f'    <div class="cs-metrics" role="list" aria-label="Key facts">\n{metrics}\n    </div>\n'
+                     if p.get('metrics') else '')
     sections = []
     for sec in p['sections']:
         sections.append(f'''      <section class="cs-section" aria-labelledby="{sec['id']}">
@@ -359,17 +361,14 @@ def case_main(slug, index):
     </dl>
     <div class="cs-hero-actions">
       <a href="contact.html" class="btn btn-primary">Start a Similar Project</a>
-      <a href="{p['url']}" target="_blank" rel="noopener" class="btn btn-outline">Visit Live Site</a>
+      <a href="{p['url']}" target="_blank" rel="noopener" class="btn btn-outline">View Live Project</a>
     </div>
   </div>
 </div>
 
 <section class="cs-body" aria-label="{esc(p['name'])} case study">
   <div class="container">
-    <div class="cs-metrics" role="list" aria-label="Results">
-{metrics}
-    </div>
-    <div class="cs-sections">
+{metrics_block}    <div class="cs-sections">
 {chr(10).join(sections)}
     </div>
   </div>

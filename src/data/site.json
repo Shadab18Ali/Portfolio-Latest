@@ -1,7 +1,7 @@
 {
   "url": "https://portfolionew-omega-rouge.vercel.app",
   "name": "Shadab Ali",
-  "jobTitle": "Shopify Developer & eCommerce Specialist",
+  "jobTitle": "Shopify Full-Stack Developer",
   "email": "shadab18ali@gmail.com",
   "phone": "+919931394885",
   "phoneLabel": "+91 99313 94885",
@@ -12,52 +12,138 @@
   "ogImage": "assets/og-image.jpg",
   "worksFor": "Kairali Ayurvedic",
   "alumniOf": "Jamia Hamdard",
-  "knowsAbout": ["Shopify", "Shopify Liquid", "Shopify theme development", "Shopify metafields", "Shopify Admin GraphQL API",
-                 "eCommerce UX", "Conversion rate optimisation", "Core Web Vitals", "Technical SEO", "Google Tag Manager",
-                 "Google Analytics 4", "Meta Conversions API", "WhatsApp automation", "JavaScript", "React", "WordPress", "WooCommerce"],
-  "nav": [["index.html", "Home"], ["projects.html", "Projects"], ["services.html", "Services"], ["about.html", "About"], ["contact.html", "Contact"]],
-  "mobileNav": [["index.html", "Home"], ["projects.html", "Projects"], ["services.html", "Services"], ["about.html", "About"],
-                ["experience.html", "Experience"], ["skills.html", "Skills"], ["work-with-me.html", "Work With Me"], ["contact.html", "Contact"]],
+  "knowsAbout": [
+    "Shopify",
+    "Shopify 2.0",
+    "Shopify Liquid",
+    "Shopify Admin API",
+    "Shopify Storefront API",
+    "Shopify GraphQL API",
+    "Custom Shopify app development",
+    "Shopify App Bridge",
+    "Shopify webhooks",
+    "Shopify Functions",
+    "Headless Shopify",
+    "Shopify Hydrogen",
+    "React",
+    "Next.js",
+    "Node.js",
+    "Express.js",
+    "GraphQL",
+    "REST APIs",
+    "OAuth 2.0",
+    "E-commerce integrations",
+    "Technical SEO",
+    "Core Web Vitals",
+    "Google Analytics 4",
+    "Google Tag Manager",
+    "AI automation",
+    "WooCommerce"
+  ],
+  "nav": [
+    [
+      "index.html",
+      "Home"
+    ],
+    [
+      "projects.html",
+      "Projects"
+    ],
+    [
+      "services.html",
+      "Services"
+    ],
+    [
+      "about.html",
+      "About"
+    ],
+    [
+      "contact.html",
+      "Contact"
+    ]
+  ],
+  "mobileNav": [
+    [
+      "index.html",
+      "Home"
+    ],
+    [
+      "projects.html",
+      "Projects"
+    ],
+    [
+      "services.html",
+      "Services"
+    ],
+    [
+      "about.html",
+      "About"
+    ],
+    [
+      "experience.html",
+      "Experience"
+    ],
+    [
+      "skills.html",
+      "Skills"
+    ],
+    [
+      "work-with-me.html",
+      "Work With Me"
+    ],
+    [
+      "contact.html",
+      "Contact"
+    ]
+  ],
   "pages": {
     "index.html": {
-      "title": "Shadab Ali | Shopify Developer & eCommerce Specialist, India",
-      "description": "Shopify developer in Delhi, India. I build and optimise Shopify stores: custom Liquid, theme work, performance, CRO, SEO and tracking. See case studies with real results.",
+      "title": "Shadab Ali | Shopify Full-Stack Developer",
+      "description": "Shopify Full-Stack Developer specializing in Shopify 2.0, Liquid, Shopify APIs, GraphQL, Headless Commerce, React, Next.js, custom integrations and e-commerce automation.",
       "priority": "1.0"
     },
     "projects.html": {
-      "title": "Shopify Projects & Case Studies | Shadab Ali",
-      "description": "Shopify and WooCommerce case studies: the problem, what I built and the result. COD verification, a 500+ product store rebuild and an automated content workflow.",
-      "crumb": "Projects", "priority": "0.9"
+      "title": "Shopify & E-commerce Projects | Shadab Ali",
+      "description": "Shopify and e-commerce case studies: Shopify 2.0 storefronts, custom product logic, Shopify APIs and automation, plus WordPress and WooCommerce builds.",
+      "crumb": "Projects",
+      "priority": "0.9"
     },
     "services.html": {
-      "title": "Shopify Development, Optimisation & CRO Services | Shadab Ali",
-      "description": "Shopify store development, theme customisation, speed optimisation, CRO, SEO, analytics and integrations, plus WordPress and WooCommerce. Based in Delhi, India.",
-      "crumb": "Services", "priority": "0.8"
+      "title": "Shopify Full-Stack Development Services | Shadab Ali",
+      "description": "Shopify storefronts, custom apps and API integrations, headless commerce, e-commerce automation, performance and technical SEO, plus WordPress and WooCommerce.",
+      "crumb": "Services",
+      "priority": "0.8"
     },
     "about.html": {
-      "title": "About Shadab Ali | Shopify Developer, Delhi",
-      "description": "Shopify developer based in Delhi, India: frontend background, a year of ML and data work, and now full-time Shopify development at Kairali Ayurvedic.",
-      "crumb": "About", "ogType": "profile", "priority": "0.7"
+      "title": "About Shadab Ali | Shopify Full-Stack Developer",
+      "description": "Shopify Full-Stack Developer in Delhi, India: Shopify storefronts, Liquid, Shopify APIs, headless commerce, integrations, technical SEO and automation.",
+      "crumb": "About",
+      "ogType": "profile",
+      "priority": "0.7"
     },
     "experience.html": {
-      "title": "Experience | Shadab Ali, Shopify Developer",
-      "description": "Shopify Developer at Kairali Ayurvedic, Full Stack Developer at Diviniti, plus machine-learning and frontend roles since 2023. Roles, responsibilities and stack.",
-      "crumb": "Experience", "priority": "0.8"
+      "title": "Development Experience | Shadab Ali",
+      "description": "Shopify Developer at Kairali Ayurvedic, Full Stack Developer for Diviniti and Portrait on Gold, plus ML and frontend roles since 2023.",
+      "crumb": "Experience",
+      "priority": "0.8"
     },
     "skills.html": {
-      "title": "Skills | Shadab Ali, Shopify Liquid Developer",
-      "description": "Shopify, Liquid and JavaScript at the core, with Core Web Vitals, GA4, GTM, Meta CAPI, WATI, React, WordPress, WooCommerce and the Shopify Admin GraphQL API.",
-      "crumb": "Skills", "priority": "0.6"
+      "title": "Shopify Full-Stack Development Skills | Shadab Ali",
+      "description": "Shopify 2.0, Liquid, Admin and Storefront APIs, GraphQL, custom apps, Hydrogen, React, Next.js, Node.js, integrations, technical SEO, analytics and automation.",
+      "crumb": "Skills",
+      "priority": "0.6"
     },
     "work-with-me.html": {
-      "title": "Work With Me | Shadab Ali, Shopify Developer",
-      "description": "Full-time roles, contract work or a freelance Shopify project: the ways to work with Shadab Ali, a Shopify developer in Delhi, India.",
-      "crumb": "Work With Me", "priority": "0.6"
+      "title": "Work With Me | Shadab Ali, Shopify Full-Stack Developer",
+      "description": "Full-time roles, contract work or freelance Shopify projects: ways to work with Shadab Ali, a Shopify Full-Stack Developer in Delhi, India.",
+      "crumb": "Work With Me",
+      "priority": "0.6"
     },
     "contact.html": {
-      "title": "Hire a Shopify Developer | Contact Shadab Ali",
-      "description": "Discuss a Shopify build, optimisation, CRO or automation project, or a full-time role. Email, WhatsApp or the form. Replies within 24 hours.",
-      "crumb": "Contact", "priority": "0.7",
+      "title": "Contact Shadab Ali | Shopify Full-Stack Developer",
+      "description": "Discuss a Shopify build, custom app, API integration, headless storefront or automation project, or a full-time role. Email, WhatsApp or the form.",
+      "crumb": "Contact",
+      "priority": "0.7",
       "extraHead": "<script src=\"https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js\" defer></script>"
     }
   }

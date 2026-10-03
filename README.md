@@ -1,6 +1,6 @@
 # Shadab Ali — Portfolio
 
-Portfolio for Shadab Ali, Shopify Developer & eCommerce Specialist.
+Portfolio for Shadab Ali, Shopify Full-Stack Developer.
 Live at <https://portfolionew-omega-rouge.vercel.app/>.
 
 ## Stack
@@ -73,4 +73,4 @@ convert name-mobile.webp  -resize 720x -crop 720x1280+0+0 +repage -quality 80 na
 
 ## Content rules
 
-Only publish numbers that are backed by real project work. The LCP metric is written as "Up to 40% LCP improvement" in general contexts and "40% LCP improvement" when it refers to Diviniti.
+Only publish numbers that are backed by real project work: counts such as live projects, products managed and custom sections. Don't add performance percentages, conversion figures, revenue or testimonials unless they can be verified.
