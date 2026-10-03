@@ -1540,3 +1540,14 @@ nav.breadcrumb {
 [data-theme="dark"] .mob-menu .mob-actions a.btn-wa { color: var(--green); }
 /* Decorative circle: fixed offset so font swaps don't move it (CLS) */
 .page-hero::before { top: -140px; }
+.hero-spec { font-family: var(--mono); font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ink2); margin: -.4rem 0 1.1rem; }
+
+/* Skills page: grouped cards with highlighted core chips */
+.skill-groups { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+.skill-group { background: var(--card); border: 1px solid var(--card-border); border-radius: var(--radius); padding: 1.5rem; }
+.skill-group.is-primary { border-color: var(--accent-border); background: linear-gradient(180deg, var(--accent-light), var(--card) 60%); }
+.skill-group:first-child { grid-column: 1 / -1; }
+.skill-group h3 { font-family: var(--display); font-weight: 400; font-size: 1.45rem; letter-spacing: .03em; text-transform: uppercase; color: var(--ink); margin-bottom: .25rem; }
+.skill-group > p { font-size: .86rem; color: var(--muted); margin-bottom: .9rem; }
+.cap-tags li.is-key { border-color: var(--accent); color: var(--accent-text); background: var(--accent-light); font-weight: 500; }
+@media (max-width: 768px) { .skill-groups { grid-template-columns: 1fr; } }
