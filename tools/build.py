@@ -16,6 +16,7 @@ Edit:
 Markers inside src/pages files:
   <!-- @cards:featured -->   cards for projects.json "featured", in that order
   <!-- @cards:shopify -->    cards for every project in group "shopify"
+  <!-- @cards:webapp -->     cards for every project in group "webapp"
   <!-- @cards:wordpress -->  cards for every project in group "wordpress"
   {{resume}} {{whatsapp}} {{linkedin}} {{github}} {{email}}  values from site.json
 """

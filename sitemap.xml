@@ -2,67 +2,72 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://portfolionew-omega-rouge.vercel.app/</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-11-14</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://portfolionew-omega-rouge.vercel.app/projects.html</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-11-14</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://portfolionew-omega-rouge.vercel.app/services.html</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-11-14</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://portfolionew-omega-rouge.vercel.app/about.html</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-11-14</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://portfolionew-omega-rouge.vercel.app/experience.html</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-11-14</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://portfolionew-omega-rouge.vercel.app/skills.html</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-11-14</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://portfolionew-omega-rouge.vercel.app/work-with-me.html</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-11-14</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://portfolionew-omega-rouge.vercel.app/contact.html</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-11-14</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://portfolionew-omega-rouge.vercel.app/case-portrait-on-gold.html</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-11-14</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://portfolionew-omega-rouge.vercel.app/case-ratanarpan.html</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-11-14</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://portfolionew-omega-rouge.vercel.app/case-diviniti.html</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-11-14</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://portfolionew-omega-rouge.vercel.app/case-freetoolshub.html</loc>
+    <lastmod>2026-11-14</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://portfolionew-omega-rouge.vercel.app/case-majestic-india.html</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-11-14</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://portfolionew-omega-rouge.vercel.app/case-uncostly.html</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-11-14</lastmod>
     <priority>0.6</priority>
   </url>
 </urlset>

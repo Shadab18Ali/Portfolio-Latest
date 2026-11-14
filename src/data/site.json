@@ -104,7 +104,7 @@
     },
     "projects.html": {
       "title": "Shopify & E-commerce Projects | Shadab Ali",
-      "description": "Shopify and e-commerce case studies: Shopify 2.0 storefronts, custom product logic, Shopify APIs and automation, plus WordPress and WooCommerce builds.",
+      "description": "Shopify and e-commerce case studies: Shopify 2.0 storefronts, custom product logic, APIs and automation, plus a Next.js web app and WordPress builds.",
       "crumb": "Projects",
       "priority": "0.9"
     },

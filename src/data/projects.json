@@ -8,6 +8,7 @@
     "pog",
     "ratanarpan",
     "diviniti",
+    "freetoolshub",
     "majestic",
     "uncostly"
   ],
@@ -482,6 +483,179 @@
         "On-page SEO"
       ],
       "takeaway": "Performance work lasts longer when it's built into the tools the team uses every day. Because the responsive image behaviour lives inside the sections, pages the team builds later keep it without a developer checking each one."
+    },
+    "freetoolshub": {
+      "file": "case-freetoolshub.html",
+      "name": "FreeToolsHub",
+      "url": "https://freetoolshub.co.in",
+      "domain": "freetoolshub.co.in",
+      "group": "webapp",
+      "card": {
+        "kicker": "Next.js / Browser-based Tools",
+        "position": "74 free tools that run entirely in the browser",
+        "summary": "Designed and built a free online-tools platform in Next.js and TypeScript: 74 tools for PDFs, images, calculators, text and developers. Everything runs on the visitor's device, so there is no backend, no database and no file uploads.",
+        "role": "Complete build: design, development, SEO and deployment",
+        "metric": {
+          "value": "74",
+          "label": "Working tools in 7 categories"
+        },
+        "tags": [
+          "Next.js",
+          "React",
+          "TypeScript",
+          "Tailwind CSS",
+          "WebAssembly",
+          "Web Workers",
+          "Technical SEO",
+          "Cloudflare"
+        ]
+      },
+      "seo": {
+        "title": "FreeToolsHub Case Study: Next.js Tools Platform | Shadab Ali",
+        "description": "A free online-tools site built with Next.js: 74 browser-based tools for PDFs, images, calculators and developers, with no uploads, no backend and free hosting."
+      },
+      "hero": {
+        "h1": "A free tools platform that runs <em>entirely in the browser</em>",
+        "lede": "FreeToolsHub is a free online-tools site I designed and built end to end: 74 tools for PDFs, images, calculations, text and developer tasks. Every tool runs on the visitor's device, so there is no backend, no database, no sign-up and no file upload."
+      },
+      "facts": [
+        [
+          "Client",
+          "FreeToolsHub (my own product)"
+        ],
+        [
+          "Industry",
+          "Free online utilities"
+        ],
+        [
+          "My role",
+          "Complete build: design, development, SEO and deployment"
+        ],
+        [
+          "Platform",
+          "Next.js + TypeScript on Cloudflare"
+        ]
+      ],
+      "metrics": [
+        {
+          "value": "74",
+          "label": "Working tools across 7 categories",
+          "primary": true
+        },
+        {
+          "value": "0",
+          "label": "Backend servers, databases or accounts"
+        },
+        {
+          "value": "20+",
+          "label": "Original how-to guides alongside the tools"
+        }
+      ],
+      "sections": [
+        {
+          "id": "overview",
+          "title": "Overview",
+          "lead": "A utility site where trust matters as much as features.",
+          "paras": [
+            "People use tools like these with personal documents: photos for application forms, signed PDFs, scanned pages. FreeToolsHub keeps all of that on the visitor's device. I built the app, the tools, the content and the SEO, and deployed it on free hosting with its own domain."
+          ]
+        },
+        {
+          "id": "challenge",
+          "title": "The Challenge",
+          "items": [
+            "<strong>Private by design.</strong> Uploading a passport photo or a signed form to an unknown server is a real risk, so no file could leave the device.",
+            "<strong>Heavy work in a browser tab.</strong> Text recognition, PDF editing, HEIC decoding and background removal usually need a server. Here they had to run on the client without freezing the page.",
+            "<strong>74 tools without 74 times the work.</strong> Every tool needs its own page, instructions, FAQs and metadata, and they all had to stay consistent."
+          ]
+        },
+        {
+          "id": "constraints",
+          "title": "Constraints",
+          "items": [
+            "<strong>Zero running cost.</strong> No paid APIs, databases or hosting, so the site is a static export on free hosting.",
+            "<strong>Honest content only.</strong> No invented reviews, ratings or statistics, and the privacy policy has to describe what the site really does.",
+            "<strong>Consent first.</strong> Analytics and ads stay off until the visitor accepts and real IDs exist, and third-party scripts load only after consent.",
+            "<strong>Nothing the visitor types is executed.</strong> User-supplied HTML, CSS and code is treated as text, never rendered or run."
+          ]
+        },
+        {
+          "id": "role",
+          "title": "My Role",
+          "paras": [
+            "I designed and built it end to end: the Next.js app, every tool component and the shared PDF and image logic, the brand and layout, the blog, technical SEO and the Cloudflare deployment."
+          ]
+        },
+        {
+          "id": "built",
+          "title": "What I Built",
+          "items": [
+            "<strong>74 working tools in 7 categories:</strong> PDF (20), image (17), business calculators (10), developer (10), utility (9), text (6) and SEO (2). They include PDF merge, compress, sign and redact, text recognition in English and Hindi, HEIC to JPG, and GST, EMI and SIP calculators.",
+            "<strong>A registry-driven site.</strong> One typed entry per tool drives its page, metadata, FAQs, related links and search, and content tests fail the build if titles, descriptions or links are wrong.",
+            "<strong>Technical SEO.</strong> Metadata, canonical URLs, Open Graph, JSON-LD and an XML sitemap, plus a post-build check that fails on overlong or duplicate titles and descriptions.",
+            "<strong>20+ original how-to guides</strong> that sit next to the tools and link into them.",
+            "<strong>Consent-gated analytics.</strong> Google Analytics loads only after the visitor accepts, and records which tool was used, never file names or contents."
+          ]
+        },
+        {
+          "id": "flow",
+          "title": "How a File Is Handled",
+          "steps": [
+            [
+              "Choose a file",
+              "The browser reads the file straight from the visitor's device. Nothing is sent anywhere."
+            ],
+            [
+              "Process on the device",
+              "The tool's code loads on demand and runs locally. Heavy work, such as text recognition, runs in a Web Worker so the page stays responsive."
+            ],
+            [
+              "Download the result",
+              "The result is built in memory and saved from the browser. The site never holds a copy."
+            ]
+          ]
+        },
+        {
+          "id": "hard",
+          "title": "The Hard Part",
+          "paras": [
+            "<strong>Heavy engines without a heavy site.</strong> Text recognition, HEIC decoding and background removal depend on large WebAssembly engines. Shipping them with every page would slow down someone who just wants a word counter. So each tool is its own lazy-loaded chunk, and the heavy engines load only when that tool is used, from the site's own origin instead of a CDN. A build script copies them out of the npm packages, so nothing third-party is fetched at runtime.",
+            "The other trap was stale results: if someone swaps the file mid-read, the old run must not overwrite the new one. Each run carries a token, and the worker is terminated as soon as it finishes."
+          ],
+          "code": {
+            "note": "Simplified from the text recognition tool, not the full component",
+            "html": "<span class=\"c\">// The OCR engine (WebAssembly) loads only when someone presses \"Read text\"</span>\n<span class=\"k\">const</span> { createWorker } = <span class=\"k\">await</span> <span class=\"k\">import</span>(<span class=\"s\">\"tesseract.js\"</span>);\n\n<span class=\"c\">// Engine and language data come from the site itself, not a third-party CDN</span>\n<span class=\"k\">const</span> worker = <span class=\"k\">await</span> createWorker(language, <span class=\"s\">1</span>, {\n  workerPath: <span class=\"s\">`${origin}/ocr/worker.min.js`</span>,\n  corePath:   <span class=\"s\">`${origin}/ocr/core`</span>,\n  langPath:   <span class=\"s\">`${origin}/ocr/lang`</span>,\n});\n\n<span class=\"c\">// Runs in a Web Worker, so the page stays responsive</span>\n<span class=\"k\">const</span> result = <span class=\"k\">await</span> worker.recognize(canvas);\n<span class=\"k\">await</span> worker.terminate();"
+          }
+        },
+        {
+          "id": "results",
+          "title": "Results",
+          "items": [
+            "<strong>74 tools live</strong> in 7 categories at freetoolshub.co.in.",
+            "<strong>No uploads.</strong> Processing happens on the device, and the site has no backend or database.",
+            "<strong>Free hosting</strong> on Cloudflare, with its own domain and security headers.",
+            "<strong>Checks before every release:</strong> typecheck, lint, unit and content tests, and the SEO check all run in one command."
+          ]
+        }
+      ],
+      "stack": [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "Static export",
+        "Web Workers",
+        "WebAssembly",
+        "pdf-lib",
+        "pdf.js",
+        "Tesseract.js",
+        "MediaPipe",
+        "Technical SEO",
+        "JSON-LD",
+        "Vitest",
+        "Cloudflare"
+      ],
+      "takeaway": "Constraints shaped the design. Ruling out a backend removed storage, accounts and privacy risk in one decision and pushed the effort into careful client-side engineering. The same approach carries over to storefronts: ship less JavaScript and load heavy features only when a visitor asks for them."
     },
     "majestic": {
       "file": "case-majestic-india.html",

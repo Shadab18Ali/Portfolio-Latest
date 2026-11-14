@@ -20,7 +20,7 @@ python3 tools/build.py
 | `src/pages/<page>.html` | The `<main>` content of regular pages (home, projects, services, about, …) |
 | `tools/build.py` | Shared `<head>` (SEO, Open Graph, JSON-LD), header, mobile menu, footer, card and case-study templates; also writes `sitemap.xml` and `robots.txt` |
 
-Markers you can use inside `src/pages/*.html`: `<!-- @cards:featured -->`, `<!-- @cards:shopify -->`, `<!-- @cards:wordpress -->`, `<!-- @process -->`, and `{{resume}}`, `{{whatsapp}}`, `{{linkedin}}`, `{{github}}`, `{{email}}`.
+Markers you can use inside `src/pages/*.html`: `<!-- @cards:featured -->`, `<!-- @cards:shopify -->`, `<!-- @cards:webapp -->`, `<!-- @cards:wordpress -->`, `<!-- @process -->`, and `{{resume}}`, `{{whatsapp}}`, `{{linkedin}}`, `{{github}}`, `{{email}}`.
 
 Commit the generated HTML along with the sources: Vercel serves the files as they are, with no build step. `.vercelignore` keeps `src/` and `tools/` out of the deployment.
 
