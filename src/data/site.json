@@ -99,7 +99,7 @@
   "pages": {
     "index.html": {
       "title": "Shadab Ali | Shopify Full-Stack Developer",
-      "description": "Shopify Full-Stack Developer specializing in Shopify 2.0, Liquid, Shopify APIs, GraphQL, Headless Commerce, React, Next.js, custom integrations and e-commerce automation.",
+      "description": "Shopify Full-Stack Developer specializing in Shopify 2.0, Liquid, Shopify APIs, GraphQL, headless commerce, React, Next.js, integrations and automation.",
       "priority": "1.0"
     },
     "projects.html": {
