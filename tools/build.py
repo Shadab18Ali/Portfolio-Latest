@@ -183,7 +183,7 @@ def footer():
     <div class="footer-top">
       <div class="footer-brand">
         <div class="logo">shadab <span>ali.</span></div>
-        <p>{SITE['jobTitle']} specialising in storefronts, APIs, headless commerce, integrations and e-commerce automation. Based in Delhi, India.</p>
+        <p>{SITE['jobTitle']} building Shopify stores, web apps, APIs, headless commerce, integrations and e-commerce automation. Based in Delhi, India.</p>
         <div class="footer-social">
           <a href="{SITE['linkedin']}" target="_blank" rel="noopener" aria-label="LinkedIn (opens in a new tab)">{ICON['linkedin']}</a>
           <a href="{SITE['github']}" target="_blank" rel="noopener" aria-label="GitHub (opens in a new tab)">{ICON['github']}</a>
@@ -217,7 +217,7 @@ def footer():
     </div>
     <div class="footer-bottom">
       <span>© <span data-year>{date.today().year}</span> Shadab Ali</span>
-      <span>Shopify Full-Stack Developer · Delhi, India</span>
+      <span>{SITE['jobTitle']} · Delhi, India</span>
     </div>
   </div>
 </footer>
@@ -231,28 +231,24 @@ def card(slug):
     p = PROJECTS[slug]
     c = p['card']
     tags = ''.join(f'<li><span>{esc(t)}</span></li>' for t in c['tags'])
-    m = c.get('metric')
-    metric = ''
-    if m:
-        cls = ' is-qualitative' if m.get('qualitative') else ''
-        metric = f'\n          <div class="feature-metric{cls}"><strong>{esc(m["value"])}</strong><span>{esc(m["label"])}</span></div>'
+    media = c['media']
     return f'''      <article class="feature-card reveal">
         <div class="feature-body">
-          <p class="feature-kicker">{esc(c['kicker'])} · {esc(p['domain'])}</p>
+          <p class="feature-built"><span>Built in</span> <strong>{esc(p['builtIn'])}</strong></p>
           <h3>{esc(p['name'])}</h3>
-          <p class="feature-position">{esc(c['position'])}</p>{metric}
-          <p>{esc(c['summary'])}</p>
-          <p class="feature-role"><span>My role</span> {esc(c['role'])}</p>
+          <p class="feature-kicker">{esc(p['domain'])}</p>
+          <p class="feature-role"><span>Owned</span> {esc(c['owned'])}</p>
+          <p class="feature-role"><span>Changed</span> {esc(c['changed'])}</p>
           <ul class="project-tags" aria-label="Technologies">{tags}</ul>
           <div class="feature-actions">
             <a href="{p['file']}" class="btn btn-primary">View Case Study</a>
             <a href="{p['url']}" target="_blank" rel="noopener" class="btn btn-ghost" aria-label="View live project: {esc(p['domain'])} (opens in a new tab)">View Live Project</a>
           </div>
         </div>
-        <a class="feature-media" href="{p['file']}" tabindex="-1" aria-hidden="true">
-          <span class="fm-desktop"><img src="assets/projects/{slug_img(slug)}-desktop-thumb.webp" alt="" width="1200" height="750" loading="lazy" decoding="async"></span>
-          <span class="fm-mobile"><img src="assets/projects/{slug_img(slug)}-mobile-thumb.webp" alt="" width="720" height="1280" loading="lazy" decoding="async"></span>
-        </a>
+        <figure class="feature-media">
+          <a class="fm-link" href="{p['file']}" tabindex="-1" aria-hidden="true"><span class="fm-desktop"><img src="{esc(media['src'])}" alt="" width="1200" height="750" loading="lazy" decoding="async"></span></a>
+          <figcaption class="fm-cap">Screenshot · {esc(media['caption'])}</figcaption>
+        </figure>
       </article>
 '''
 
@@ -294,13 +290,30 @@ def case_main(slug, index):
     p = PROJECTS[slug]
     order = DATA['order']
     nxt = PROJECTS[order[(order.index(slug) + 1) % len(order)]]
-    platform = p['card']['kicker'].split(' · ')[0]
+    built_in = p['builtIn']
     facts = '\n'.join(f'      <div><dt>{esc(k)}</dt><dd>{esc(v)}</dd></div>' for k, v in p['facts'])
     metrics = '\n'.join(
         f'      <div class="cs-metric{" is-primary" if m.get("primary") else ""} reveal" role="listitem"><strong>{esc(m["value"])}</strong><span>{esc(m["label"])}</span></div>'
         for m in p['metrics'])
     metrics_block = (f'    <div class="cs-metrics" role="list" aria-label="Key facts">\n{metrics}\n    </div>\n'
                      if p.get('metrics') else '')
+    glance_block = ''
+    g = p.get('glance')
+    if g:
+        link = g.get('link')
+        link_html = ''
+        if link:
+            link_html = (f'\n      <p class="cs-glance-link"><a class="inline-link" href="{esc(link["url"])}" target="_blank" rel="noopener">'
+                         f'{esc(link["label"])}<span class="sr-only"> (opens in a new tab)</span></a></p>')
+        glance_block = f'''    <section class="cs-glance" aria-labelledby="glance-title">
+      <h2 class="sr-only" id="glance-title">At a glance</h2>
+      <dl class="cs-glance-list">
+        <div><dt>Problem</dt><dd>{esc(g['problem'])}</dd></div>
+        <div><dt>My contribution</dt><dd>{esc(g['contribution'])}</dd></div>
+        <div><dt>Outcome</dt><dd>{esc(g['outcome'])}</dd></div>
+      </dl>{link_html}
+    </section>
+'''
     sections = []
     for sec in p['sections']:
         sections.append(f'''      <section class="cs-section" aria-labelledby="{sec['id']}">
@@ -343,10 +356,24 @@ def case_main(slug, index):
           <p>{p['takeaway']}</p>
         </div>
       </section>''')
+    lc = p.get('liveCheck')
+    if lc:
+        check = {'id': 'live-check', 'title': 'Checked on the Live Site', 'paras': lc.get('paras', []), 'items': lc.get('items', [])}
+        if lc.get('quote'):
+            check['quote'] = lc['quote']
+        sections.append(f'''      <section class="cs-section" aria-labelledby="{check['id']}">
+        <h2 id="{check['id']}">{check['title']}</h2>
+        <div class="cs-content">
+{section_html(check)}
+        </div>
+      </section>''')
+    extra_links = ''.join(
+        f'\n          <p><a class="inline-link" href="{esc(l["url"])}" target="_blank" rel="noopener">{esc(l["label"])}'
+        f'<span class="sr-only"> (opens in a new tab)</span></a></p>' for l in p.get('liveLinks', []))
     sections.append(f'''      <section class="cs-section" aria-labelledby="live">
         <h2 id="live">Live Website</h2>
         <div class="cs-content">
-          <p><a class="inline-link" href="{p['url']}" target="_blank" rel="noopener">{p['domain']}</a></p>
+          <p><a class="inline-link" href="{p['url']}" target="_blank" rel="noopener">{p['domain']}</a></p>{extra_links}
         </div>
       </section>''')
     return f'''<div class="page-hero cs-hero">
@@ -354,7 +381,7 @@ def case_main(slug, index):
     <nav class="breadcrumb" aria-label="Breadcrumb">
       <a href="index.html">Home</a><span class="sep" aria-hidden="true">/</span><a href="projects.html">Projects</a><span class="sep" aria-hidden="true">/</span><span class="current" aria-current="page">{esc(p['name'])}</span>
     </nav>
-    <p class="page-hero-num">Case study {index:02d} · {esc(platform)}</p>
+    <p class="page-hero-num">Case study {index:02d} · Built in {esc(built_in)}</p>
     <h1>{p['hero']['h1']}</h1>
     <p class="page-hero-desc">{p['hero']['lede']}</p>
     <dl class="cs-facts">
@@ -369,7 +396,7 @@ def case_main(slug, index):
 
 <section class="cs-body" aria-label="{esc(p['name'])} case study">
   <div class="container">
-{metrics_block}    <div class="cs-sections">
+{glance_block}{metrics_block}    <div class="cs-sections">
 {chr(10).join(sections)}
     </div>
   </div>

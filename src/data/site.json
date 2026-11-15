@@ -1,7 +1,7 @@
 {
   "url": "https://portfolionew-omega-rouge.vercel.app",
   "name": "Shadab Ali",
-  "jobTitle": "Shopify Full-Stack Developer",
+  "jobTitle": "Full-Stack Developer",
   "email": "shadab18ali@gmail.com",
   "phone": "+919931394885",
   "phoneLabel": "+91 99313 94885",
@@ -27,6 +27,7 @@
     "Shopify Hydrogen",
     "React",
     "Next.js",
+    "TypeScript",
     "Node.js",
     "Express.js",
     "GraphQL",
@@ -98,25 +99,25 @@
   ],
   "pages": {
     "index.html": {
-      "title": "Shadab Ali | Shopify Full-Stack Developer",
-      "description": "Shopify Full-Stack Developer specializing in Shopify 2.0, Liquid, Shopify APIs, GraphQL, headless commerce, React, Next.js, integrations and automation.",
+      "title": "Shadab Ali | Full-Stack Developer",
+      "description": "Full-Stack Developer in Delhi building Shopify stores, custom web apps and APIs with Liquid, GraphQL, React and Next.js, plus headless commerce and automation.",
       "priority": "1.0"
     },
     "projects.html": {
-      "title": "Shopify & E-commerce Projects | Shadab Ali",
-      "description": "Shopify and e-commerce case studies: Shopify 2.0 storefronts, custom product logic, APIs and automation, plus a Next.js web app and WordPress builds.",
+      "title": "Full-Stack Projects & Case Studies | Shadab Ali",
+      "description": "Full-stack case studies, each built in Shopify, Next.js, WordPress or WooCommerce: custom product logic, Shopify APIs, a tools platform and automation.",
       "crumb": "Projects",
       "priority": "0.9"
     },
     "services.html": {
-      "title": "Shopify Full-Stack Development Services | Shadab Ali",
-      "description": "Shopify storefronts, custom apps and API integrations, headless commerce, e-commerce automation, performance and technical SEO, plus WordPress and WooCommerce.",
+      "title": "Full-Stack Development Services | Shadab Ali",
+      "description": "Full-stack development: Shopify storefronts, custom apps and APIs, headless commerce, Next.js web apps, automation and SEO, plus WordPress and WooCommerce.",
       "crumb": "Services",
       "priority": "0.8"
     },
     "about.html": {
-      "title": "About Shadab Ali | Shopify Full-Stack Developer",
-      "description": "Shopify Full-Stack Developer in Delhi, India: Shopify storefronts, Liquid, Shopify APIs, headless commerce, integrations, technical SEO and automation.",
+      "title": "About Shadab Ali | Full-Stack Developer",
+      "description": "Full-Stack Developer in Delhi, India: Shopify storefronts and Liquid, Shopify APIs, Next.js web apps, headless commerce, integrations, SEO and automation.",
       "crumb": "About",
       "ogType": "profile",
       "priority": "0.7"
@@ -128,20 +129,20 @@
       "priority": "0.8"
     },
     "skills.html": {
-      "title": "Shopify Full-Stack Development Skills | Shadab Ali",
+      "title": "Full-Stack Development Skills | Shadab Ali",
       "description": "Shopify 2.0, Liquid, Admin and Storefront APIs, GraphQL, custom apps, Hydrogen, React, Next.js, Node.js, integrations, technical SEO, analytics and automation.",
       "crumb": "Skills",
       "priority": "0.6"
     },
     "work-with-me.html": {
-      "title": "Work With Me | Shadab Ali, Shopify Full-Stack Developer",
-      "description": "Full-time roles, contract work or freelance Shopify projects: ways to work with Shadab Ali, a Shopify Full-Stack Developer in Delhi, India.",
+      "title": "Work With Me | Shadab Ali, Full-Stack Developer",
+      "description": "Full-time roles, contract work or freelance projects: ways to work with Shadab Ali, a Full-Stack Developer in Delhi, India, specialising in Shopify and Next.js.",
       "crumb": "Work With Me",
       "priority": "0.6"
     },
     "contact.html": {
-      "title": "Contact Shadab Ali | Shopify Full-Stack Developer",
-      "description": "Discuss a Shopify build, custom app, API integration, headless storefront or automation project, or a full-time role. Email, WhatsApp or the form.",
+      "title": "Contact Shadab Ali | Full-Stack Developer",
+      "description": "Discuss a Shopify build, web app, custom app, API integration, headless storefront or automation project, or a full-time role. Email, WhatsApp or the form.",
       "crumb": "Contact",
       "priority": "0.7",
       "extraHead": "<script src=\"https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js\" defer></script>"

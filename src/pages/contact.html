@@ -4,8 +4,8 @@
       <a href="index.html">Home</a><span class="sep" aria-hidden="true">/</span><span class="current" aria-current="page">Contact</span>
     </nav>
     <p class="page-hero-num">Contact</p>
-    <h1>Start a<br><em>Project</em></h1>
-    <p class="page-hero-desc">A Shopify build, an API integration, a headless storefront, automation, or a role you’re hiring for. Send a message and I’ll reply within 24 hours.</p>
+    <h1>Get in<br><em>touch</em></h1>
+    <p class="page-hero-desc">Hiring for a full-stack role, or have a project to build or fix? Send a message and I’ll reply within 24 hours.</p>
     <div class="page-hero-stats">
       <div class="hero-stat"><strong>24h</strong><span>Reply time</span></div>
       <div class="hero-stat"><strong>WhatsApp</strong><span>Fastest route</span></div>
@@ -19,10 +19,10 @@
       <div class="contact-left reveal">
         <div class="section-eyebrow">Reach out</div>
         <h2 class="section-title">Pick What’s <em>Easiest</em></h2>
-        <p>WhatsApp is the fastest way to reach me. For anything detailed, use email or the form. Either way, expect a reply within 24 hours.</p>
+        <p><strong>Hiring?</strong> Tell me about the role, or start with my <a class="inline-link" href="experience.html">experience</a> and <a class="inline-link" href="{{resume}}" target="_blank" rel="noopener">résumé</a>. <strong>Have a project?</strong> Tell me what you’re building or what needs fixing. WhatsApp is the fastest way to reach me. For anything detailed, use email or the form. Either way, expect a reply within 24 hours.</p>
 
         <div class="contact-methods">
-          <div class="contact-method">
+          <div class="contact-method has-copy">
           <a href="mailto:shadab18ali@gmail.com" class="cm-link">
             <div class="cm-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
@@ -61,6 +61,15 @@
               <div class="cm-val">github.com/Shadab18Ali</div>
             </div>
           </a>
+          <a href="{{resume}}" target="_blank" rel="noopener" class="contact-method cm-link">
+            <div class="cm-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg>
+            </div>
+            <div>
+              <div class="cm-label">Résumé</div>
+              <div class="cm-val">View on Google Drive</div>
+            </div>
+          </a>
         </div>
 
         <div class="avail-status">
@@ -86,11 +95,12 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="f-service">What do you need help with?</label>
+            <label for="f-service">What is this about?</label>
             <select id="f-service" name="service">
               <option value="">Select an option…</option>
               <option>Full-time opportunity</option>
               <option>Contract opportunity</option>
+              <option>Web app / full-stack project</option>
               <option>Shopify development</option>
               <option>Shopify apps / API integration</option>
               <option>Headless Shopify</option>
@@ -102,7 +112,7 @@
           </div>
           <div class="form-group">
             <label for="f-url">Website URL <span class="form-optional">(optional)</span></label>
-            <input type="url" id="f-url" name="url" placeholder="https://yourstore.com" autocomplete="url" inputmode="url">
+            <input type="url" id="f-url" name="url" placeholder="https://yoursite.com" autocomplete="url" inputmode="url">
           </div>
           <div class="form-row-2">
             <div class="form-group">
@@ -129,7 +139,7 @@
           </div>
           <div class="form-group">
             <label for="f-message">Message *</label>
-            <textarea id="f-message" name="message" placeholder="What are you working on, and what isn’t working right now?" required></textarea>
+            <textarea id="f-message" name="message" placeholder="Tell me about the role or the project, and what you need." required></textarea>
           </div>
           <button type="submit" class="btn btn-primary btn-full" id="submitBtn">Send Message</button>
           <p class="form-note" id="formNote" role="status" aria-live="polite">Replies within 24 hours · WhatsApp for the fastest response</p>

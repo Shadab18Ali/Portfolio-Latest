@@ -1,6 +1,6 @@
 # Shadab Ali — Portfolio
 
-Portfolio for Shadab Ali, Shopify Full-Stack Developer.
+Portfolio for Shadab Ali, Full-Stack Developer.
 Live at <https://portfolionew-omega-rouge.vercel.app/>.
 
 ## Stack
