@@ -1,12 +1,14 @@
 {
   "featured": [
     "freetoolshub",
+    "newsmedia",
     "pog",
     "diviniti",
     "ratanarpan"
   ],
   "order": [
     "freetoolshub",
+    "newsmedia",
     "pog",
     "diviniti",
     "ratanarpan",
@@ -965,6 +967,180 @@
         "Wishlist",
         "Order tracking"
       ]
+    },
+    "newsmedia": {
+      "file": "case-news-media-platform.html",
+      "name": "News Media Platform",
+      "url": "https://news-media-platform-jade.vercel.app",
+      "domain": "news-media-platform-jade.vercel.app",
+      "group": "webapp",
+      "builtIn": "Next.js 16",
+      "screenshots": false,
+      "card": {
+        "kicker": "Next.js / Digital Publishing Platform",
+        "position": "A full-stack newsroom with a public site and editorial admin",
+        "summary": "Designed, built and deployed a configurable news platform with a public publication site and a secure admin newsroom for articles, media, editorial operations, scheduled publishing and SEO.",
+        "role": "Independent project: product design, full-stack development and deployment",
+        "metric": {
+          "value": "2",
+          "label": "Connected interfaces: public site and admin newsroom"
+        },
+        "tags": [
+          "Next.js 16",
+          "TypeScript",
+          "Supabase",
+          "Tailwind CSS 4"
+        ],
+        "owned": "I built the public news website and protected admin dashboard, connected Supabase for data, authentication and storage, and implemented the publishing, SEO and security workflows.",
+        "changed": "Editorial work is managed in one dashboard, while scheduled publishing, content operations and SEO features support the public publication.",
+        "media": {
+          "src": "https://news-media-platform-jade.vercel.app/brand/og-default.png",
+          "caption": "News Media Platform brand artwork"
+        }
+      },
+      "seo": {
+        "title": "News Media Platform Case Study: Full-Stack Newsroom | Shadab Ali",
+        "description": "A full-stack newsroom built with Next.js 16 and Supabase: public news site, editorial admin, scheduled publishing, SEO, media management and role-based security."
+      },
+      "hero": {
+        "h1": "A full-stack <em>newsroom platform</em> built end to end",
+        "lede": "I designed, built and deployed a configurable news and blogging platform: a public publication website connected to a protected admin newsroom. It brings article management, editorial operations, publishing workflows, media, SEO and access control into one full-stack product."
+      },
+      "facts": [
+        [
+          "Project",
+          "News Media Platform (my own product)"
+        ],
+        [
+          "Industry",
+          "Digital publishing and newsroom software"
+        ],
+        [
+          "My role",
+          "Full-stack developer: product design, development and deployment"
+        ],
+        [
+          "Platform",
+          "Next.js 16 + Supabase, deployed on Vercel"
+        ]
+      ],
+      "metrics": [
+        {
+          "value": "2",
+          "label": "Connected interfaces: public publication and admin newsroom",
+          "primary": true
+        },
+        {
+          "value": "5 min",
+          "label": "Incremental static regeneration interval for public pages"
+        }
+      ],
+      "sections": [
+        {
+          "id": "overview",
+          "title": "Overview",
+          "lead": "A complete publishing product, not just a news homepage.",
+          "paras": [
+            "The platform combines a fast, SEO-focused public website with a full admin dashboard. Visitors can browse categories, articles, authors, tags and search, while staff manage content and publishing operations through a protected newsroom."
+          ]
+        },
+        {
+          "id": "challenge",
+          "title": "The Challenge",
+          "items": [
+            "<strong>One connected editorial workflow.</strong> Articles, authors, categories, media, redirects and publishing schedules need to work together instead of living in disconnected tools.",
+            "<strong>Public performance and private administration.</strong> Public pages should be cacheable, while admin pages and mutations must remain authenticated and permission-checked.",
+            "<strong>Publishing needs more than a text editor.</strong> A newsroom also needs structured metadata, media handling, scheduled releases, feeds, redirects and operational logs."
+          ]
+        },
+        {
+          "id": "role",
+          "title": "My Role",
+          "paras": [
+            "I built the platform end to end: the Next.js application, public page system, admin dashboard, Supabase data and authentication integration, publishing workflows, technical SEO, security layers, automated tests and Vercel deployment."
+          ]
+        },
+        {
+          "id": "built",
+          "title": "What I Built",
+          "items": [
+            "<strong>Public news website:</strong> homepage, category pages, article pages, author profiles, tags, search, policy pages, RSS feeds and XML sitemaps.",
+            "<strong>Admin newsroom:</strong> article management with a Tiptap editor, categories, authors, media library, advertising settings, redirects, editorial calendar, scheduled publishing, logs, subscribers and site settings.",
+            "<strong>Publishing workflows:</strong> scheduled publishing, RSS feed imports and connected editorial automation endpoints for content review and operational checks.",
+            "<strong>Technical SEO:</strong> page metadata, canonical URLs, Open Graph and Twitter cards, JSON-LD structured data, XML and Google News sitemaps, robots rules, redirects and noindex handling.",
+            "<strong>Security:</strong> Supabase authentication, writer/editor/admin roles, PostgreSQL Row Level Security, Zod validation, server-side HTML sanitisation, verified media uploads, rate limits and protected cron endpoints."
+          ]
+        },
+        {
+          "id": "architecture",
+          "title": "Architecture and Performance",
+          "paras": [
+            "The application uses the Next.js App Router with Supabase for PostgreSQL, authentication and file storage. Public pages use a cookie-less anonymous Supabase client so they can be statically rendered and cached with incremental static regeneration.",
+            "Admin actions use authenticated server-side access, check staff roles and rely on database Row Level Security for a second permission boundary. Mutations revalidate affected public paths so editorial changes appear without waiting for the full cache interval."
+          ],
+          "steps": [
+            [
+              "Public request",
+              "Public pages query published content through the anonymous client and use a five-minute ISR revalidation window."
+            ],
+            [
+              "Editorial action",
+              "Staff sign in to the admin dashboard; server actions validate input and check the required role."
+            ],
+            [
+              "Database enforcement",
+              "Supabase Row Level Security enforces access rules again at the database layer."
+            ],
+            [
+              "Publish and refresh",
+              "Scheduled publishing records the release and revalidates public pages so the latest content is available."
+            ]
+          ]
+        },
+        {
+          "id": "quality",
+          "title": "Quality and Reliability",
+          "items": [
+            "TypeScript type checks and ESLint run as part of the project validation workflow.",
+            "Unit tests and database tests cover application logic, migrations and access-control behaviour.",
+            "Browser and accessibility checks cover key admin, publishing, SEO, responsive and public-site flows.",
+            "Uploads are checked by file content and re-encoded before being stored; article HTML is sanitised before saving."
+          ]
+        },
+        {
+          "id": "results",
+          "title": "Results",
+          "items": [
+            "<strong>One newsroom:</strong> public publishing and the editorial admin are connected through a single application.",
+            "<strong>Editorial operations:</strong> articles, media, authors, categories, redirects and publishing schedules are managed from the dashboard.",
+            "<strong>Search-ready foundations:</strong> structured metadata, canonical URLs, sitemaps, RSS and schema markup are built into the platform.",
+            "<strong>Layered access control:</strong> authenticated roles, server-side checks and database-level RLS protect staff operations."
+          ]
+        }
+      ],
+      "stack": [
+        "Next.js 16",
+        "React 19",
+        "TypeScript",
+        "Tailwind CSS 4",
+        "Supabase",
+        "PostgreSQL",
+        "Supabase Auth",
+        "Supabase Storage",
+        "Tiptap",
+        "Zod",
+        "Sharp",
+        "Vitest",
+        "PGlite",
+        "Playwright",
+        "Vercel"
+      ],
+      "takeaway": "The key engineering decision was separating public read paths from authenticated editorial actions. That keeps public pages cacheable while admin operations remain protected by server-side role checks and database-level policies.",
+      "glance": {
+        "problem": "A publishing platform needs public reading experiences and a complete set of editorial operations, without compromising performance or access control.",
+        "contribution": "I built the full-stack platform with Next.js and Supabase, including the public website, admin newsroom, publishing workflows, SEO and security.",
+        "outcome": "A deployed newsroom product connects public publishing with protected editorial management, scheduled workflows and search-ready page infrastructure."
+      }
     }
   }
 }
