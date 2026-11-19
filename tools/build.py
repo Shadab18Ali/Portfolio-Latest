@@ -247,7 +247,7 @@ def card(slug):
         </div>
         <figure class="feature-media">
           <a class="fm-link" href="{p['file']}" tabindex="-1" aria-hidden="true"><span class="fm-desktop"><img src="{esc(media['src'])}" alt="" width="1200" height="750" loading="lazy" decoding="async"></span></a>
-          <figcaption class="fm-cap">Screenshot · {esc(media['caption'])}</figcaption>
+          <figcaption class="fm-cap">{esc(media.get('label', 'Screenshot'))} · {esc(media['caption'])}</figcaption>
         </figure>
       </article>
 '''
@@ -330,25 +330,37 @@ def case_main(slug, index):
         </div>
       </section>''')
     img = slug_img(slug)
-    sections.append(f'''      <section class="cs-section" aria-labelledby="shots">
-        <h2 id="shots">Screenshots</h2>
+    if p.get('screenshots') is False:
+        media = p['card']['media']
+        sections.append(f'''      <section class="cs-section" aria-labelledby="visual">
+        <h2 id="visual">Project Visual</h2>
         <div class="cs-content cs-wide">
-          <div class="cs-shots">
-            <figure>
-              <div class="shot shot-desktop" data-gallery-title="{esc(p['name'])}, desktop" data-gallery-url="{p['domain']}" data-gallery-src="assets/projects/{img}-desktop.webp">
-                <img src="assets/projects/{img}-desktop-thumb.webp" alt="{esc(p['name'])} homepage on desktop" width="1200" height="750" loading="lazy" decoding="async">
-              </div>
-              <figcaption>Desktop · select to view larger</figcaption>
-            </figure>
-            <figure>
-              <div class="shot shot-mobile" data-gallery-title="{esc(p['name'])}, mobile" data-gallery-url="{p['domain']}" data-gallery-src="assets/projects/{img}-mobile.webp">
-                <img src="assets/projects/{img}-mobile-thumb.webp" alt="{esc(p['name'])} homepage on mobile" width="720" height="1280" loading="lazy" decoding="async">
-              </div>
-              <figcaption>Mobile</figcaption>
-            </figure>
-          </div>
+          <figure class="cs-callout">
+            <img src="{esc(media['src'])}" alt="{esc(p['name'])} platform identity artwork" width="1200" height="630" loading="lazy" decoding="async">
+            <figcaption class="cs-code-note">{esc(media.get('caption', 'Project artwork'))}</figcaption>
+          </figure>
         </div>
       </section>''')
+    else:
+        sections.append(f'''      <section class="cs-section" aria-labelledby="shots">
+            <h2 id="shots">Screenshots</h2>
+            <div class="cs-content cs-wide">
+              <div class="cs-shots">
+                <figure>
+                  <div class="shot shot-desktop" data-gallery-title="{esc(p['name'])}, desktop" data-gallery-url="{p['domain']}" data-gallery-src="assets/projects/{img}-desktop.webp">
+                    <img src="assets/projects/{img}-desktop-thumb.webp" alt="{esc(p['name'])} homepage on desktop" width="1200" height="750" loading="lazy" decoding="async">
+                  </div>
+                  <figcaption>Desktop · select to view larger</figcaption>
+                </figure>
+                <figure>
+                  <div class="shot shot-mobile" data-gallery-title="{esc(p['name'])}, mobile" data-gallery-url="{p['domain']}" data-gallery-src="assets/projects/{img}-mobile.webp">
+                    <img src="assets/projects/{img}-mobile-thumb.webp" alt="{esc(p['name'])} homepage on mobile" width="720" height="1280" loading="lazy" decoding="async">
+                  </div>
+                  <figcaption>Mobile</figcaption>
+                </figure>
+              </div>
+            </div>
+          </section>''')
     if p.get('takeaway'):
         sections.append(f'''      <section class="cs-section" aria-labelledby="takeaway">
         <h2 id="takeaway">Takeaway</h2>

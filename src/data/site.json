@@ -105,7 +105,7 @@
     },
     "projects.html": {
       "title": "Full-Stack Projects & Case Studies | Shadab Ali",
-      "description": "Full-stack case studies, each built in Shopify, Next.js, WordPress or WooCommerce: custom product logic, Shopify APIs, a tools platform and automation.",
+      "description": "Full-stack case studies across Shopify, Next.js, WordPress and WooCommerce: a newsroom platform, browser-based tools, custom storefronts, APIs and automation.",
       "crumb": "Projects",
       "priority": "0.9"
     },
