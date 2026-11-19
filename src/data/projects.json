@@ -995,7 +995,8 @@
         "changed": "Editorial work is managed in one dashboard, while scheduled publishing, content operations and SEO features support the public publication.",
         "media": {
           "src": "https://news-media-platform-jade.vercel.app/brand/og-default.png",
-          "caption": "News Media Platform brand artwork"
+          "caption": "News Media Platform brand artwork",
+          "label": "Project visual"
         }
       },
       "seo": {
