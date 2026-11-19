@@ -247,7 +247,7 @@ def card(slug):
         </div>
         <figure class="feature-media">
           <a class="fm-link" href="{p['file']}" tabindex="-1" aria-hidden="true"><span class="fm-desktop"><img src="{esc(media['src'])}" alt="" width="1200" height="750" loading="lazy" decoding="async"></span></a>
-          <figcaption class="fm-cap">Screenshot · {esc(media['caption'])}</figcaption>
+          <figcaption class="fm-cap">{esc(media.get('label', 'Screenshot'))} · {esc(media['caption'])}</figcaption>
         </figure>
       </article>
 '''
