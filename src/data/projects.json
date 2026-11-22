@@ -970,9 +970,9 @@
     },
     "newsmedia": {
       "file": "case-news-media-platform.html",
-      "name": "News Media Platform",
-      "url": "https://news-media-platform-jade.vercel.app",
-      "domain": "news-media-platform-jade.vercel.app",
+      "name": "The Daily Ledger",
+      "url": "https://www.thedailyledgers.in",
+      "domain": "thedailyledgers.in",
       "group": "webapp",
       "builtIn": "Next.js 16",
       "screenshots": false,
@@ -995,13 +995,15 @@
         "changed": "Editorial work is managed in one dashboard, while scheduled publishing, content operations and SEO features support the public publication.",
         "media": {
           "src": "https://news-media-platform-jade.vercel.app/brand/og-default.png",
-          "caption": "News Media Platform brand artwork",
+          "caption": "The Daily Ledger brand artwork",
           "label": "Project visual"
         }
       },
       "seo": {
-        "title": "News Media Platform Case Study: Full-Stack Newsroom | Shadab Ali",
-        "description": "A full-stack newsroom built with Next.js 16 and Supabase: public news site, editorial admin, scheduled publishing, SEO, media management and role-based security."
+        "title": "The Daily Ledger Case Study: Full-Stack Newsroom | Shadab Ali",
+        "description": "A full-stack newsroom built with Next.js 16 and Supabase: public news site, editorial admin, scheduled publishing, SEO, media management and role-based security.",
+        "ogImage": "https://news-media-platform-jade.vercel.app/brand/og-default.png",
+        "ogImageAlt": "The Daily Ledger brand artwork"
       },
       "hero": {
         "h1": "A full-stack <em>newsroom platform</em> built end to end",
@@ -1010,7 +1012,7 @@
       "facts": [
         [
           "Project",
-          "News Media Platform (my own product)"
+          "The Daily Ledger (my own product, News Media Platform)"
         ],
         [
           "Industry",

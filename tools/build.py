@@ -79,8 +79,9 @@ def schema(file, crumbs, extra=None):
     return json.dumps({'@context': 'https://schema.org', '@graph': graph}, ensure_ascii=False, indent=1)
 
 
-def head(file, title, desc, crumbs, og_type='website', extra_schema=None, extra_head=''):
-    og_image = f"{URL}/{SITE['ogImage']}"
+def head(file, title, desc, crumbs, og_type='website', extra_schema=None, extra_head='', og_image=None, og_alt=None):
+    og_image = og_image or f"{URL}/{SITE['ogImage']}"
+    og_alt = og_alt or f"{SITE['name']}, {SITE['jobTitle']}"
     return f'''<!DOCTYPE html>
 <html lang="en-IN">
 <head>
@@ -103,7 +104,7 @@ def head(file, title, desc, crumbs, og_type='website', extra_schema=None, extra_
 <meta property="og:image" content="{og_image}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="{esc(SITE['name'])}, {esc(SITE['jobTitle'])}">
+<meta property="og:image:alt" content="{esc(og_alt)}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{esc(title)}">
 <meta name="twitter:description" content="{esc(desc)}">
@@ -481,7 +482,8 @@ def build():
         work = {'@type': 'CreativeWork', 'name': f"{p['name']} case study", 'url': page_url(p['file']),
                 'about': p['card']['position'], 'author': {'@id': f'{URL}/#person'},
                 'keywords': ', '.join(p['stack'])}
-        out = (head(p['file'], p['seo']['title'], p['seo']['description'], crumbs, 'article', work)
+        out = (head(p['file'], p['seo']['title'], p['seo']['description'], crumbs, 'article', work,
+                    og_image=p['seo'].get('ogImage'), og_alt=p['seo'].get('ogImageAlt'))
                + header() + case_main(slug, i) + footer())
         write(p['file'], out)
         sitemap.append((p['file'], '0.8' if p['group'] == 'shopify' else '0.6'))
