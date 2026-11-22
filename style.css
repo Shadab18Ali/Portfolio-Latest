@@ -1595,3 +1595,139 @@ nav.breadcrumb {
   .contact-method.has-copy { padding-right: 3.25rem; }              /* keeps the Copy button left of the floating buttons */
   .copy-btn { min-height: 44px; }
 }
+
+/* ============================================================
+   EFFECTS (v8): fixed 3D model, layered parallax, sideways text,
+   line-by-line reveal, card arc carousel.
+   Everything here is progressive. Without JavaScript, or when the
+   visitor prefers reduced motion, the same content shows, standing still.
+   ============================================================ */
+
+/* ── Fixed 3D model (script.js fills #model3d on wide screens) ── */
+.model3d { position: fixed; left: 0; top: 0; z-index: -1; width: 480px; height: 480px; pointer-events: none; opacity: 0; will-change: transform, opacity; }
+.model3d canvas { display: block; width: 100%; height: 100%; }
+/* Let the model show through once it is running */
+.has-model3d #hero { background: transparent; }
+.has-model3d #work { background: color-mix(in srgb, var(--bg2) 45%, transparent); }
+.has-model3d .split-cta { background: color-mix(in srgb, var(--bg3) 70%, transparent); }
+
+/* ── Layered parallax: layers move at their own speed (data-depth) ── */
+.hero-layers, .cta-layers { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+/* Layers fade out at the bottom edge of the hero instead of ending in a hard line */
+.hero-layers { -webkit-mask-image: linear-gradient(#000 72%, transparent); mask-image: linear-gradient(#000 72%, transparent); }
+.hl { position: absolute; display: block; will-change: translate; }
+.hl-grid {
+  inset: -8% -4%;
+  background-image: radial-gradient(circle, var(--border2) 1.2px, transparent 1.5px);
+  background-size: 28px 28px;
+  -webkit-mask-image: radial-gradient(ellipse at 68% 38%, #000 0%, transparent 62%);
+  mask-image: radial-gradient(ellipse at 68% 38%, #000 0%, transparent 62%);
+}
+.hl-glow {
+  width: 46vw; height: 46vw; max-width: 720px; max-height: 720px; right: -8%; top: -14%; border-radius: 50%;
+  background: radial-gradient(circle, rgba(239,61,46,0.20), transparent 66%);
+}
+.hl-orbit {
+  width: clamp(380px, 46vw, 760px); aspect-ratio: 1; left: -15%; bottom: -52%; border-radius: 50%;
+  border: 1.5px solid var(--border2);
+}
+.hl-orbit::after { content: ''; position: absolute; inset: 13%; border-radius: 50%; border: 1px dashed var(--border2); }
+.hl-ring {
+  width: clamp(190px, 23vw, 330px); aspect-ratio: 1; right: 4%; top: 14%; border-radius: 50%;
+  border: 1.5px dashed var(--accent-border); animation: hl-spin 70s linear infinite;
+}
+@keyframes hl-spin { to { rotate: 360deg; } }
+.hl-chip {
+  font-family: var(--mono); font-size: .66rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ink2);
+  padding: .42rem .85rem; border-radius: 999px; background: var(--card); border: 1px solid var(--card-border); box-shadow: var(--shadow-md);
+}
+.hl-chip-a { right: 27%; top: 22%; }
+.hl-chip-b { right: 2.5%; top: 54%; }
+.hl-chip-c { right: 30%; top: 70%; }
+.hl-chip-d { right: 41%; top: 33%; }
+@media (max-width: 1023px) { .hero-layers .hl-chip, .hero-layers .hl-ring { display: none; } }
+
+.final-cta { position: relative; overflow: hidden; }
+.final-cta .container { position: relative; z-index: 1; }
+.cta-ring-a { left: 5%; top: 14%; width: clamp(120px, 17vw, 240px); right: auto; }
+.cta-ring-b { right: 7%; bottom: 8%; top: auto; width: clamp(90px, 12vw, 170px); border-style: solid; animation-direction: reverse; }
+.cta-glow { left: 50%; top: 50%; right: auto; width: min(70vw, 760px); height: min(70vw, 760px); margin: calc(min(70vw, 760px) / -2) 0 0 calc(min(70vw, 760px) / -2); }
+
+/* ── Sideways text ── */
+.side-text, .side-rail span {
+  font-family: var(--mono); font-size: .66rem; letter-spacing: .32em; text-transform: uppercase; color: var(--muted);
+  writing-mode: vertical-rl; white-space: nowrap;
+}
+.side-text { position: absolute; z-index: 1; top: 50%; margin: 0; pointer-events: none; }
+.side-text--left  { left: clamp(.5rem, 1.6vw, 1.6rem);  transform: translateY(-50%) rotate(180deg); }
+.side-text--right { right: clamp(.5rem, 1.6vw, 1.6rem); transform: translateY(-50%); }
+.home-section { position: relative; }
+.side-rail, .side-text { display: none; }
+@media (min-width: 1320px) {
+  .side-text { display: block; }
+  .side-rail { display: block; position: absolute; inset: 0 auto 5rem clamp(.75rem, 2vw, 2rem); width: 1.5rem; margin: 0; pointer-events: none; }
+  .side-rail span { display: block; position: sticky; top: calc(50vh - 5rem); transform: rotate(180deg); }
+}
+
+/* ── Line-by-line reveal: each word sits in a mask, lines slide up one after another ── */
+.lines:not(.is-split) { visibility: hidden; }
+.lw {
+  display: inline-block; overflow: clip; vertical-align: baseline;
+  padding: .1em .06em .2em; margin: -.1em -.06em -.2em;
+}
+.lw > span {
+  display: inline-block; transform: translateY(118%);
+  transition: transform .9s var(--ease-out); transition-delay: calc(var(--l, 0) * 90ms);
+}
+.lines.in .lw > span { transform: none; }
+
+/* ── Card arc carousel ── */
+#work { overflow-x: clip; }
+.arc { position: relative; }
+/* Without JavaScript: a plain scroll row */
+.arc-track { display: flex; gap: 1.25rem; overflow-x: auto; scroll-snap-type: x mandatory; padding: .5rem .25rem 1.5rem; }
+.arc-card {
+  flex: 0 0 min(86vw, 410px); scroll-snap-align: center; position: relative; display: flex; flex-direction: column; overflow: hidden;
+  background: var(--card); border: 1px solid var(--card-border); border-radius: calc(var(--radius) + 6px); box-shadow: var(--shadow-md);
+}
+.arc-media { display: block; aspect-ratio: 16 / 10; overflow: hidden; background: linear-gradient(160deg, var(--bg3), var(--bg2)); }
+.arc-media img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top center; pointer-events: none; }
+.arc-cap { margin: 0; padding: .6rem 1.4rem 0; font-family: var(--mono); font-size: .58rem; line-height: 1.5; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.arc-body { display: flex; flex-direction: column; flex: 1; padding: 1.25rem 1.4rem 1.5rem; }
+.arc-built { margin: 0 0 .45rem; font-family: var(--mono); font-size: .64rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.arc-built strong { font-weight: 500; color: var(--accent-text); }
+.arc-card h3 { margin: 0; font-family: var(--display); font-size: clamp(1.9rem, 3vw, 2.4rem); line-height: .95; letter-spacing: .02em; text-transform: uppercase; color: var(--ink); }
+.arc-domain { margin: .3rem 0 .9rem; font-family: var(--mono); font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.arc-line { margin: 0 0 .65rem; font-size: .86rem; line-height: 1.6; color: var(--ink2); }
+.arc-line span { margin-right: .4rem; font-family: var(--mono); font-size: .6rem; letter-spacing: .1em; text-transform: uppercase; color: var(--accent-text); }
+.arc-card .project-tags { margin: .35rem 0 1.1rem; }
+.arc-actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: auto; }
+.arc-controls { display: none; align-items: center; justify-content: center; gap: 1.1rem; }
+.arc-dots { display: flex; align-items: center; gap: .65rem; }
+.arc-dot {
+  position: relative; width: 10px; height: 10px; padding: 0; border-radius: 5px; cursor: pointer;
+  border: 1px solid var(--border2); background: transparent; transition: width .35s var(--ease-out), background .2s;
+}
+.arc-dot::after { content: ''; position: absolute; inset: -17px -6px; }
+.arc-dot[aria-current="true"] { width: 28px; background: var(--accent); border-color: var(--accent); }
+.arc-btn {
+  display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border-radius: 50%; cursor: pointer;
+  color: var(--ink); background: var(--card); border: 1px solid var(--border2); transition: color .2s, border-color .2s;
+}
+.arc-btn:hover { color: var(--accent-text); border-color: var(--accent-border); }
+
+/* With JavaScript: cards fan out on an arc and rotate around it */
+.arc.is-arc .arc-controls { display: flex; }
+.arc.is-arc .arc-stage { position: relative; padding: .5rem 0 clamp(5.5rem, 12vw, 9rem); cursor: grab; user-select: none; touch-action: pan-y; }
+.arc.is-arc .arc-stage.is-dragging { cursor: grabbing; }
+.arc.is-arc .arc-track { display: grid; justify-items: center; gap: 0; padding: 0; overflow: visible; scroll-snap-type: none; }
+.arc.is-arc .arc-card { grid-area: 1 / 1; flex: none; width: min(78vw, 410px); transform-origin: 50% 90%; will-change: transform, opacity; }
+.arc.is-arc .arc-card:not(.is-active) { cursor: pointer; }
+.arc.is-arc .arc-card.is-active { box-shadow: var(--shadow-lg); }
+.arc.is-arc .arc-stage a, .arc.is-arc .arc-stage img { -webkit-user-drag: none; }
+@media (max-width: 640px) { .arc.is-arc .arc-card { width: min(74vw, 320px); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .hl-ring { animation: none; }
+  .model3d { display: none; }
+}

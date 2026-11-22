@@ -74,3 +74,25 @@ convert name-mobile.webp  -resize 720x -crop 720x1280+0+0 +repage -quality 80 na
 ## Content rules
 
 Only publish numbers that are backed by real project work: counts such as live projects, products managed and custom sections. Don't add performance percentages, conversion figures, revenue or testimonials unless they can be verified.
+
+## Homepage effects
+
+Five effects live on the homepage. All of them switch off for visitors who prefer reduced motion, and the page reads the same without JavaScript.
+
+| Effect | Where | How it works |
+| --- | --- | --- |
+| Layered parallax | Hero and the final call to action | Elements with `data-depth` inside a `data-parallax` block move at their own speed on scroll (and follow the mouse in the hero). Bigger number = moves more. Edit the layers in `src/pages/index.html`, their look in `style.css` |
+| Line-by-line reveal | Page titles, section titles and lead text on every page | `script.js` wraps each word in a mask and slides the words up line by line. To add it to another element, add its selector to `LINE_TARGETS` |
+| Sideways text | Hero edges, and one label beside each homepage section (screens 1320px and wider) | `.side-text` and `.side-rail` in `src/pages/index.html`. Change the words there |
+| Card arc carousel | Featured projects | Generated from `projects.json` (`featured` list) by `<!-- @arc:featured -->`. Arrows, dots, drag or swipe, and the arrow keys all work |
+| Fixed 3D model | Homepage, screens 900px and wider | `assets/js/model3d.js` (three.js), loaded after the page has finished loading. It follows the scroll path set in `PATH` in `tools/model3d/model3d.js` |
+
+To change the 3D model (shape, colours or scroll path), edit `tools/model3d/model3d.js`, then rebuild the bundle:
+
+```sh
+cd tools/model3d
+npm install
+npm run build
+```
+
+`tools/` is in `.vercelignore`, so the build folder is never deployed; only the built `assets/js/model3d.js` is.

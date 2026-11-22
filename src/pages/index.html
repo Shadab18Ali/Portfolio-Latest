@@ -1,5 +1,21 @@
+<!-- 0. FIXED 3D MODEL: script.js fills this on wide screens, after the page has loaded -->
+<div class="model3d" id="model3d" aria-hidden="true"></div>
+
 <!-- 1. HERO -->
-<section id="hero" aria-labelledby="hero-title">
+<section id="hero" aria-labelledby="hero-title" data-parallax="top">
+  <!-- Layered parallax: each layer moves at its own speed (data-depth) on scroll and mouse move -->
+  <div class="hero-layers" aria-hidden="true">
+    <span class="hl hl-grid" data-depth="0.04"></span>
+    <span class="hl hl-glow" data-depth="0.10"></span>
+    <span class="hl hl-orbit" data-depth="0.18"></span>
+    <span class="hl hl-ring" data-depth="0.30"></span>
+    <span class="hl hl-chip hl-chip-a" data-depth="0.42">Shopify</span>
+    <span class="hl hl-chip hl-chip-b" data-depth="0.56">Next.js</span>
+    <span class="hl hl-chip hl-chip-c" data-depth="0.34">GraphQL</span>
+    <span class="hl hl-chip hl-chip-d" data-depth="0.48">Liquid</span>
+  </div>
+  <p class="side-text side-text--left" aria-hidden="true" data-depth="0.12">Full-Stack Developer · Delhi, India</p>
+  <p class="side-text side-text--right" aria-hidden="true" data-depth="0.22">Shopify · Next.js · APIs · Automation</p>
   <div class="hero-inner">
     <div class="hero-content">
       <p class="hero-eyebrow">Shadab Ali · Delhi, India</p>
@@ -42,6 +58,7 @@
 
 <!-- 3. FEATURED PROJECTS -->
 <section class="home-section" id="work" aria-labelledby="work-title">
+  <p class="side-rail" aria-hidden="true"><span>01 · Selected work</span></p>
   <div class="container">
     <div class="section-head-row">
       <div>
@@ -51,13 +68,14 @@
       </div>
       <a href="projects.html" class="text-link">All Projects</a>
     </div>
-<!-- @cards:featured -->
+<!-- @arc:featured -->
     <p class="feature-all"><a href="projects.html" class="text-link">View All Projects</a></p>
   </div>
 </section>
 
 <!-- 4. WHAT I BUILD -->
 <section class="home-section" id="impact" aria-labelledby="impact-title">
+  <p class="side-rail" aria-hidden="true"><span>02 · What I build</span></p>
   <div class="container">
     <div class="section-head-row">
       <div>
@@ -93,6 +111,7 @@
 
 <!-- 5. SERVICES -->
 <section class="home-section" id="services-preview" aria-labelledby="services-title">
+  <p class="side-rail" aria-hidden="true"><span>03 · How I can help</span></p>
   <div class="container">
     <div class="section-head-row">
       <div>
@@ -133,6 +152,7 @@
 
 <!-- 6. HOW I WORK -->
 <section class="home-section" id="process" aria-labelledby="process-title">
+  <p class="side-rail" aria-hidden="true"><span>04 · How I work</span></p>
   <div class="container">
     <div class="section-eyebrow">Process</div>
     <h2 class="section-title reveal" id="process-title">How I <em>Work</em></h2>
@@ -142,6 +162,7 @@
 
 <!-- 7. ABOUT -->
 <section class="home-section" id="about-preview" aria-labelledby="about-title">
+  <p class="side-rail" aria-hidden="true"><span>05 · About</span></p>
   <div class="container">
     <div class="about-preview">
       <div>
@@ -189,7 +210,12 @@
 </section>
 
 <!-- 8. FINAL CTA -->
-<section class="split-cta final-cta" aria-labelledby="cta-title">
+<section class="split-cta final-cta" aria-labelledby="cta-title" data-parallax="center">
+  <div class="cta-layers" aria-hidden="true">
+    <span class="hl hl-ring cta-ring-a" data-depth="0.22"></span>
+    <span class="hl hl-ring cta-ring-b" data-depth="-0.16"></span>
+    <span class="hl hl-glow cta-glow" data-depth="0.08"></span>
+  </div>
   <div class="container">
     <div class="split-cta-head">
       <div class="section-eyebrow" style="justify-content:center;">Let's talk</div>

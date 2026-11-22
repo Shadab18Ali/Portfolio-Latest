@@ -16,6 +16,7 @@ Edit:
 Markers inside src/pages files:
   <!-- @cards:featured -->   cards for projects.json "featured", in that order
   <!-- @cards:shopify -->    cards for every project in group "shopify"
+  <!-- @arc:featured -->     the arc carousel for projects.json "featured" (homepage)
   <!-- @cards:webapp -->     cards for every project in group "webapp"
   <!-- @cards:wordpress -->  cards for every project in group "wordpress"
   {{resume}} {{whatsapp}} {{linkedin}} {{github}} {{email}}  values from site.json
@@ -258,6 +259,56 @@ def slug_img(slug):
     return slug  # image files are named after the project slug
 
 
+def arc_card(slug, i, total):
+    p = PROJECTS[slug]
+    c = p['card']
+    media = c['media']
+    tags = ''.join(f'<li><span>{esc(t)}</span></li>' for t in c['tags'])
+    cap = 'Project visual' if slug == 'newsmedia' else 'Screenshot'
+    return f'''        <article class="arc-card" role="group" aria-roledescription="slide" aria-label="{i + 1} of {total}">
+          <a class="arc-media" href="{p['file']}" tabindex="-1" aria-hidden="true"><img src="{esc(media['src'])}" alt="" width="1200" height="750" loading="lazy" decoding="async"></a>
+          <p class="arc-cap">{cap} · {esc(media['caption'])}</p>
+          <div class="arc-body">
+            <p class="arc-built"><span>Built in</span> <strong>{esc(p['builtIn'])}</strong></p>
+            <h3>{esc(p['name'])}</h3>
+            <p class="arc-domain">{esc(p['domain'])}</p>
+            <p class="arc-line"><span>Owned</span> {esc(c['owned'])}</p>
+            <p class="arc-line"><span>Changed</span> {esc(c['changed'])}</p>
+            <ul class="project-tags" aria-label="Technologies">{tags}</ul>
+            <div class="arc-actions">
+              <a href="{p['file']}" class="btn btn-primary">View Case Study</a>
+              <a href="{p['url']}" target="_blank" rel="noopener" class="btn btn-ghost" aria-label="View live project: {esc(p['domain'])} (opens in a new tab)">View Live Project</a>
+            </div>
+          </div>
+        </article>
+'''
+
+
+CHEVRON = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="{pts}"/></svg>'
+
+
+def arc(which):
+    """Featured projects as cards on an arc. Without JavaScript this is a plain
+    horizontal scroll row; script.js turns it into the arc carousel."""
+    slugs = DATA['featured'] if which == 'featured' else [s for s in DATA['order'] if PROJECTS[s]['group'] == which]
+    cards_html = ''.join(arc_card(s, i, len(slugs)) for i, s in enumerate(slugs))
+    dots = ''.join(f'<button class="arc-dot" type="button" data-i="{i}" aria-label="Show {esc(PROJECTS[s]["name"])}"></button>'
+                   for i, s in enumerate(slugs))
+    return f'''    <div class="arc" data-arc role="region" aria-roledescription="carousel" aria-label="Featured projects">
+      <div class="arc-stage">
+        <div class="arc-track">
+{cards_html}        </div>
+      </div>
+      <div class="arc-controls">
+        <button class="arc-btn arc-prev" type="button" aria-label="Previous project">{CHEVRON.format(pts='15 6 9 12 15 18')}</button>
+        <div class="arc-dots" role="group" aria-label="Choose a project">{dots}</div>
+        <button class="arc-btn arc-next" type="button" aria-label="Next project">{CHEVRON.format(pts='9 6 15 12 9 18')}</button>
+      </div>
+      <p class="sr-only" aria-live="polite" data-arc-status></p>
+    </div>
+'''
+
+
 def cards(which):
     if which == 'featured':
         slugs = DATA['featured']
@@ -458,6 +509,7 @@ def fill(text):
     for key in ('resume', 'whatsapp', 'linkedin', 'github', 'email', 'phoneLabel'):
         text = text.replace('{{' + key + '}}', SITE[key])
     text = text.replace('<!-- @process -->\n', process())
+    text = re.sub(r'<!-- @arc:(\w+) -->\n?', lambda m: arc(m.group(1)), text)
     return re.sub(r'<!-- @cards:(\w+) -->\n?', lambda m: cards(m.group(1)), text)
 
 

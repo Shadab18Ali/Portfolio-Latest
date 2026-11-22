@@ -1,7 +1,9 @@
 /* ============================================================
    SHADAB ALI — script.js  v6
    Theme, navigation, restrained scroll reveal, contact form,
-   FAQ and screenshot gallery. No animation libraries.
+   FAQ and screenshot gallery, plus the homepage effects: line
+   reveal, layered parallax, card arc carousel and the 3D model.
+   No animation libraries; the 3D model is its own lazy-loaded file.
    ============================================================ */
 
 /* Content must never stay hidden: .reveal starts hidden only once JS runs,
@@ -33,6 +35,10 @@ document.addEventListener('DOMContentLoaded', () => {
   safe(initScrollProgress);
   safe(initBackToTop);
   safe(initReveal);
+  safe(initLines);
+  safe(initParallax);
+  safe(initArc);
+  safe(initModel3D);
   safe(initCopyEmail);
   safe(initContactForm);
   safe(initFAQ);
@@ -450,4 +456,303 @@ function initProjectGallery() {
     if (event.key === 'ArrowLeft') openAt(activeIndex - 1);
     if (event.key === 'ArrowRight') openAt(activeIndex + 1);
   });
+}
+
+/* ══════════════════════════════════════════════════════════
+   12. LINE-BY-LINE TEXT REVEAL
+   Every word goes in a clipping mask. We work out which line each word sits
+   on, then slide the words up line by line as the text scrolls into view.
+   Inline markup (em, strong, links) is kept, and the text is plain and visible
+   when JavaScript or animation is off.
+   ══════════════════════════════════════════════════════════ */
+const LINE_TARGETS = [
+  '.hero-h1', '.hero-desc', '.page-hero h1', '.page-hero-desc',
+  'h2.section-title', '.section-lead', '.split-cta-head h2', '.split-cta-head p',
+].join(', ');
+
+function initLines() {
+  if (REDUCED || !('IntersectionObserver' in window)) return;
+  const els = Array.from(document.querySelectorAll(LINE_TARGETS));
+  if (!els.length) return;
+
+  // Hidden (CSS) until split, so unsplit text never flashes. This replaces the plain fade.
+  els.forEach(el => { el.classList.remove('reveal'); el.classList.add('lines'); });
+
+  // Safety net: text must never stay hidden.
+  const showAll = () => els.forEach(el => el.classList.add('is-split', 'in'));
+  const net = setTimeout(() => { if (els.some(el => !el.classList.contains('is-split'))) showAll(); }, 2500);
+
+  const wrapWords = root => {
+    const walk = node => {
+      Array.from(node.childNodes).forEach(child => {
+        if (child.nodeType === 3) {
+          const frag = document.createDocumentFragment();
+          child.textContent.split(/(\s+)/).forEach(part => {
+            if (!part) return;
+            if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(' ')); return; }
+            const mask = document.createElement('span');
+            const inner = document.createElement('span');
+            mask.className = 'lw';
+            inner.textContent = part;
+            mask.appendChild(inner);
+            frag.appendChild(mask);
+          });
+          child.replaceWith(frag);
+        } else if (child.nodeType === 1 && !/^(BR|SVG|IMG|SCRIPT|STYLE)$/i.test(child.tagName) && !child.classList.contains('lw')) {
+          walk(child);
+        }
+      });
+    };
+    walk(root);
+  };
+
+  // Give each word the number of the line it sits on, used to stagger the delay.
+  const measure = el => {
+    let line = -1, lineMid = null;
+    el.querySelectorAll('.lw').forEach(word => {
+      const r = word.getBoundingClientRect();
+      const mid = r.top + r.height / 2;
+      if (lineMid === null || Math.abs(mid - lineMid) > r.height * 0.55) { line++; lineMid = mid; }
+      word.style.setProperty('--l', line);
+    });
+  };
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.1 });
+
+  // Wait for the fonts, because line breaks depend on them.
+  const fontsReady = document.fonts && document.fonts.ready
+    ? Promise.race([document.fonts.ready, new Promise(r => setTimeout(r, 800))])
+    : Promise.resolve();
+  fontsReady.then(() => {
+    els.forEach(el => { wrapWords(el); measure(el); el.classList.add('is-split'); io.observe(el); });
+    clearTimeout(net);
+  }).catch(showAll);
+
+  let timer;
+  window.addEventListener('resize', () => {
+    clearTimeout(timer);
+    timer = setTimeout(() => els.forEach(el => { if (el.classList.contains('is-split')) measure(el); }), 150);
+  });
+}
+
+/* ══════════════════════════════════════════════════════════
+   13. LAYERED PARALLAX
+   Elements with data-depth inside a [data-parallax] block move at their own
+   speed. "top" blocks (the hero) also follow the mouse. Uses the CSS
+   `translate` property so it never fights with an element's own transform.
+   ══════════════════════════════════════════════════════════ */
+function initParallax() {
+  if (REDUCED) return;
+  const roots = Array.from(document.querySelectorAll('[data-parallax]'));
+  if (!roots.length) return;
+
+  const blocks = roots.map(root => ({
+    root,
+    top: root.dataset.parallax === 'top',
+    items: Array.from(root.querySelectorAll('[data-depth]')).map(el => ({ el, depth: parseFloat(el.dataset.depth) || 0 })),
+  }));
+  const mouse = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  let tx = 0, ty = 0, mx = 0, my = 0, queued = false;
+  const live = new Set(roots);
+
+  const schedule = () => { if (!queued) { queued = true; requestAnimationFrame(frame); } };
+  const frame = () => {
+    queued = false;
+    mx += (tx - mx) * 0.1;
+    my += (ty - my) * 0.1;
+    const vh = window.innerHeight;
+    blocks.forEach(({ root, top, items }) => {
+      if (!live.has(root)) return;
+      const rect = root.getBoundingClientRect();
+      const shift = top ? -rect.top : -(rect.top + rect.height / 2 - vh / 2);
+      items.forEach(({ el, depth }) => {
+        const x = top ? mx * depth * 90 : 0;
+        const y = shift * depth + (top ? my * depth * 60 : 0);
+        el.style.translate = `${x.toFixed(1)}px ${y.toFixed(1)}px`;
+      });
+    });
+    if (Math.abs(tx - mx) > 0.002 || Math.abs(ty - my) > 0.002) schedule();
+  };
+
+  if ('IntersectionObserver' in window) {
+    live.clear();
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => (e.isIntersecting ? live.add(e.target) : live.delete(e.target)));
+      schedule();
+    }, { rootMargin: '120px 0px' });
+    roots.forEach(r => io.observe(r));
+  }
+
+  window.addEventListener('scroll', schedule, { passive: true });
+  window.addEventListener('resize', schedule);
+  if (mouse) {
+    window.addEventListener('pointermove', e => {
+      tx = (e.clientX / window.innerWidth) * 2 - 1;
+      ty = (e.clientY / window.innerHeight) * 2 - 1;
+      schedule();
+    }, { passive: true });
+    document.addEventListener('mouseleave', () => { tx = ty = 0; schedule(); });
+  }
+  schedule();
+}
+
+/* ══════════════════════════════════════════════════════════
+   14. CARD ARC CAROUSEL
+   Cards sit on an arc and rotate around it. Arrow buttons, dots, drag or
+   swipe, and the left/right arrow keys all move it. Only the front card's
+   links are in the tab order. Without JavaScript it is a plain scroll row.
+   ══════════════════════════════════════════════════════════ */
+function initArc() {
+  document.querySelectorAll('[data-arc]').forEach(setupArc);
+}
+
+function setupArc(root) {
+  const stage = root.querySelector('.arc-stage');
+  const cards = Array.from(root.querySelectorAll('.arc-card'));
+  const dots = Array.from(root.querySelectorAll('.arc-dot'));
+  const status = root.querySelector('[data-arc-status]');
+  const n = cards.length;
+  if (!stage || n < 2) return;
+
+  root.classList.add('is-arc');
+  // Links and images would start a native browser drag and cancel our own drag.
+  stage.querySelectorAll('a, img').forEach(el => el.setAttribute('draggable', 'false'));
+  const names = cards.map(c => c.querySelector('h3')?.textContent.trim() || '');
+  const wrap = d => (((d + n / 2) % n) + n) % n - n / 2;   // shortest way round the loop
+  const norm = i => ((i % n) + n) % n;
+
+  let geo, spacing;
+  const measureArc = () => {
+    const small = root.clientWidth < 640;
+    geo = small ? { R: 480, step: 0.49, drop: 0.55, tilt: 0.9 } : { R: 920, step: 0.35, drop: 0.55, tilt: 1 };
+    spacing = geo.R * Math.sin(geo.step);                  // px between neighbouring cards
+  };
+  measureArc();
+
+  let pos = 0, target = 0, active = -1, raf = 0, drag = null, suppressClick = false;
+
+  const render = () => {
+    cards.forEach((card, i) => {
+      const d = wrap(i - pos);
+      const a = Math.abs(d);
+      const th = d * geo.step;
+      const x = geo.R * Math.sin(th);
+      const y = geo.R * (1 - Math.cos(th)) * geo.drop;
+      const scale = 1 - Math.min(a, 2.5) * 0.085;
+      const opacity = a <= 1 ? 1 - 0.2 * a : a <= 2 ? 0.8 - 0.4 * (a - 1) : Math.max(0, (0.4 * (2.5 - a)) / 0.5);
+      card.style.transform = `translate3d(${x.toFixed(1)}px, ${y.toFixed(1)}px, 0) rotate(${((th * geo.tilt * 180) / Math.PI).toFixed(2)}deg) scale(${scale.toFixed(3)})`;
+      card.style.opacity = opacity.toFixed(3);
+      card.style.zIndex = String(Math.round(100 - a * 10));
+      card.style.visibility = opacity < 0.01 ? 'hidden' : 'visible';
+    });
+  };
+
+  const setActive = i => {
+    if (i === active) return;
+    const first = active === -1;
+    active = i;
+    cards.forEach((card, k) => {
+      const on = k === i;
+      card.classList.toggle('is-active', on);
+      card.querySelectorAll('.arc-actions a').forEach(a => { a.tabIndex = on ? 0 : -1; });
+    });
+    dots.forEach((dot, k) => dot.setAttribute('aria-current', k === i ? 'true' : 'false'));
+    if (status && !first) status.textContent = `Project ${i + 1} of ${n}: ${names[i]}`;
+  };
+
+  const tick = () => {
+    raf = 0;
+    if (!drag) {
+      pos += REDUCED ? target - pos : (target - pos) * 0.14;
+      if (Math.abs(target - pos) < 0.002) pos = target;
+    }
+    render();
+    setActive(norm(Math.round(pos)));
+    if (drag || pos !== target) raf = requestAnimationFrame(tick);
+  };
+  const go = t => { target = t; if (!raf) raf = requestAnimationFrame(tick); };
+  const step = dir => go(Math.round(target) + dir);
+  const goTo = i => go(Math.round(target) + Math.round(wrap(i - norm(Math.round(target)))));
+
+  root.querySelector('.arc-prev')?.addEventListener('click', () => step(-1));
+  root.querySelector('.arc-next')?.addEventListener('click', () => step(1));
+  dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
+  root.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft') { e.preventDefault(); step(-1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); step(1); }
+  });
+
+  // Drag or swipe
+  stage.addEventListener('pointerdown', e => {
+    if (e.pointerType === 'mouse' && e.button !== 0) return;
+    drag = { id: e.pointerId, x: e.clientX, start: pos, moved: 0, lastX: e.clientX, lastT: performance.now(), v: 0 };
+  });
+  stage.addEventListener('pointermove', e => {
+    if (!drag || e.pointerId !== drag.id) return;
+    const dx = e.clientX - drag.x;
+    drag.moved = Math.max(drag.moved, Math.abs(dx));
+    if (drag.moved <= 6) return;
+    if (!stage.classList.contains('is-dragging')) {
+      stage.classList.add('is-dragging');
+      try { stage.setPointerCapture(e.pointerId); } catch {}
+    }
+    const now = performance.now();
+    drag.v = (e.clientX - drag.lastX) / Math.max(1, now - drag.lastT);
+    drag.lastX = e.clientX;
+    drag.lastT = now;
+    pos = drag.start - dx / spacing;
+    if (!raf) raf = requestAnimationFrame(tick);
+  });
+  const endDrag = e => {
+    if (!drag || e.pointerId !== drag.id) return;
+    const d = drag;
+    drag = null;
+    stage.classList.remove('is-dragging');
+    if (d.moved > 6) {
+      suppressClick = true;
+      setTimeout(() => { suppressClick = false; }, 60);
+      const carry = Math.max(-1, Math.min(1, (d.v * 90) / spacing)); // a quick flick carries on, by at most one card
+      go(Math.round(pos - carry));
+    }
+  };
+  stage.addEventListener('pointerup', endDrag);
+  stage.addEventListener('pointercancel', endDrag);
+
+  // A click on a side card brings it to the front instead of following its link.
+  stage.addEventListener('click', e => {
+    if (suppressClick) { e.preventDefault(); e.stopPropagation(); return; }
+    const card = e.target.closest('.arc-card');
+    if (!card) return;
+    const i = cards.indexOf(card);
+    if (i !== active) { e.preventDefault(); goTo(i); }
+  }, true);
+
+  window.addEventListener('resize', () => { measureArc(); render(); });
+  render();
+  setActive(0);
+}
+
+/* ══════════════════════════════════════════════════════════
+   15. FIXED 3D MODEL
+   assets/js/model3d.js (three.js, about 125 KB gzipped) loads only on wide
+   screens, when motion is allowed, data saver is off, and the page has
+   finished loading. Without WebGL it quietly does nothing.
+   ══════════════════════════════════════════════════════════ */
+function initModel3D() {
+  const host = document.getElementById('model3d');
+  if (!host) return;
+  const wide = window.matchMedia('(min-width: 900px)').matches;
+  const saveData = navigator.connection && navigator.connection.saveData;
+  if (REDUCED || !wide || saveData) return;
+
+  const load = () => import('./assets/js/model3d.js')
+    .then(mod => { if (mod.start(host)) document.body.classList.add('has-model3d'); })
+    .catch(err => console.warn('3D model skipped:', err));
+  const go = () => ('requestIdleCallback' in window ? requestIdleCallback(load, { timeout: 4000 }) : setTimeout(load, 1500));
+  if (document.readyState === 'complete') go();
+  else window.addEventListener('load', go, { once: true });
 }

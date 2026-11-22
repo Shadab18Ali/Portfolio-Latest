@@ -1,0 +1,12 @@
+{
+  "name": "model3d-build",
+  "private": true,
+  "description": "Builds assets/js/model3d.js (the homepage 3D model). Not deployed: tools/ is in .vercelignore.",
+  "scripts": {
+    "build": "esbuild model3d.js --bundle --minify --format=esm --target=es2020 --legal-comments=none --outfile=../../assets/js/model3d.js"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2",
+    "three": "0.170.0"
+  }
+}

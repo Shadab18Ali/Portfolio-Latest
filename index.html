@@ -161,8 +161,24 @@
 </div>
 
 <main id="main">
+<!-- 0. FIXED 3D MODEL: script.js fills this on wide screens, after the page has loaded -->
+<div class="model3d" id="model3d" aria-hidden="true"></div>
+
 <!-- 1. HERO -->
-<section id="hero" aria-labelledby="hero-title">
+<section id="hero" aria-labelledby="hero-title" data-parallax="top">
+  <!-- Layered parallax: each layer moves at its own speed (data-depth) on scroll and mouse move -->
+  <div class="hero-layers" aria-hidden="true">
+    <span class="hl hl-grid" data-depth="0.04"></span>
+    <span class="hl hl-glow" data-depth="0.10"></span>
+    <span class="hl hl-orbit" data-depth="0.18"></span>
+    <span class="hl hl-ring" data-depth="0.30"></span>
+    <span class="hl hl-chip hl-chip-a" data-depth="0.42">Shopify</span>
+    <span class="hl hl-chip hl-chip-b" data-depth="0.56">Next.js</span>
+    <span class="hl hl-chip hl-chip-c" data-depth="0.34">GraphQL</span>
+    <span class="hl hl-chip hl-chip-d" data-depth="0.48">Liquid</span>
+  </div>
+  <p class="side-text side-text--left" aria-hidden="true" data-depth="0.12">Full-Stack Developer · Delhi, India</p>
+  <p class="side-text side-text--right" aria-hidden="true" data-depth="0.22">Shopify · Next.js · APIs · Automation</p>
   <div class="hero-inner">
     <div class="hero-content">
       <p class="hero-eyebrow">Shadab Ali · Delhi, India</p>
@@ -205,6 +221,7 @@
 
 <!-- 3. FEATURED PROJECTS -->
 <section class="home-section" id="work" aria-labelledby="work-title">
+  <p class="side-rail" aria-hidden="true"><span>01 · Selected work</span></p>
   <div class="container">
     <div class="section-head-row">
       <div>
@@ -214,101 +231,97 @@
       </div>
       <a href="projects.html" class="text-link">All Projects</a>
     </div>
-    <div class="feature-list">
-      <article class="feature-card reveal">
-        <div class="feature-body">
-          <p class="feature-built"><span>Built in</span> <strong>Next.js</strong></p>
-          <h3>FreeToolsHub</h3>
-          <p class="feature-kicker">freetoolshub.co.in</p>
-          <p class="feature-role"><span>Owned</span> I designed and built the whole platform: the Next.js app, all 74 tools, the content and the SEO.</p>
-          <p class="feature-role"><span>Changed</span> 74 tools in seven categories run in the browser with no file uploads, and Web Workers keep heavy tasks like OCR responsive.</p>
-          <ul class="project-tags" aria-label="Technologies"><li><span>Next.js</span></li><li><span>TypeScript</span></li><li><span>Web Workers</span></li><li><span>WebAssembly</span></li></ul>
-          <div class="feature-actions">
-            <a href="case-freetoolshub.html" class="btn btn-primary">View Case Study</a>
-            <a href="https://freetoolshub.co.in" target="_blank" rel="noopener" class="btn btn-ghost" aria-label="View live project: freetoolshub.co.in (opens in a new tab)">View Live Project</a>
+    <div class="arc" data-arc role="region" aria-roledescription="carousel" aria-label="Featured projects">
+      <div class="arc-stage">
+        <div class="arc-track">
+        <article class="arc-card" role="group" aria-roledescription="slide" aria-label="1 of 5">
+          <a class="arc-media" href="case-freetoolshub.html" tabindex="-1" aria-hidden="true"><img src="assets/projects/freetoolshub-feature.webp" alt="" width="1200" height="750" loading="lazy" decoding="async"></a>
+          <p class="arc-cap">Screenshot · Browse by category: 74 tools in seven categories</p>
+          <div class="arc-body">
+            <p class="arc-built"><span>Built in</span> <strong>Next.js</strong></p>
+            <h3>FreeToolsHub</h3>
+            <p class="arc-domain">freetoolshub.co.in</p>
+            <p class="arc-line"><span>Owned</span> I designed and built the whole platform: the Next.js app, all 74 tools, the content and the SEO.</p>
+            <p class="arc-line"><span>Changed</span> 74 tools in seven categories run in the browser with no file uploads, and Web Workers keep heavy tasks like OCR responsive.</p>
+            <ul class="project-tags" aria-label="Technologies"><li><span>Next.js</span></li><li><span>TypeScript</span></li><li><span>Web Workers</span></li><li><span>WebAssembly</span></li></ul>
+            <div class="arc-actions">
+              <a href="case-freetoolshub.html" class="btn btn-primary">View Case Study</a>
+              <a href="https://freetoolshub.co.in" target="_blank" rel="noopener" class="btn btn-ghost" aria-label="View live project: freetoolshub.co.in (opens in a new tab)">View Live Project</a>
+            </div>
           </div>
-        </div>
-        <figure class="feature-media">
-          <a class="fm-link" href="case-freetoolshub.html" tabindex="-1" aria-hidden="true"><span class="fm-desktop"><img src="assets/projects/freetoolshub-feature.webp" alt="" width="1200" height="750" loading="lazy" decoding="async"></span></a>
-          <figcaption class="fm-cap">Screenshot · Browse by category: 74 tools in seven categories</figcaption>
-        </figure>
-      </article>
-
-      <article class="feature-card reveal">
-        <div class="feature-body">
-          <p class="feature-built"><span>Built in</span> <strong>Next.js 16</strong></p>
-          <h3>The Daily Ledger</h3>
-          <p class="feature-kicker">thedailyledgers.in</p>
-          <p class="feature-role"><span>Owned</span> I built the public news website and protected admin dashboard, connected Supabase for data, authentication and storage, and implemented the publishing, SEO and security workflows.</p>
-          <p class="feature-role"><span>Changed</span> Editorial work is managed in one dashboard, while scheduled publishing, content operations and SEO features support the public publication.</p>
-          <ul class="project-tags" aria-label="Technologies"><li><span>Next.js 16</span></li><li><span>TypeScript</span></li><li><span>Supabase</span></li><li><span>Tailwind CSS 4</span></li></ul>
-          <div class="feature-actions">
-            <a href="case-news-media-platform.html" class="btn btn-primary">View Case Study</a>
-            <a href="https://www.thedailyledgers.in" target="_blank" rel="noopener" class="btn btn-ghost" aria-label="View live project: thedailyledgers.in (opens in a new tab)">View Live Project</a>
+        </article>
+        <article class="arc-card" role="group" aria-roledescription="slide" aria-label="2 of 5">
+          <a class="arc-media" href="case-news-media-platform.html" tabindex="-1" aria-hidden="true"><img src="https://news-media-platform-jade.vercel.app/brand/og-default.png" alt="" width="1200" height="750" loading="lazy" decoding="async"></a>
+          <p class="arc-cap">Project visual · The Daily Ledger brand artwork</p>
+          <div class="arc-body">
+            <p class="arc-built"><span>Built in</span> <strong>Next.js 16</strong></p>
+            <h3>The Daily Ledger</h3>
+            <p class="arc-domain">thedailyledgers.in</p>
+            <p class="arc-line"><span>Owned</span> I built the public news website and protected admin dashboard, connected Supabase for data, authentication and storage, and implemented the publishing, SEO and security workflows.</p>
+            <p class="arc-line"><span>Changed</span> Editorial work is managed in one dashboard, while scheduled publishing, content operations and SEO features support the public publication.</p>
+            <ul class="project-tags" aria-label="Technologies"><li><span>Next.js 16</span></li><li><span>TypeScript</span></li><li><span>Supabase</span></li><li><span>Tailwind CSS 4</span></li></ul>
+            <div class="arc-actions">
+              <a href="case-news-media-platform.html" class="btn btn-primary">View Case Study</a>
+              <a href="https://www.thedailyledgers.in" target="_blank" rel="noopener" class="btn btn-ghost" aria-label="View live project: thedailyledgers.in (opens in a new tab)">View Live Project</a>
+            </div>
           </div>
-        </div>
-        <figure class="feature-media">
-          <a class="fm-link" href="case-news-media-platform.html" tabindex="-1" aria-hidden="true"><span class="fm-desktop"><img src="https://news-media-platform-jade.vercel.app/brand/og-default.png" alt="" width="1200" height="750" loading="lazy" decoding="async"></span></a>
-          <figcaption class="fm-cap">Project visual · The Daily Ledger brand artwork</figcaption>
-        </figure>
-      </article>
-
-      <article class="feature-card reveal">
-        <div class="feature-body">
-          <p class="feature-built"><span>Built in</span> <strong>Shopify</strong></p>
-          <h3>Portrait on Gold</h3>
-          <p class="feature-kicker">portraitongold.com</p>
-          <p class="feature-role"><span>Owned</span> I built custom product-option logic in Liquid and added WhatsApp confirmation for cash-on-delivery orders.</p>
-          <p class="feature-role"><span>Changed</span> Shoppers choose a collection and a form on the product page, and COD orders are confirmed before a portrait goes into production.</p>
-          <ul class="project-tags" aria-label="Technologies"><li><span>Shopify</span></li><li><span>Liquid</span></li><li><span>JavaScript</span></li><li><span>WATI</span></li></ul>
-          <div class="feature-actions">
-            <a href="case-portrait-on-gold.html" class="btn btn-primary">View Case Study</a>
-            <a href="https://www.portraitongold.com" target="_blank" rel="noopener" class="btn btn-ghost" aria-label="View live project: portraitongold.com (opens in a new tab)">View Live Project</a>
+        </article>
+        <article class="arc-card" role="group" aria-roledescription="slide" aria-label="3 of 5">
+          <a class="arc-media" href="case-portrait-on-gold.html" tabindex="-1" aria-hidden="true"><img src="assets/projects/pog-desktop-thumb.webp" alt="" width="1200" height="750" loading="lazy" decoding="async"></a>
+          <p class="arc-cap">Screenshot · Homepage</p>
+          <div class="arc-body">
+            <p class="arc-built"><span>Built in</span> <strong>Shopify</strong></p>
+            <h3>Portrait on Gold</h3>
+            <p class="arc-domain">portraitongold.com</p>
+            <p class="arc-line"><span>Owned</span> I built custom product-option logic in Liquid and added WhatsApp confirmation for cash-on-delivery orders.</p>
+            <p class="arc-line"><span>Changed</span> Shoppers choose a collection and a form on the product page, and COD orders are confirmed before a portrait goes into production.</p>
+            <ul class="project-tags" aria-label="Technologies"><li><span>Shopify</span></li><li><span>Liquid</span></li><li><span>JavaScript</span></li><li><span>WATI</span></li></ul>
+            <div class="arc-actions">
+              <a href="case-portrait-on-gold.html" class="btn btn-primary">View Case Study</a>
+              <a href="https://www.portraitongold.com" target="_blank" rel="noopener" class="btn btn-ghost" aria-label="View live project: portraitongold.com (opens in a new tab)">View Live Project</a>
+            </div>
           </div>
-        </div>
-        <figure class="feature-media">
-          <a class="fm-link" href="case-portrait-on-gold.html" tabindex="-1" aria-hidden="true"><span class="fm-desktop"><img src="assets/projects/pog-desktop-thumb.webp" alt="" width="1200" height="750" loading="lazy" decoding="async"></span></a>
-          <figcaption class="fm-cap">Screenshot · Homepage</figcaption>
-        </figure>
-      </article>
-
-      <article class="feature-card reveal">
-        <div class="feature-body">
-          <p class="feature-built"><span>Built in</span> <strong>Shopify</strong></p>
-          <h3>Diviniti</h3>
-          <p class="feature-kicker">diviniti.com</p>
-          <p class="feature-role"><span>Owned</span> I built 20+ reusable Liquid sections, plus the image loading and analytics setup, while managing 500+ products.</p>
-          <p class="feature-role"><span>Changed</span> The merchandising team now adds, edits and reorders page content in the Shopify editor without code.</p>
-          <ul class="project-tags" aria-label="Technologies"><li><span>Shopify 2.0</span></li><li><span>Liquid</span></li><li><span>JavaScript</span></li><li><span>GTM</span></li></ul>
-          <div class="feature-actions">
-            <a href="case-diviniti.html" class="btn btn-primary">View Case Study</a>
-            <a href="https://www.diviniti.com" target="_blank" rel="noopener" class="btn btn-ghost" aria-label="View live project: diviniti.com (opens in a new tab)">View Live Project</a>
+        </article>
+        <article class="arc-card" role="group" aria-roledescription="slide" aria-label="4 of 5">
+          <a class="arc-media" href="case-diviniti.html" tabindex="-1" aria-hidden="true"><img src="assets/projects/diviniti-feature.webp" alt="" width="1200" height="750" loading="lazy" decoding="async"></a>
+          <p class="arc-cap">Screenshot · Homepage sections: product slider and social feed</p>
+          <div class="arc-body">
+            <p class="arc-built"><span>Built in</span> <strong>Shopify</strong></p>
+            <h3>Diviniti</h3>
+            <p class="arc-domain">diviniti.com</p>
+            <p class="arc-line"><span>Owned</span> I built 20+ reusable Liquid sections, plus the image loading and analytics setup, while managing 500+ products.</p>
+            <p class="arc-line"><span>Changed</span> The merchandising team now adds, edits and reorders page content in the Shopify editor without code.</p>
+            <ul class="project-tags" aria-label="Technologies"><li><span>Shopify 2.0</span></li><li><span>Liquid</span></li><li><span>JavaScript</span></li><li><span>GTM</span></li></ul>
+            <div class="arc-actions">
+              <a href="case-diviniti.html" class="btn btn-primary">View Case Study</a>
+              <a href="https://www.diviniti.com" target="_blank" rel="noopener" class="btn btn-ghost" aria-label="View live project: diviniti.com (opens in a new tab)">View Live Project</a>
+            </div>
           </div>
-        </div>
-        <figure class="feature-media">
-          <a class="fm-link" href="case-diviniti.html" tabindex="-1" aria-hidden="true"><span class="fm-desktop"><img src="assets/projects/diviniti-feature.webp" alt="" width="1200" height="750" loading="lazy" decoding="async"></span></a>
-          <figcaption class="fm-cap">Screenshot · Homepage sections: product slider and social feed</figcaption>
-        </figure>
-      </article>
-
-      <article class="feature-card reveal">
-        <div class="feature-body">
-          <p class="feature-built"><span>Built in</span> <strong>Shopify</strong></p>
-          <h3>Ratanarpan</h3>
-          <p class="feature-kicker">ratanarpan.com</p>
-          <p class="feature-role"><span>Owned</span> I built the Shopify storefront and automated parts of the content workflow.</p>
-          <p class="feature-role"><span>Changed</span> Drafts and SEO upkeep run on a schedule, and the team has a 24-hour window to edit or stop any post before it publishes.</p>
-          <ul class="project-tags" aria-label="Technologies"><li><span>Shopify 2.0</span></li><li><span>Liquid</span></li><li><span>Shopify APIs</span></li><li><span>AI automation</span></li></ul>
-          <div class="feature-actions">
-            <a href="case-ratanarpan.html" class="btn btn-primary">View Case Study</a>
-            <a href="https://ratanarpan.com" target="_blank" rel="noopener" class="btn btn-ghost" aria-label="View live project: ratanarpan.com (opens in a new tab)">View Live Project</a>
+        </article>
+        <article class="arc-card" role="group" aria-roledescription="slide" aria-label="5 of 5">
+          <a class="arc-media" href="case-ratanarpan.html" tabindex="-1" aria-hidden="true"><img src="assets/projects/ratanarpan-desktop-thumb.webp" alt="" width="1200" height="750" loading="lazy" decoding="async"></a>
+          <p class="arc-cap">Screenshot · Homepage</p>
+          <div class="arc-body">
+            <p class="arc-built"><span>Built in</span> <strong>Shopify</strong></p>
+            <h3>Ratanarpan</h3>
+            <p class="arc-domain">ratanarpan.com</p>
+            <p class="arc-line"><span>Owned</span> I built the Shopify storefront and automated parts of the content workflow.</p>
+            <p class="arc-line"><span>Changed</span> Drafts and SEO upkeep run on a schedule, and the team has a 24-hour window to edit or stop any post before it publishes.</p>
+            <ul class="project-tags" aria-label="Technologies"><li><span>Shopify 2.0</span></li><li><span>Liquid</span></li><li><span>Shopify APIs</span></li><li><span>AI automation</span></li></ul>
+            <div class="arc-actions">
+              <a href="case-ratanarpan.html" class="btn btn-primary">View Case Study</a>
+              <a href="https://ratanarpan.com" target="_blank" rel="noopener" class="btn btn-ghost" aria-label="View live project: ratanarpan.com (opens in a new tab)">View Live Project</a>
+            </div>
           </div>
+        </article>
         </div>
-        <figure class="feature-media">
-          <a class="fm-link" href="case-ratanarpan.html" tabindex="-1" aria-hidden="true"><span class="fm-desktop"><img src="assets/projects/ratanarpan-desktop-thumb.webp" alt="" width="1200" height="750" loading="lazy" decoding="async"></span></a>
-          <figcaption class="fm-cap">Screenshot · Homepage</figcaption>
-        </figure>
-      </article>
+      </div>
+      <div class="arc-controls">
+        <button class="arc-btn arc-prev" type="button" aria-label="Previous project"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 6 9 12 15 18"/></svg></button>
+        <div class="arc-dots" role="group" aria-label="Choose a project"><button class="arc-dot" type="button" data-i="0" aria-label="Show FreeToolsHub"></button><button class="arc-dot" type="button" data-i="1" aria-label="Show The Daily Ledger"></button><button class="arc-dot" type="button" data-i="2" aria-label="Show Portrait on Gold"></button><button class="arc-dot" type="button" data-i="3" aria-label="Show Diviniti"></button><button class="arc-dot" type="button" data-i="4" aria-label="Show Ratanarpan"></button></div>
+        <button class="arc-btn arc-next" type="button" aria-label="Next project"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"/></svg></button>
+      </div>
+      <p class="sr-only" aria-live="polite" data-arc-status></p>
     </div>
     <p class="feature-all"><a href="projects.html" class="text-link">View All Projects</a></p>
   </div>
@@ -316,6 +329,7 @@
 
 <!-- 4. WHAT I BUILD -->
 <section class="home-section" id="impact" aria-labelledby="impact-title">
+  <p class="side-rail" aria-hidden="true"><span>02 · What I build</span></p>
   <div class="container">
     <div class="section-head-row">
       <div>
@@ -351,6 +365,7 @@
 
 <!-- 5. SERVICES -->
 <section class="home-section" id="services-preview" aria-labelledby="services-title">
+  <p class="side-rail" aria-hidden="true"><span>03 · How I can help</span></p>
   <div class="container">
     <div class="section-head-row">
       <div>
@@ -391,6 +406,7 @@
 
 <!-- 6. HOW I WORK -->
 <section class="home-section" id="process" aria-labelledby="process-title">
+  <p class="side-rail" aria-hidden="true"><span>04 · How I work</span></p>
   <div class="container">
     <div class="section-eyebrow">Process</div>
     <h2 class="section-title reveal" id="process-title">How I <em>Work</em></h2>
@@ -407,6 +423,7 @@
 
 <!-- 7. ABOUT -->
 <section class="home-section" id="about-preview" aria-labelledby="about-title">
+  <p class="side-rail" aria-hidden="true"><span>05 · About</span></p>
   <div class="container">
     <div class="about-preview">
       <div>
@@ -454,7 +471,12 @@
 </section>
 
 <!-- 8. FINAL CTA -->
-<section class="split-cta final-cta" aria-labelledby="cta-title">
+<section class="split-cta final-cta" aria-labelledby="cta-title" data-parallax="center">
+  <div class="cta-layers" aria-hidden="true">
+    <span class="hl hl-ring cta-ring-a" data-depth="0.22"></span>
+    <span class="hl hl-ring cta-ring-b" data-depth="-0.16"></span>
+    <span class="hl hl-glow cta-glow" data-depth="0.08"></span>
+  </div>
   <div class="container">
     <div class="split-cta-head">
       <div class="section-eyebrow" style="justify-content:center;">Let's talk</div>
