@@ -211,26 +211,23 @@
       <h2 class="sr-only" id="glance-title">At a glance</h2>
       <dl class="cs-glance-list">
         <div><dt>Problem</dt><dd>Every portrait is made to order, so an unconfirmed cash-on-delivery order means a portrait produced for nobody.</dd></div>
-        <div><dt>My contribution</dt><dd>I built custom size, frame and finish selection in Liquid and added WhatsApp confirmation for cash-on-delivery orders through WATI.</dd></div>
-        <div><dt>Outcome</dt><dd>Cash-on-delivery orders are confirmed before production, and shoppers choose every option on the product page.</dd></div>
+        <div><dt>My contribution</dt><dd>I built custom product-option logic in Liquid and added WhatsApp confirmation for cash-on-delivery orders through WATI.</dd></div>
+        <div><dt>Outcome</dt><dd>Cash-on-delivery orders are confirmed before production, and shoppers choose a collection and a form on the product page.</dd></div>
       </dl>
     </section>
-    <div class="cs-metrics" role="list" aria-label="Key facts">
-      <div class="cs-metric is-primary reveal" role="listitem"><strong>3</strong><span>Product options combined in Liquid: size, frame and finish</span></div>
-    </div>
     <div class="cs-sections">
       <section class="cs-section" aria-labelledby="overview">
         <h2 id="overview">Overview</h2>
         <div class="cs-content">
           <p class="cs-lead">A made-to-order store where every product is personal, so every unconfirmed order has a real cost.</p>
-          <p>Customers choose a portrait's size, frame and finish, and the store produces it to order. I built the product-option logic, the collection filtering and a WhatsApp-first order check, and optimised the storefront for mobile shoppers.</p>
+          <p>Customers choose a collection and a form for their portrait, and the store produces it to order. I built the product-option logic, the collection filtering and a WhatsApp-first order check, and optimised the storefront for mobile shoppers.</p>
         </div>
       </section>
       <section class="cs-section" aria-labelledby="challenge">
         <h2 id="challenge">The Challenge</h2>
         <div class="cs-content">
           <ul>
-            <li><strong>Complex variants.</strong> Size, frame and finish combinations had to be clear on the product page.</li>
+            <li><strong>Personalised options.</strong> The collection and form choices had to be clear on the product page.</li>
             <li><strong>Filtering without another app.</strong> Collections needed filtering, but the store was avoiding paid Shopify apps.</li>
             <li><strong>Fake COD orders.</strong> Unconfirmed cash-on-delivery orders are a common problem for personalised products in India. Here, each one meant a portrait produced for nobody.</li>
           </ul>
@@ -256,7 +253,7 @@
         <h2 id="built">What I Built</h2>
         <div class="cs-content">
           <ul>
-            <li><strong>Custom Liquid product-option logic</strong> for the size, frame and finish combinations, with metafield-driven product content.</li>
+            <li><strong>Custom Liquid product-option logic</strong> for the collection and form choices, with metafield-driven product content.</li>
             <li><strong>App-free collection filtering</strong> in JavaScript, in place of a paid filter app.</li>
             <li><strong>A WhatsApp-first COD verification flow</strong> through WATI, so orders are confirmed before fulfilment.</li>
             <li><strong>A responsive, mobile-first storefront</strong> for shoppers arriving from ads.</li>
@@ -281,13 +278,12 @@
           <p class="cs-code-note">Simplified sketch of the filtering approach, not the production code</p>
 <pre class="cs-code"><code><span class="c">{%- comment -%} Each product card carries its filterable values {%- endcomment -%}</span>
 &lt;li data-product-card
-    data-size=<span class="s">"{{ product.options_by_name['Size'].values | join: ',' }}"</span>
-    data-frame=<span class="s">"{{ product.options_by_name['Frame'].values | join: ',' }}"</span>&gt;
+    data-form=<span class="s">"{{ product.options_by_name['Form'].values | join: ',' }}"</span>&gt;
 
 <span class="c">// Filter in the browser: no app, no page reload</span>
 <span class="k">const</span> cards = [...document.querySelectorAll(<span class="s">'[data-product-card]'</span>)];
 
-<span class="k">function</span> applyFilters(active) {          <span class="c">// e.g. { size: '8x10', frame: 'Gold' }</span>
+<span class="k">function</span> applyFilters(active) {          <span class="c">// e.g. { form: 'Round' }</span>
   cards.forEach(card =&gt; {
     card.hidden = !Object.entries(active).every(([key, value]) =&gt;
       !value || card.dataset[key].split(<span class="s">','</span>).includes(value));
@@ -299,7 +295,7 @@
         <h2 id="results">Results</h2>
         <div class="cs-content">
           <ul>
-            <li><strong>Size, frame and finish</strong> chosen on the product page, handled by Liquid logic.</li>
+            <li><strong>Collection and form</strong> chosen on the product page, handled by Liquid logic.</li>
             <li><strong>No paid filter app.</strong> Collections filter with custom JavaScript.</li>
             <li><strong>Cash-on-delivery orders confirmed on WhatsApp</strong> before a personalised portrait goes into production.</li>
           </ul>
@@ -364,7 +360,7 @@
       <a class="cs-next-card" href="case-diviniti.html">
         <span>Shopify 2.0 Storefront</span>
         <strong>Diviniti</strong>
-        <p>Production Shopify 2.0 storefront for a 500+ product catalogue.</p>
+        <p>Production Shopify 2.0 storefront, managing 500+ products.</p>
       </a>
       <a class="cs-next-card" href="contact.html">
         <span>Similar problem?</span>

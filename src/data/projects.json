@@ -34,8 +34,8 @@
           "JavaScript",
           "WATI"
         ],
-        "owned": "I built custom size, frame and finish selection in Liquid and added WhatsApp confirmation for cash-on-delivery orders.",
-        "changed": "Shoppers choose every option on the product page, and COD orders are confirmed before a portrait goes into production.",
+        "owned": "I built custom product-option logic in Liquid and added WhatsApp confirmation for cash-on-delivery orders.",
+        "changed": "Shoppers choose a collection and a form on the product page, and COD orders are confirmed before a portrait goes into production.",
         "media": {
           "src": "assets/projects/pog-desktop-thumb.webp",
           "caption": "Homepage"
@@ -67,27 +67,21 @@
           "During my role, Jan 2025 – Jun 2026"
         ]
       ],
-      "metrics": [
-        {
-          "value": "3",
-          "label": "Product options combined in Liquid: size, frame and finish",
-          "primary": true
-        }
-      ],
+      "metrics": [],
       "sections": [
         {
           "id": "overview",
           "title": "Overview",
           "lead": "A made-to-order store where every product is personal, so every unconfirmed order has a real cost.",
           "paras": [
-            "Customers choose a portrait's size, frame and finish, and the store produces it to order. I built the product-option logic, the collection filtering and a WhatsApp-first order check, and optimised the storefront for mobile shoppers."
+            "Customers choose a collection and a form for their portrait, and the store produces it to order. I built the product-option logic, the collection filtering and a WhatsApp-first order check, and optimised the storefront for mobile shoppers."
           ]
         },
         {
           "id": "challenge",
           "title": "The Challenge",
           "items": [
-            "<strong>Complex variants.</strong> Size, frame and finish combinations had to be clear on the product page.",
+            "<strong>Personalised options.</strong> The collection and form choices had to be clear on the product page.",
             "<strong>Filtering without another app.</strong> Collections needed filtering, but the store was avoiding paid Shopify apps.",
             "<strong>Fake COD orders.</strong> Unconfirmed cash-on-delivery orders are a common problem for personalised products in India. Here, each one meant a portrait produced for nobody."
           ]
@@ -112,7 +106,7 @@
           "id": "built",
           "title": "What I Built",
           "items": [
-            "<strong>Custom Liquid product-option logic</strong> for the size, frame and finish combinations, with metafield-driven product content.",
+            "<strong>Custom Liquid product-option logic</strong> for the collection and form choices, with metafield-driven product content.",
             "<strong>App-free collection filtering</strong> in JavaScript, in place of a paid filter app.",
             "<strong>A WhatsApp-first COD verification flow</strong> through WATI, so orders are confirmed before fulfilment.",
             "<strong>A responsive, mobile-first storefront</strong> for shoppers arriving from ads."
@@ -145,14 +139,14 @@
           ],
           "code": {
             "note": "Simplified sketch of the filtering approach, not the production code",
-            "html": "<span class=\"c\">{%- comment -%} Each product card carries its filterable values {%- endcomment -%}</span>\n&lt;li data-product-card\n    data-size=<span class=\"s\">\"{{ product.options_by_name['Size'].values | join: ',' }}\"</span>\n    data-frame=<span class=\"s\">\"{{ product.options_by_name['Frame'].values | join: ',' }}\"</span>&gt;\n\n<span class=\"c\">// Filter in the browser: no app, no page reload</span>\n<span class=\"k\">const</span> cards = [...document.querySelectorAll(<span class=\"s\">'[data-product-card]'</span>)];\n\n<span class=\"k\">function</span> applyFilters(active) {          <span class=\"c\">// e.g. { size: '8x10', frame: 'Gold' }</span>\n  cards.forEach(card =&gt; {\n    card.hidden = !Object.entries(active).every(([key, value]) =&gt;\n      !value || card.dataset[key].split(<span class=\"s\">','</span>).includes(value));\n  });\n}"
+            "html": "<span class=\"c\">{%- comment -%} Each product card carries its filterable values {%- endcomment -%}</span>\n&lt;li data-product-card\n    data-form=<span class=\"s\">\"{{ product.options_by_name['Form'].values | join: ',' }}\"</span>&gt;\n\n<span class=\"c\">// Filter in the browser: no app, no page reload</span>\n<span class=\"k\">const</span> cards = [...document.querySelectorAll(<span class=\"s\">'[data-product-card]'</span>)];\n\n<span class=\"k\">function</span> applyFilters(active) {          <span class=\"c\">// e.g. { form: 'Round' }</span>\n  cards.forEach(card =&gt; {\n    card.hidden = !Object.entries(active).every(([key, value]) =&gt;\n      !value || card.dataset[key].split(<span class=\"s\">','</span>).includes(value));\n  });\n}"
           }
         },
         {
           "id": "results",
           "title": "Results",
           "items": [
-            "<strong>Size, frame and finish</strong> chosen on the product page, handled by Liquid logic.",
+            "<strong>Collection and form</strong> chosen on the product page, handled by Liquid logic.",
             "<strong>No paid filter app.</strong> Collections filter with custom JavaScript.",
             "<strong>Cash-on-delivery orders confirmed on WhatsApp</strong> before a personalised portrait goes into production."
           ]
@@ -171,8 +165,8 @@
       "takeaway": "The most valuable change wasn't on the storefront. It was putting a verification step in the right place in the order flow. Custom code made sense where an app would have added cost or couldn't reach the problem.",
       "glance": {
         "problem": "Every portrait is made to order, so an unconfirmed cash-on-delivery order means a portrait produced for nobody.",
-        "contribution": "I built custom size, frame and finish selection in Liquid and added WhatsApp confirmation for cash-on-delivery orders through WATI.",
-        "outcome": "Cash-on-delivery orders are confirmed before production, and shoppers choose every option on the product page."
+        "contribution": "I built custom product-option logic in Liquid and added WhatsApp confirmation for cash-on-delivery orders through WATI.",
+        "outcome": "Cash-on-delivery orders are confirmed before production, and shoppers choose a collection and a form on the product page."
       },
       "liveCheck": {
         "paras": [
@@ -253,7 +247,7 @@
         },
         {
           "value": "800–1,200",
-          "label": "Words in each SEO blog draft"
+          "label": "Target words per SEO blog draft"
         },
         {
           "value": "Weekly",
@@ -291,7 +285,7 @@
           "items": [
             "<strong>The Shopify store</strong>: theme, homepage sections for collections, festive campaigns, bestsellers, the gifting process, corporate gifts and custom hampers, and every product listing, created through Claude's Shopify connector.",
             "<strong>Scheduled tasks</strong> that request banners from the design team with a matched in-stock product, send deadline reminders and escalate overdue banners.",
-            "<strong>A blog workflow</strong> that turns banner emails and a festival and evergreen calendar into 800–1,200-word SEO drafts with product placements, checked for duplicates.",
+            "<strong>A blog workflow</strong> that turns banner emails and a festival and evergreen calendar into SEO drafts with a target length of 800–1,200 words and product placements, checked for duplicates.",
             "<strong>Weekly SEO upkeep</strong>: meta titles and descriptions refreshed from new keyword research, product images renamed, and a check that re-runs any missed task."
           ]
         },
@@ -379,12 +373,12 @@
       "builtIn": "Shopify",
       "card": {
         "kicker": "Shopify 2.0 Storefront",
-        "position": "Production Shopify 2.0 storefront for a 500+ product catalogue",
+        "position": "Production Shopify 2.0 storefront, managing 500+ products",
         "summary": "Built and maintained a production Shopify 2.0 storefront with custom schema-driven sections, product experiences, collection filtering and analytics integrations.",
         "role": "Full Stack Developer (Diviniti & Portrait on Gold)",
         "metric": {
           "value": "500+",
-          "label": "Products in the catalogue"
+          "label": "Products managed"
         },
         "tags": [
           "Shopify 2.0",
@@ -392,7 +386,7 @@
           "JavaScript",
           "GTM"
         ],
-        "owned": "I built 20+ reusable Liquid sections, plus the image loading and analytics setup, for a catalogue of 500+ products.",
+        "owned": "I built 20+ reusable Liquid sections, plus the image loading and analytics setup, while managing 500+ products.",
         "changed": "The merchandising team now adds, edits and reorders page content in the Shopify editor without code.",
         "media": {
           "src": "assets/projects/diviniti-feature.webp",
@@ -401,11 +395,11 @@
       },
       "seo": {
         "title": "Diviniti Case Study: Shopify 2.0 Storefront | Shadab Ali",
-        "description": "Production Shopify 2.0 storefront for Diviniti: 20+ schema-driven Liquid sections, product experiences, collection filtering, responsive images and analytics for a 500+ product catalogue."
+        "description": "Production Shopify 2.0 storefront for Diviniti: 20+ schema-driven Liquid sections, product experiences, collection filtering, responsive images and analytics across 500+ managed products."
       },
       "hero": {
         "h1": "Building a production <em>Shopify 2.0</em> storefront",
-        "lede": "Diviniti is a luxury gifting brand with more than 500 products. I built and maintained its Shopify 2.0 storefront: schema-driven sections the team edits without a developer, product experiences, collection filtering, responsive image delivery and analytics integrations."
+        "lede": "Diviniti is a luxury gifting brand. I built and maintained its Shopify 2.0 storefront and managed 500+ of its products. The work covered schema-driven sections the team edits without a developer, product experiences, collection filtering, responsive image delivery and analytics integrations."
       },
       "facts": [
         [
@@ -428,7 +422,7 @@
       "metrics": [
         {
           "value": "500+",
-          "label": "Products in the catalogue",
+          "label": "Products managed",
           "primary": true
         },
         {
@@ -442,7 +436,7 @@
           "title": "Overview",
           "lead": "A luxury catalogue where page speed and merchandising flexibility both mattered.",
           "paras": [
-            "The work covered the Shopify theme end to end: how images load, how pages are built and edited, and how customer behaviour is measured. With <strong>500+ products</strong>, any inefficiency in one image or section repeats across every collection and product page, so the fixes had to be systemic."
+            "The work covered the Shopify theme end to end: how images load, how pages are built and edited, and how customer behaviour is measured. Across the <strong>500+ products</strong> I managed, any inefficiency in one image or section repeats across every collection and product page, so the fixes had to be systemic."
           ]
         },
         {
@@ -514,7 +508,7 @@
           "title": "Results",
           "items": [
             "<strong>20+ sections</strong> the team edits and reorders in the Shopify editor, without code changes.",
-            "<strong>Responsive image delivery</strong> across an image-heavy, 500+ product catalogue.",
+            "<strong>Responsive image delivery</strong> across an image-heavy catalogue, including the 500+ products I managed.",
             "<strong>Analytics</strong> through Google Tag Manager, Google Analytics, Meta Pixel and Microsoft Clarity.",
             "<strong>Consistent on-page SEO</strong> across the catalogue."
           ]
@@ -535,7 +529,7 @@
       ],
       "takeaway": "Performance work lasts longer when it's built into the tools the team uses every day. Because the responsive image behaviour lives inside the sections, pages the team builds later keep it without a developer checking each one.",
       "glance": {
-        "problem": "Merchandising depended on a developer, images loaded slowly and tracking was unstructured, across a catalogue of 500+ products.",
+        "problem": "Merchandising depended on a developer, images loaded slowly and tracking was unstructured, across the 500+ products I managed.",
         "contribution": "I built 20+ reusable Liquid sections with schema settings, plus responsive image delivery and analytics integrations.",
         "outcome": "The merchandising team can update pages in the Shopify editor without code."
       },
@@ -544,7 +538,7 @@
           "Checked in a browser on 15 November 2026."
         ],
         "items": [
-          "<strong>Catalogue today:</strong> the live All collection lists 3,414 products.",
+          "<strong>Catalogue today:</strong> the live All collection lists 3,414 products. The 500+ figure on this page is the number of products I managed during the role.",
           "<strong>Homepage today</strong> runs nine named sections: Explore Our Curated Collections, Our Most Admired Creations, Explore Our Customization, Explore Our Newest Treasures, Express Yourself with #Diviniti, News &amp; Events, Brands We Serve, Our Flagship Store and Blog Posts."
         ]
       },
