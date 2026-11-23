@@ -1,7 +1,7 @@
 # Shadab Ali — Portfolio
 
 Portfolio for Shadab Ali, Full-Stack Developer.
-Live at <https://portfolionew-omega-rouge.vercel.app/>.
+Live at <https://portfolio-five-iota-26kckmkbgo.vercel.app/>.
 
 ## Stack
 

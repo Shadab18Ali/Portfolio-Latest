@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://portfolionew-omega-rouge.vercel.app/sitemap.xml
+Sitemap: https://portfolio-five-iota-26kckmkbgo.vercel.app/sitemap.xml

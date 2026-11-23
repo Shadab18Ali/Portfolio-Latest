@@ -255,6 +255,33 @@ def card(slug):
 '''
 
 
+
+
+def homepage_cards():
+    """Three recruiter-first project cards, independent of the longer project index."""
+    cards_html = []
+    for slug in DATA.get('homepageFeatured', ('freetoolshub', 'newsmedia', 'diviniti')):
+        p = PROJECTS[slug]
+        media = p['card']['media']
+        alt = f"{p['name']} — {media.get('caption', 'project image')}"
+        cards_html.append(f'''      <article class="home-project-card">
+        <a class="home-project-media" href="{p['file']}" aria-label="Read the {esc(p['name'])} case study">
+          <img src="{esc(media['src'])}" alt="{esc(alt)}" width="1200" height="750" loading="lazy" decoding="async">
+        </a>
+        <div class="home-project-body">
+          <p class="home-project-built">Built in {esc(p['builtIn'])}</p>
+          <h3>{esc(p['name'])}</h3>
+          <p class="home-project-domain">{esc(p['domain'])}</p>
+          <p class="home-project-description">{esc(p['homeDescription'])}</p>
+          <div class="home-project-actions">
+            <a class="btn btn-primary" href="{p['file']}">View Case Study</a>
+            <a class="btn btn-ghost" href="{p['url']}" target="_blank" rel="noopener">Live Site<span class="sr-only"> (opens in a new tab)</span></a>
+          </div>
+        </div>
+      </article>''')
+    return '    <div class="home-project-grid">\n' + '\n'.join(cards_html) + '\n    </div>\n'
+
+
 def slug_img(slug):
     return slug  # image files are named after the project slug
 
@@ -509,6 +536,7 @@ def fill(text):
     for key in ('resume', 'whatsapp', 'linkedin', 'github', 'email', 'phoneLabel'):
         text = text.replace('{{' + key + '}}', SITE[key])
     text = text.replace('<!-- @process -->\n', process())
+    text = text.replace('<!-- @cards:homepage -->\n', homepage_cards())
     text = re.sub(r'<!-- @arc:(\w+) -->\n?', lambda m: arc(m.group(1)), text)
     return re.sub(r'<!-- @cards:(\w+) -->\n?', lambda m: cards(m.group(1)), text)
 

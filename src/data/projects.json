@@ -547,7 +547,8 @@
           "label": "All products collection",
           "url": "https://www.diviniti.com/collections/all"
         }
-      ]
+      ],
+      "homeDescription": "I built 20+ reusable Shopify sections so merchandisers can update and reorder page content without code."
     },
     "freetoolshub": {
       "file": "case-freetoolshub.html",
@@ -633,7 +634,7 @@
           "title": "The Challenge",
           "items": [
             "<strong>Private by design.</strong> Uploading a passport photo or a signed form to an unknown server is a real risk, so no file could leave the device.",
-            "<strong>Heavy work in a browser tab.</strong> Text recognition, PDF editing, HEIC decoding and background removal usually need a server. Here they had to run on the client without freezing the page.",
+            "<strong>Heavy work in a browser tab.</strong> Text recognition, PDF editing, HEIC decoding and background removal run on the client, so CPU-heavy processing must not block the main interface.",
             "<strong>74 tools without 74 times the work.</strong> Every tool needs its own page, instructions, FAQs and metadata, and they all had to stay consistent."
           ]
         },
@@ -727,7 +728,7 @@
       "glance": {
         "problem": "People use everyday tools with personal documents, and uploading them to an unknown server is a real risk.",
         "contribution": "I designed and built the whole platform in Next.js and TypeScript: 74 tools across seven categories, the content and the SEO.",
-        "outcome": "File processing runs in the browser with no uploads. Web Workers keep heavy tasks like OCR responsive, so the page never freezes.",
+        "outcome": "OCR is delegated to a Web Worker rather than the main UI thread, allowing the page to continue handling user interactions while recognition runs.",
         "link": {
           "label": "Try the OCR tool",
           "url": "https://freetoolshub.co.in/tools/image-to-text"
@@ -752,7 +753,8 @@
           "label": "Image to Text OCR tool",
           "url": "https://freetoolshub.co.in/tools/image-to-text"
         }
-      ]
+      ],
+      "homeDescription": "I designed and built 74 browser-based tools in Next.js and TypeScript, including OCR that runs in a Web Worker."
     },
     "majestic": {
       "file": "case-majestic-india.html",
@@ -1134,10 +1136,16 @@
       ],
       "takeaway": "The key engineering decision was separating public read paths from authenticated editorial actions. That keeps public pages cacheable while admin operations remain protected by server-side role checks and database-level policies.",
       "glance": {
-        "problem": "A publishing platform needs public reading experiences and a complete set of editorial operations, without compromising performance or access control.",
-        "contribution": "I built the full-stack platform with Next.js and Supabase, including the public website, admin newsroom, publishing workflows, SEO and security.",
-        "outcome": "A deployed newsroom product connects public publishing with protected editorial management, scheduled workflows and search-ready page infrastructure."
-      }
+        "problem": "Editorial teams need one place to manage articles, media and scheduled releases while keeping staff actions permission-controlled.",
+        "contribution": "I built the Next.js 16 public site and protected editorial dashboard, integrating Supabase authentication, media storage, publishing tools and SEO workflows.",
+        "outcome": "Editors can manage content, schedule publishing and work under writer, editor and admin roles, backed by server-side checks and database-level Row Level Security."
+      },
+      "homeDescription": "I built the public publication site and protected editorial dashboard, including scheduled publishing and role-based access."
     }
-  }
+  },
+  "homepageFeatured": [
+    "freetoolshub",
+    "newsmedia",
+    "diviniti"
+  ]
 }

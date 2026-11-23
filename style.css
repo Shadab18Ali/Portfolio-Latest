@@ -1809,3 +1809,28 @@ nav.breadcrumb {
 @media(prefers-reduced-motion:reduce){.sa-figure-scene,.sa-figure-photo,.sa-figure-orbit,.sa-figure-arrow,.sa-hero-arrow{animation:none!important;transition:none!important}}
 
 /* Portrait image is styled by the existing .sa-figure-photo img rule above. */
+
+
+/* ── Recruiter-first project grid ───────────────────────── */
+.home-project-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.15rem; align-items: stretch; }
+.home-project-card { min-width: 0; display: flex; flex-direction: column; overflow: hidden; background: var(--card); border: 1px solid var(--card-border); border-radius: calc(var(--radius) + 3px); box-shadow: var(--shadow-sm); }
+.home-project-media { display: block; aspect-ratio: 16 / 10; overflow: hidden; background: var(--bg3); border-bottom: 1px solid var(--card-border); }
+.home-project-media img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top center; transition: transform .45s var(--ease-out); }
+.home-project-card:hover .home-project-media img { transform: scale(1.025); }
+.home-project-body { display: flex; flex: 1; flex-direction: column; align-items: flex-start; padding: 1.25rem; }
+.home-project-built { margin: 0 0 .55rem; font: .65rem var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--accent-text); }
+.home-project-body h3 { margin: 0; font: 400 clamp(1.65rem, 2.4vw, 2.15rem)/1 var(--display); letter-spacing: .02em; text-transform: uppercase; color: var(--ink); }
+.home-project-domain { margin: .35rem 0 .9rem; font: .65rem var(--mono); letter-spacing: .08em; color: var(--muted); }
+.home-project-description { margin: 0 0 1.25rem; font-size: .9rem; line-height: 1.7; color: var(--ink2); }
+.home-project-actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: auto; width: 100%; }
+.home-project-actions .btn { flex: 1 1 auto; }
+.hero-job-email { margin: .65rem 0 0; font-size: .82rem; color: var(--muted); }
+.hero-job-email a, .contact-route-links a { color: var(--accent-text); text-decoration: underline; text-decoration-color: var(--accent-border); text-underline-offset: .25em; }
+.hero-job-email a:hover, .contact-route-links a:hover { text-decoration-color: var(--accent); }
+.contact-route-links { display: flex; flex-wrap: wrap; gap: .75rem 1.25rem; margin: 1rem 0 1.5rem; font-size: .86rem; }
+.project-scope-fields[hidden] { display: none !important; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+@media (max-width: 1024px) { .home-project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 768px) { .home-project-grid { grid-template-columns: 1fr; } #hero .hero-h1 { max-width: 16ch; font-size: clamp(2.3rem, 9vw, 3.35rem); line-height: 1.02; } }
+@media (max-width: 480px) { .wa-float { display: none; } .home-project-actions .btn { flex: 1 1 100%; } }
+@media (prefers-reduced-motion: reduce) { .home-project-media img { transition: none; } .home-project-card:hover .home-project-media img { transform: none; } }

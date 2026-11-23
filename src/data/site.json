@@ -1,5 +1,5 @@
 {
-  "url": "https://portfolionew-omega-rouge.vercel.app",
+  "url": "https://portfolio-five-iota-26kckmkbgo.vercel.app",
   "name": "Shadab Ali",
   "jobTitle": "Full-Stack Developer",
   "email": "shadab18ali@gmail.com",
@@ -57,6 +57,10 @@
     [
       "about.html",
       "About"
+    ],
+    [
+      "experience.html",
+      "Experience"
     ],
     [
       "contact.html",
