@@ -248,7 +248,7 @@ def card(slug):
           </div>
         </div>
         <figure class="feature-media">
-          <a class="fm-link" href="{p['file']}" tabindex="-1" aria-hidden="true"><span class="fm-desktop"><img src="{esc(media['src'])}" alt="" width="{media.get('width', 1200)}" height="{media.get('height', 750)}" loading="lazy" decoding="async"></span></a>
+          <a class="fm-link" href="{p['file']}" tabindex="-1" aria-hidden="true"><span class="fm-desktop"><img src="{esc(media['src'])}" alt="{esc(media.get('alt', p['name'] + ' project homepage screenshot'))}" width="{media.get('width', 1200)}" height="{media.get('height', 750)}" loading="lazy" decoding="async"></span></a>
           <figcaption class="fm-cap">{('Project visual' if slug == 'newsmedia' else 'Screenshot')} · {esc(media['caption'])}</figcaption>
         </figure>
       </article>
@@ -293,7 +293,7 @@ def arc_card(slug, i, total):
     tags = ''.join(f'<li><span>{esc(t)}</span></li>' for t in c['tags'])
     cap = 'Project visual' if slug == 'newsmedia' else 'Screenshot'
     return f'''        <article class="arc-card" role="group" aria-roledescription="slide" aria-label="{i + 1} of {total}">
-          <a class="arc-media" href="{p['file']}" tabindex="-1" aria-hidden="true"><img src="{esc(media['src'])}" alt="" width="{media.get('width', 1200)}" height="{media.get('height', 750)}" loading="lazy" decoding="async"></a>
+          <a class="arc-media" href="{p['file']}" tabindex="-1" aria-hidden="true"><img src="{esc(media['src'])}" alt="{esc(media.get('alt', p['name'] + ' project homepage screenshot'))}" width="{media.get('width', 1200)}" height="{media.get('height', 750)}" loading="lazy" decoding="async"></a>
           <p class="arc-cap">{cap} · {esc(media['caption'])}</p>
           <div class="arc-body">
             <p class="arc-built"><span>Built in</span> <strong>{esc(p['builtIn'])}</strong></p>
@@ -396,7 +396,7 @@ def case_main(slug, index):
     dashboard_block = ''
     dashboard = p.get('dashboard')
     if dashboard:
-        dashboard_block = f'''    <section class="cs-dashboard" aria-labelledby="dashboard-title">\n      <h2 id="dashboard-title">The newsroom dashboard</h2>\n      <figure class="cs-dashboard-figure">\n        <img src="{esc(dashboard['src'])}" alt="{esc(dashboard['alt'])}" width="1200" height="237" loading="lazy" decoding="async">\n        <figcaption>{esc(dashboard['caption'])}</figcaption>\n      </figure>\n    </section>\n'''
+        dashboard_block = f'''    <section class="cs-dashboard" aria-labelledby="dashboard-title">\n      <h2 id="dashboard-title">The newsroom dashboard</h2>\n      <figure class="cs-dashboard-figure">\n        <img src="{esc(dashboard['src'])}" alt="{esc(dashboard['alt'])}" width="{dashboard.get('width', 1200)}" height="{dashboard.get('height', 237)}" loading="lazy" decoding="async">\n        <figcaption>{esc(dashboard['caption'])}</figcaption>\n      </figure>\n    </section>\n'''
     sections = []
     for sec in p['sections']:
         sections.append(f'''      <section class="cs-section" aria-labelledby="{sec['id']}">
