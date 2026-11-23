@@ -767,22 +767,22 @@ function initPortfolioScenes() {
     hero.appendChild(stage);
   }
   const scenes=[
-    ['#work','projects','01 / PROJECTS','Digital products','assets/images/portfolio-poses/02-projects-crossed-arms.webp'],
-    ['#impact','build','02 / WHAT I BUILD','Full-stack systems','assets/images/portfolio-poses/03-what-i-build-wave.webp'],
-    ['#services-preview','services','03 / SERVICES','Shopify & web','assets/images/portfolio-poses/04-services-presenting.webp'],
-    ['#about-preview','about','05 / ABOUT','The developer','assets/images/portfolio-poses/05-about-seated.webp']
+    ['#work','projects','01 / PROJECTS','Digital products','assets/portfolio-3d-poses/02-projects-crossed-arms.png'],
+    ['#impact','build','02 / WHAT I BUILD','Full-stack systems','assets/portfolio-3d-poses/03-what-i-build-wave.png'],
+    ['#services-preview','services','03 / SERVICES','Shopify & web','assets/portfolio-3d-poses/04-services-presenting.png'],
+    ['#about-preview','about','05 / ABOUT','The developer','assets/portfolio-3d-poses/05-about-seated.png']
   ];
   const makeScene=(host,type,kicker,label,imagePath)=>{
     if(!host||host.querySelector('.sa-figure-scene'))return;
     const art=document.createElement('div'); art.className='sa-figure-scene'; art.dataset.scene=type; art.setAttribute('aria-hidden','true');
-    art.innerHTML='<span class="sa-figure-grid"></span><span class="sa-figure-orbit orbit-a"></span><span class="sa-figure-orbit orbit-b"></span><span class="sa-figure-panel panel-a"></span><span class="sa-figure-panel panel-b"></span><span class="sa-figure-arrow">↗</span><span class="sa-figure-label">'+kicker+'<b>'+label+'</b></span><span class="sa-figure-photo"><img src="assets/portrait-900.webp" alt="" loading="lazy" decoding="async"></span><span class="sa-figure-node node-a"></span><span class="sa-figure-node node-b"></span>';
+    art.innerHTML='<span class="sa-figure-grid"></span><span class="sa-figure-orbit orbit-a"></span><span class="sa-figure-orbit orbit-b"></span><span class="sa-figure-panel panel-a"></span><span class="sa-figure-panel panel-b"></span><span class="sa-figure-arrow">↗</span><span class="sa-figure-label">'+kicker+'<b>'+label+'</b></span><span class="sa-figure-photo"><img src="assets/portrait-900.png" alt="" loading="lazy" decoding="async"></span><span class="sa-figure-node node-a"></span><span class="sa-figure-node node-b"></span>';
     host.appendChild(art);
   };
   scenes.forEach(([sel,type,kicker,label,imagePath])=>{
     const section=document.querySelector(sel),host=section&&(section.querySelector('.container')||section);
     makeScene(host,type,kicker,label,imagePath);
   });
-  document.querySelectorAll('.final-cta .container').forEach(host=>makeScene(host,'contact','06 / CONTACT','Let’s build','assets/images/portfolio-poses/06-contact-welcome.webp'));
+  document.querySelectorAll('.final-cta .container').forEach(host=>makeScene(host,'contact','06 / CONTACT','Let’s build','assets/portfolio-3d-poses/06-contact-welcome.png'));
   const arts=document.querySelectorAll('.sa-figure-scene');
   if('IntersectionObserver'in window){const io=new IntersectionObserver(entries=>entries.forEach(e=>{e.target.classList.toggle('is-visible',e.isIntersecting);e.target.classList.toggle('is-active',e.isIntersecting);}),{threshold:.18});arts.forEach(a=>io.observe(a));}
   else arts.forEach(a=>a.classList.add('is-visible','is-active'));
