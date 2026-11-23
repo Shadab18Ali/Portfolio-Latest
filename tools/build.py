@@ -393,6 +393,10 @@ def case_main(slug, index):
       </dl>{link_html}
     </section>
 '''
+    dashboard_block = ''
+    dashboard = p.get('dashboard')
+    if dashboard:
+        dashboard_block = f'''    <section class="cs-dashboard" aria-labelledby="dashboard-title">\n      <h2 id="dashboard-title">The newsroom dashboard</h2>\n      <figure class="cs-dashboard-figure">\n        <img src="{esc(dashboard['src'])}" alt="{esc(dashboard['alt'])}" width="1200" height="237" loading="lazy" decoding="async">\n        <figcaption>{esc(dashboard['caption'])}</figcaption>\n      </figure>\n    </section>\n'''
     sections = []
     for sec in p['sections']:
         sections.append(f'''      <section class="cs-section" aria-labelledby="{sec['id']}">
@@ -409,6 +413,7 @@ def case_main(slug, index):
         </div>
       </section>''')
     img = slug_img(slug)
+    gallery = p.get('gallery', {})
     if p.get('screenshots') is False:
         media = p['card']['media']
         sections.append(f'''      <section class="cs-section" aria-labelledby="visual">
@@ -426,14 +431,14 @@ def case_main(slug, index):
             <div class="cs-content cs-wide">
               <div class="cs-shots">
                 <figure>
-                  <div class="shot shot-desktop" data-gallery-title="{esc(p['name'])}, desktop" data-gallery-url="{p['domain']}" data-gallery-src="assets/projects/{img}-desktop.webp">
-                    <img src="assets/projects/{img}-desktop-thumb.webp" alt="{esc(p['name'])} homepage on desktop" width="1200" height="750" loading="lazy" decoding="async">
+                  <div class="shot shot-desktop" data-gallery-title="{esc(p['name'])}, desktop" data-gallery-url="{p['domain']}" data-gallery-src="{esc(gallery.get('desktop', f'assets/projects/{img}-desktop.webp'))}">
+                    <img src="{esc(gallery.get('desktop', f'assets/projects/{img}-desktop.webp'))}" alt="{esc(gallery.get('desktopAlt', p['name'] + ' homepage on desktop'))}" width="{gallery.get('desktopWidth', 1200)}" height="{gallery.get('desktopHeight', 750)}" loading="lazy" decoding="async">
                   </div>
                   <figcaption>Desktop · select to view larger</figcaption>
                 </figure>
                 <figure>
-                  <div class="shot shot-mobile" data-gallery-title="{esc(p['name'])}, mobile" data-gallery-url="{p['domain']}" data-gallery-src="assets/projects/{img}-mobile.webp">
-                    <img src="assets/projects/{img}-mobile-thumb.webp" alt="{esc(p['name'])} homepage on mobile" width="720" height="1280" loading="lazy" decoding="async">
+                  <div class="shot shot-mobile" data-gallery-title="{esc(p['name'])}, mobile" data-gallery-url="{p['domain']}" data-gallery-src="{esc(gallery.get('mobile', f'assets/projects/{img}-mobile.webp'))}">
+                    <img src="{esc(gallery.get('mobile', f'assets/projects/{img}-mobile.webp'))}" alt="{esc(gallery.get('mobileAlt', p['name'] + ' homepage on mobile'))}" width="{gallery.get('mobileWidth', 720)}" height="{gallery.get('mobileHeight', 1280)}" loading="lazy" decoding="async">
                   </div>
                   <figcaption>Mobile</figcaption>
                 </figure>
@@ -487,7 +492,7 @@ def case_main(slug, index):
 
 <section class="cs-body" aria-label="{esc(p['name'])} case study">
   <div class="container">
-{glance_block}{metrics_block}    <div class="cs-sections">
+{glance_block}{dashboard_block}{metrics_block}    <div class="cs-sections">
 {chr(10).join(sections)}
     </div>
   </div>
