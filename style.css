@@ -1932,3 +1932,50 @@ nav.breadcrumb {
    Disable the legacy JS-generated scene copies so every section shows
    exactly one portrait in the placement defined by its HTML layout. */
 .sa-figure-scene { display: none !important; }
+
+
+/* Homepage responsive polish: keep the hero portrait visible on tablets
+   and phones, reserve room for the floating WhatsApp action, and tighten
+   the Featured Work header-to-grid rhythm. */
+@media (max-width: 1024px) {
+  #hero .hero-visual {
+    display: flex !important;
+    width: 100%;
+    justify-content: center;
+    margin-top: .25rem;
+  }
+  #hero .hero-portrait-stage {
+    width: min(42vw, 360px);
+    min-height: 0;
+    height: clamp(300px, 42vw, 440px);
+    margin: 0 auto;
+  }
+}
+@media (max-width: 768px) {
+  #hero .hero-visual { order: 1; margin-top: .15rem; }
+  #hero .hero-portrait-stage {
+    width: min(72vw, 290px);
+    height: clamp(220px, 66vw, 300px);
+  }
+}
+@media (max-width: 420px) {
+  #hero .hero-portrait-stage {
+    width: min(66vw, 250px);
+    height: clamp(205px, 58vw, 235px);
+  }
+}
+@media (min-width: 769px) and (max-width: 900px) {
+  #work .section-head-row > .text-link {
+    margin-right: 76px;
+    position: relative;
+    z-index: 510;
+  }
+}
+@media (max-width: 768px) {
+  #work .section-head-row > .text-link {
+    margin-right: 0;
+    position: relative;
+    z-index: 510;
+  }
+}
+#work .section-head-row { margin-bottom: 1.35rem; }
