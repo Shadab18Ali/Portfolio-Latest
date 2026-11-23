@@ -37,8 +37,11 @@
         "owned": "I built custom product-option logic in Liquid and added WhatsApp confirmation for cash-on-delivery orders.",
         "changed": "Shoppers choose a collection and a form on the product page, and COD orders are confirmed before a portrait goes into production.",
         "media": {
-          "src": "assets/projects/pog-desktop-thumb.webp",
-          "caption": "Homepage"
+          "src": "assets/screenshots/portrait-on-gold.webp",
+          "caption": "Portrait on Gold homepage showing its personalised portrait offering",
+          "alt": "Portrait on Gold homepage showing its personalised portrait offering",
+          "width": 1265,
+          "height": 840
         }
       },
       "seo": {
@@ -181,7 +184,18 @@
           "label": "Commission page",
           "url": "https://www.portraitongold.com/products/portrait-on-gold-commission"
         }
-      ]
+      ],
+      "gallery": {
+        "desktop": "assets/screenshots/portrait-on-gold.webp",
+        "mobile": "assets/screenshots/portrait-on-gold-mobile.webp",
+        "desktopAlt": "Portrait on Gold homepage showing its personalised portrait offering",
+        "mobileAlt": "Portrait on Gold homepage showing its personalised portrait offering on a mobile screen",
+        "desktopWidth": 1265,
+        "desktopHeight": 840,
+        "mobileWidth": 375,
+        "mobileHeight": 812
+      },
+      "screenshots": true
     },
     "ratanarpan": {
       "file": "case-ratanarpan.html",
@@ -209,8 +223,11 @@
         "owned": "I built the Shopify storefront and automated parts of the content workflow.",
         "changed": "Drafts and SEO upkeep run on a schedule, and the team has a 24-hour window to edit or stop any post before it publishes.",
         "media": {
-          "src": "assets/projects/ratanarpan-desktop-thumb.webp",
-          "caption": "Homepage"
+          "src": "assets/screenshots/ratanarpan.webp",
+          "caption": "Ratanarpan gifting storefront homepage",
+          "alt": "Ratanarpan gifting storefront homepage",
+          "width": 1265,
+          "height": 712
         }
       },
       "seo": {
@@ -362,7 +379,18 @@
           "label": "Journal post: Bhai Dooj 2026 Gift Ideas for Brothers & Sisters",
           "url": "https://ratanarpan.com/blogs/news/bhai-dooj-2026-gift-ideas-for-brothers-and-sisters"
         }
-      ]
+      ],
+      "gallery": {
+        "desktop": "assets/screenshots/ratanarpan.webp",
+        "mobile": "assets/screenshots/ratanarpan-mobile.webp",
+        "desktopAlt": "Ratanarpan gifting storefront homepage",
+        "mobileAlt": "Ratanarpan gifting storefront homepage on a mobile screen",
+        "desktopWidth": 1265,
+        "desktopHeight": 712,
+        "mobileWidth": 375,
+        "mobileHeight": 812
+      },
+      "screenshots": true
     },
     "diviniti": {
       "file": "case-diviniti.html",
@@ -390,7 +418,10 @@
         "changed": "The merchandising team now adds, edits and reorders page content in the Shopify editor without code.",
         "media": {
           "src": "assets/screenshots/diviniti.webp",
-          "caption": "Diviniti desktop homepage"
+          "caption": "Diviniti gifting storefront homepage",
+          "alt": "Diviniti gifting storefront homepage",
+          "width": 1265,
+          "height": 712
         }
       },
       "seo": {
@@ -548,7 +579,18 @@
           "url": "https://www.diviniti.com/collections/all"
         }
       ],
-      "homeDescription": "I built 20+ reusable Shopify sections so merchandisers can update and reorder page content without code."
+      "homeDescription": "I built 20+ reusable Shopify sections so merchandisers can update and reorder page content without code.",
+      "gallery": {
+        "desktop": "assets/screenshots/diviniti.webp",
+        "mobile": "assets/screenshots/diviniti-mobile.webp",
+        "desktopAlt": "Diviniti gifting storefront homepage",
+        "mobileAlt": "Diviniti gifting storefront homepage on a mobile screen",
+        "desktopWidth": 1265,
+        "desktopHeight": 712,
+        "mobileWidth": 375,
+        "mobileHeight": 812
+      },
+      "screenshots": true
     },
     "freetoolshub": {
       "file": "case-freetoolshub.html",
@@ -559,12 +601,12 @@
       "builtIn": "Next.js",
       "card": {
         "kicker": "Next.js / Browser-based Tools",
-        "position": "74 free tools that run entirely in the browser",
-        "summary": "Designed and built a free online-tools platform in Next.js and TypeScript: 74 tools for PDFs, images, calculators, text and developers. Everything runs on the visitor's device, so there is no backend, no database and no file uploads.",
+        "position": "93 free tools that run in the browser",
+        "summary": "Designed and built a free online-tools platform in Next.js and TypeScript. The current homepage lists 93 tools for PDFs, images, calculators, text and developer workflows. Processing is designed to run on the visitor’s device.",
         "role": "Complete build: design, development, SEO and deployment",
         "metric": {
-          "value": "74",
-          "label": "Working tools in 7 categories"
+          "value": "93",
+          "label": "Tools listed on the current homepage"
         },
         "tags": [
           "Next.js",
@@ -572,20 +614,23 @@
           "Web Workers",
           "WebAssembly"
         ],
-        "owned": "I designed and built the whole platform: the Next.js app, all 74 tools, the content and the SEO.",
-        "changed": "74 tools in seven categories run in the browser with no file uploads, and Web Workers keep heavy tasks like OCR responsive.",
+        "owned": "I designed and built the platform, its browser-based tools, content and SEO.",
+        "changed": "The current homepage lists 93 tools, with browser-based processing and no sign-up.",
         "media": {
           "src": "assets/screenshots/freetoolshub.webp",
-          "caption": "FreeToolsHub desktop homepage"
+          "caption": "FreeToolsHub homepage showing its 93 browser-based tools",
+          "alt": "FreeToolsHub homepage showing its 93 browser-based tools",
+          "width": 1265,
+          "height": 712
         }
       },
       "seo": {
         "title": "FreeToolsHub Case Study: Next.js Tools Platform | Shadab Ali",
-        "description": "A free online-tools site built with Next.js: 74 browser-based tools for PDFs, images, calculators and developers, with no uploads and no backend."
+        "description": "A free online-tools site built with Next.js. Its current homepage lists 93 tools for PDFs, images, calculators, text and developer workflows."
       },
       "hero": {
         "h1": "A free tools platform that runs <em>entirely in the browser</em>",
-        "lede": "FreeToolsHub is a free online-tools site I designed and built end to end: 74 tools for PDFs, images, calculations, text and developer tasks. Every tool runs on the visitor's device, so there is no backend, no database, no sign-up and no file upload."
+        "lede": "FreeToolsHub is a free online-tools site I designed and built end to end. Its current homepage lists 93 tools for PDFs, images, calculations, text and developer tasks. The tools are presented as browser-based, with no sign-up."
       },
       "facts": [
         [
@@ -607,8 +652,8 @@
       ],
       "metrics": [
         {
-          "value": "74",
-          "label": "Working tools across 7 categories",
+          "value": "93",
+          "label": "Tools listed on the current homepage",
           "primary": true
         },
         {
@@ -635,7 +680,7 @@
           "items": [
             "<strong>Private by design.</strong> Uploading a passport photo or a signed form to an unknown server is a real risk, so no file could leave the device.",
             "<strong>Heavy work in a browser tab.</strong> Text recognition, PDF editing, HEIC decoding and background removal run on the client, so CPU-heavy processing must not block the main interface.",
-            "<strong>74 tools without 74 times the work.</strong> Every tool needs its own page, instructions, FAQs and metadata, and they all had to stay consistent."
+            "<strong>A growing catalogue without repeating the work.</strong> Each tool needs its own page, instructions, FAQs and metadata, and they all have to stay consistent."
           ]
         },
         {
@@ -659,7 +704,7 @@
           "id": "built",
           "title": "What I Built",
           "items": [
-            "<strong>74 working tools in 7 categories:</strong> PDF (20), image (17), business calculators (10), developer (10), utility (9), text (6) and SEO (2). They include PDF merge, compress, sign and redact, text recognition in English and Hindi, HEIC to JPG, and GST, EMI and SIP calculators.",
+            "<strong>93 tools listed on the current homepage:</strong> the catalogue spans PDF, image, calculator, developer, text and SEO utilities. The homepage screenshot shows the current count.",
             "<strong>A registry-driven site.</strong> One typed entry per tool drives its page, metadata, FAQs, related links and search, and content tests fail the build if titles, descriptions or links are wrong.",
             "<strong>Technical SEO.</strong> Metadata, canonical URLs, Open Graph, JSON-LD and an XML sitemap, plus a post-build check that fails on overlong or duplicate titles and descriptions.",
             "<strong>20+ original how-to guides</strong> that sit next to the tools and link into them.",
@@ -700,7 +745,7 @@
           "id": "results",
           "title": "Results",
           "items": [
-            "<strong>74 tools live</strong> in 7 categories at freetoolshub.co.in.",
+            "<strong>93 tools listed</strong> on the homepage screenshot captured on 23 November 2026.",
             "<strong>No uploads.</strong> Processing happens on the device, and the site has no backend or database.",
             "<strong>Hosted on Cloudflare</strong>, with its own domain and security headers.",
             "<strong>Checks before every release:</strong> typecheck, lint, unit and content tests, and the SEO check all run in one command."
@@ -727,7 +772,7 @@
       "takeaway": "Constraints shaped the design. Ruling out a backend removed storage, accounts and privacy risk in one decision and pushed the effort into careful client-side engineering. The same approach carries over to storefronts: ship less JavaScript and load heavy features only when a visitor asks for them.",
       "glance": {
         "problem": "People use everyday tools with personal documents, and uploading them to an unknown server is a real risk.",
-        "contribution": "I designed and built the whole platform in Next.js and TypeScript: 74 tools across seven categories, the content and the SEO.",
+        "contribution": "I designed and built the platform, its browser-based tools, content and SEO; the current homepage lists 93 tools.",
         "outcome": "OCR is delegated to a Web Worker rather than the main UI thread, allowing the page to continue handling user interactions while recognition runs.",
         "link": {
           "label": "Try the OCR tool",
@@ -736,17 +781,12 @@
       },
       "liveCheck": {
         "paras": [
-          "Checked in a browser on 15 November 2026."
+          "Reviewed the supplied homepage screenshot captured on 23 November 2026."
         ],
         "items": [
-          "<strong>74 tools in seven categories.</strong> The homepage states 74 free tools, browser-based, with no sign-up.",
-          "<strong>21 guides</strong> are listed on the live blog.",
-          "<strong>The tool page says it itself.</strong> The Image to Text OCR page states:"
-        ],
-        "quote": {
-          "text": "This tool runs entirely in your browser. What you type or upload is not sent to our servers.",
-          "by": "Image to Text OCR page, freetoolshub.co.in"
-        }
+          "<strong>93 free tools.</strong> The screenshot shows “93 FREE TOOLS” and “Search 93 tools”.",
+          "The screenshot also shows the browser-based and no-sign-up positioning."
+        ]
       },
       "liveLinks": [
         {
@@ -754,7 +794,18 @@
           "url": "https://freetoolshub.co.in/tools/image-to-text"
         }
       ],
-      "homeDescription": "I designed and built 74 browser-based tools in Next.js and TypeScript, including OCR that runs in a Web Worker."
+      "homeDescription": "I designed and built FreeToolsHub; its current homepage lists 93 browser-based tools.",
+      "gallery": {
+        "desktop": "assets/screenshots/freetoolshub.webp",
+        "mobile": "assets/screenshots/freetoolshub-mobile.webp",
+        "desktopAlt": "FreeToolsHub homepage showing its 93 browser-based tools",
+        "mobileAlt": "FreeToolsHub homepage showing its 93 browser-based tools on a mobile screen",
+        "desktopWidth": 1265,
+        "desktopHeight": 712,
+        "mobileWidth": 375,
+        "mobileHeight": 812
+      },
+      "screenshots": true
     },
     "majestic": {
       "file": "case-majestic-india.html",
@@ -971,7 +1022,7 @@
       "domain": "thedailyledgers.in",
       "group": "webapp",
       "builtIn": "Next.js 16",
-      "screenshots": false,
+      "screenshots": true,
       "card": {
         "kicker": "Next.js / Digital Publishing Platform",
         "position": "A full-stack newsroom with a public site and editorial admin",
@@ -991,8 +1042,10 @@
         "changed": "Editorial work is managed in one dashboard, while scheduled publishing, content operations and SEO features support the public publication.",
         "media": {
           "src": "assets/screenshots/the-daily-ledger.webp",
-          "caption": "The Daily Ledger desktop homepage",
-          "label": "Project visual"
+          "caption": "The Daily Ledger public news homepage",
+          "alt": "The Daily Ledger public news homepage",
+          "width": 1265,
+          "height": 712
         }
       },
       "seo": {
@@ -1140,7 +1193,22 @@
         "contribution": "I built the Next.js 16 public site and protected editorial dashboard, integrating Supabase authentication, media storage, publishing tools and SEO workflows.",
         "outcome": "Editors can manage content, schedule publishing and work under writer, editor and admin roles, backed by server-side checks and database-level Row Level Security."
       },
-      "homeDescription": "I built the public publication site and protected editorial dashboard, including scheduled publishing and role-based access."
+      "homeDescription": "I built the public publication site and protected editorial dashboard, including scheduled publishing and role-based access.",
+      "gallery": {
+        "desktop": "assets/screenshots/the-daily-ledger.webp",
+        "mobile": "assets/screenshots/the-daily-ledger-mobile.webp",
+        "desktopAlt": "The Daily Ledger public news homepage",
+        "mobileAlt": "The Daily Ledger public news homepage on a mobile screen",
+        "desktopWidth": 1265,
+        "desktopHeight": 712,
+        "mobileWidth": 375,
+        "mobileHeight": 812
+      },
+      "dashboard": {
+        "src": "assets/screenshots/daily-ledger-admin-dashboard-redacted.webp",
+        "alt": "The Daily Ledger newsroom admin dashboard overview showing total, published, draft, scheduled and category counts; editorial headlines and account details are excluded",
+        "caption": "Newsroom admin dashboard overview: 608 total articles, 580 published, 9 drafts, 8 scheduled and 18 categories. Editorial headlines and account details are intentionally excluded."
+      }
     }
   },
   "homepageFeatured": [
