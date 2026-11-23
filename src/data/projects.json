@@ -727,7 +727,7 @@
       "glance": {
         "problem": "People use everyday tools with personal documents, and uploading them to an unknown server is a real risk.",
         "contribution": "I designed and built the whole platform in Next.js and TypeScript: 74 tools across seven categories, the content and the SEO.",
-        "outcome": "OCR runs in a Web Worker, separate from the main UI thread, so recognition can continue while the page remains responsive.",
+        "outcome": "OCR is delegated to a Web Worker rather than the main UI thread, allowing the page to continue handling user interactions while recognition runs.",
         "link": {
           "label": "Try the OCR tool",
           "url": "https://freetoolshub.co.in/tools/image-to-text"
