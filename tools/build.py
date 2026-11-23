@@ -255,6 +255,38 @@ def card(slug):
 '''
 
 
+
+
+def homepage_cards():
+    """Three recruiter-first project cards, independent of the longer project index."""
+    descriptions = {
+        'freetoolshub': 'I designed and built 74 browser-based tools in Next.js and TypeScript, including OCR that runs in a Web Worker.',
+        'newsmedia': 'I built the public publication site and protected editorial dashboard, including scheduled publishing and role-based access.',
+        'diviniti': 'I built 20+ reusable Shopify sections so merchandisers can update and reorder page content without code.'
+    }
+    cards_html = []
+    for slug in ('freetoolshub', 'newsmedia', 'diviniti'):
+        p = PROJECTS[slug]
+        media = p['card']['media']
+        alt = f"{p['name']} — {media.get('caption', 'project image')}"
+        cards_html.append(f'''      <article class="home-project-card">
+        <a class="home-project-media" href="{p['file']}" aria-label="Read the {esc(p['name'])} case study">
+          <img src="{esc(media['src'])}" alt="{esc(alt)}" width="1200" height="750" loading="lazy" decoding="async">
+        </a>
+        <div class="home-project-body">
+          <p class="home-project-built">Built in {esc(p['builtIn'])}</p>
+          <h3>{esc(p['name'])}</h3>
+          <p class="home-project-domain">{esc(p['domain'])}</p>
+          <p class="home-project-description">{esc(descriptions[slug])}</p>
+          <div class="home-project-actions">
+            <a class="btn btn-primary" href="{p['file']}">View Case Study</a>
+            <a class="btn btn-ghost" href="{p['url']}" target="_blank" rel="noopener">Live Site<span class="sr-only"> (opens in a new tab)</span></a>
+          </div>
+        </div>
+      </article>''')
+    return '    <div class="home-project-grid">\\n' + '\\n'.join(cards_html) + '\\n    </div>\\n'
+
+
 def slug_img(slug):
     return slug  # image files are named after the project slug
 
