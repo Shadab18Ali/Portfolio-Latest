@@ -1916,3 +1916,13 @@ nav.breadcrumb {
 @media (prefers-reduced-motion: reduce) {
   .pose-frame img, .hero-portrait-stage::before { transition:none !important; animation:none !important; }
 }
+
+/* Keep experience rows full-width beneath the seated portrait. */
+.experience-full .exp-row { grid-template-columns: 140px minmax(0,1fr); }
+.home-project-media img { object-fit: cover; object-position: top center; }
+@media (max-width:768px) {
+  .experience-full .exp-row { grid-template-columns: 96px minmax(0,1fr); }
+}
+@media (max-width:420px) {
+  .experience-full .exp-row { grid-template-columns: 1fr; }
+}
