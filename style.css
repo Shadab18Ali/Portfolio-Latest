@@ -1721,11 +1721,17 @@ nav.breadcrumb {
 .arc.is-arc .arc-stage { position: relative; padding: .5rem 0 clamp(5.5rem, 12vw, 9rem); cursor: grab; user-select: none; touch-action: pan-y; }
 .arc.is-arc .arc-stage.is-dragging { cursor: grabbing; }
 .arc.is-arc .arc-track { display: grid; justify-items: center; gap: 0; padding: 0; overflow: visible; scroll-snap-type: none; }
-.arc.is-arc .arc-card { grid-area: 1 / 1; flex: none; width: min(78vw, 410px); transform-origin: 50% 90%; will-change: transform, opacity; }
+.arc.is-arc .arc-card { grid-area: 1 / 1; flex: none; width: min(68vw, 350px); transform-origin: 50% 90%; will-change: transform, opacity; }
 .arc.is-arc .arc-card:not(.is-active) { cursor: pointer; }
 .arc.is-arc .arc-card.is-active { box-shadow: var(--shadow-lg); }
 .arc.is-arc .arc-stage a, .arc.is-arc .arc-stage img { -webkit-user-drag: none; }
-@media (max-width: 640px) { .arc.is-arc .arc-card { width: min(74vw, 320px); } }
+.arc.is-arc .arc-card .arc-media { aspect-ratio: 16 / 8.5; }
+.arc.is-arc .arc-card .arc-body { padding: 1rem 1.1rem 1.15rem; }
+.arc.is-arc .arc-card .arc-cap { padding: .5rem 1.1rem 0; }
+.arc.is-arc .arc-card h3 { font-size: clamp(1.55rem, 2.3vw, 2rem); }
+.arc.is-arc .arc-card .arc-line { font-size: .8rem; line-height: 1.5; }
+.arc.is-arc .arc-card .project-tags { margin: .25rem 0 .8rem; }
+@media (max-width: 640px) { .arc.is-arc .arc-card { width: min(78vw, 300px); } }
 
 @media (prefers-reduced-motion: reduce) {
   .hl-ring { animation: none; }
