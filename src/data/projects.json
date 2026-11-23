@@ -547,7 +547,8 @@
           "label": "All products collection",
           "url": "https://www.diviniti.com/collections/all"
         }
-      ]
+      ],
+      "homeDescription": "I built 20+ reusable Shopify sections so merchandisers can update and reorder page content without code."
     },
     "freetoolshub": {
       "file": "case-freetoolshub.html",
@@ -752,7 +753,8 @@
           "label": "Image to Text OCR tool",
           "url": "https://freetoolshub.co.in/tools/image-to-text"
         }
-      ]
+      ],
+      "homeDescription": "I designed and built 74 browser-based tools in Next.js and TypeScript, including OCR that runs in a Web Worker."
     },
     "majestic": {
       "file": "case-majestic-india.html",
@@ -1137,7 +1139,13 @@
         "problem": "Editorial teams need one place to manage articles, media and scheduled releases while keeping staff actions permission-controlled.",
         "contribution": "I built the Next.js 16 public site and protected editorial dashboard, integrating Supabase authentication, media storage, publishing tools and SEO workflows.",
         "outcome": "Editors can manage content, schedule publishing and work under writer, editor and admin roles, backed by server-side checks and database-level Row Level Security."
-      }
+      },
+      "homeDescription": "I built the public publication site and protected editorial dashboard, including scheduled publishing and role-based access."
     }
-  }
+  },
+  "homepageFeatured": [
+    "freetoolshub",
+    "newsmedia",
+    "diviniti"
+  ]
 }
