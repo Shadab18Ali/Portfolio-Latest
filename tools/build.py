@@ -266,7 +266,7 @@ def homepage_cards():
         alt = f"{p['name']} — {media.get('caption', 'project image')}"
         cards_html.append(f'''      <article class="home-project-card">
         <a class="home-project-media" href="{p['file']}" aria-label="Read the {esc(p['name'])} case study">
-          <img src="{esc(media['src'])}" alt="{esc(media.get('alt', alt))}" width="1200" height="750" loading="lazy" decoding="async">
+          <img src="{esc(media['src'])}" alt="{esc(media.get('alt', alt))}" width="{media.get('width', 1200)}" height="{media.get('height', 750)}" loading="lazy" decoding="async">
         </a>
         <div class="home-project-body">
           <p class="home-project-built">Built in {esc(p['builtIn'])}</p>
@@ -293,7 +293,7 @@ def arc_card(slug, i, total):
     tags = ''.join(f'<li><span>{esc(t)}</span></li>' for t in c['tags'])
     cap = 'Project visual' if slug == 'newsmedia' else 'Screenshot'
     return f'''        <article class="arc-card" role="group" aria-roledescription="slide" aria-label="{i + 1} of {total}">
-          <a class="arc-media" href="{p['file']}" tabindex="-1" aria-hidden="true"><img src="{esc(media['src'])}" alt="" width="1200" height="750" loading="lazy" decoding="async"></a>
+          <a class="arc-media" href="{p['file']}" tabindex="-1" aria-hidden="true"><img src="{esc(media['src'])}" alt="" width="{media.get('width', 1200)}" height="{media.get('height', 750)}" loading="lazy" decoding="async"></a>
           <p class="arc-cap">{cap} · {esc(media['caption'])}</p>
           <div class="arc-body">
             <p class="arc-built"><span>Built in</span> <strong>{esc(p['builtIn'])}</strong></p>
