@@ -1207,7 +1207,9 @@
       "dashboard": {
         "src": "assets/screenshots/daily-ledger-admin-dashboard-redacted.webp",
         "alt": "The Daily Ledger newsroom admin dashboard overview showing total, published, draft, scheduled and category counts; editorial headlines and account details are excluded",
-        "caption": "Newsroom admin dashboard overview: 608 total articles, 580 published, 9 drafts, 8 scheduled and 18 categories. Editorial headlines and account details are intentionally excluded."
+        "caption": "Newsroom admin dashboard overview: 608 total articles, 580 published, 9 drafts, 8 scheduled and 18 categories. Article headlines and account details are excluded.",
+        "width": 1100,
+        "height": 217
       }
     }
   },
