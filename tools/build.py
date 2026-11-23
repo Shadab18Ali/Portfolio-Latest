@@ -284,7 +284,7 @@ def homepage_cards():
           </div>
         </div>
       </article>''')
-    return '    <div class="home-project-grid">\\n' + '\\n'.join(cards_html) + '\\n    </div>\\n'
+    return '    <div class="home-project-grid">\n' + '\n'.join(cards_html) + '\n    </div>\n'
 
 
 def slug_img(slug):
@@ -541,6 +541,7 @@ def fill(text):
     for key in ('resume', 'whatsapp', 'linkedin', 'github', 'email', 'phoneLabel'):
         text = text.replace('{{' + key + '}}', SITE[key])
     text = text.replace('<!-- @process -->\n', process())
+    text = text.replace('<!-- @cards:homepage -->\n', homepage_cards())
     text = re.sub(r'<!-- @arc:(\w+) -->\n?', lambda m: arc(m.group(1)), text)
     return re.sub(r'<!-- @cards:(\w+) -->\n?', lambda m: cards(m.group(1)), text)
 
