@@ -1802,12 +1802,4 @@ nav.breadcrumb {
 @media(max-width:600px){.sa-figure-scene{width:112px;height:170px;top:2.8rem;opacity:.25}.sa-figure-panel,.sa-figure-arrow,.sa-figure-label{display:none}.sa-figure-photo{left:18%;right:10%}}
 @media(prefers-reduced-motion:reduce){.sa-figure-scene,.sa-figure-photo,.sa-figure-orbit,.sa-figure-arrow,.sa-hero-arrow{animation:none!important;transition:none!important}}
 
-/* Individual generated character poses cropped from the optimized sprite sheet. */
-.sa-figure-photo{overflow:hidden}
-.sa-figure-photo .sa-figure-sprite{display:block;width:100%;height:100%;background-image:url('assets/images/portfolio-poses-sprite.webp');background-repeat:no-repeat;background-size:200% 300%;background-position:0 0}
-.sa-figure-photo .sprite-projects{background-position:100% 0}
-.sa-figure-photo .sprite-build{background-position:0 50%}
-.sa-figure-photo .sprite-services{background-position:100% 50%}
-.sa-figure-photo .sprite-hero{background-position:0 0}
-.sa-figure-photo .sprite-about{background-position:0 100%}
-.sa-figure-photo .sprite-contact{background-position:100% 100%}
+/* Portrait image is styled by the existing .sa-figure-photo img rule above. */
