@@ -775,7 +775,7 @@ function initPortfolioScenes() {
   const makeScene=(host,type,kicker,label,imagePath)=>{
     if(!host||host.querySelector('.sa-figure-scene'))return;
     const art=document.createElement('div'); art.className='sa-figure-scene'; art.dataset.scene=type; art.setAttribute('aria-hidden','true');
-    art.innerHTML='<span class="sa-figure-grid"></span><span class="sa-figure-orbit orbit-a"></span><span class="sa-figure-orbit orbit-b"></span><span class="sa-figure-panel panel-a"></span><span class="sa-figure-panel panel-b"></span><span class="sa-figure-arrow">↗</span><span class="sa-figure-label">'+kicker+'<b>'+label+'</b></span><span class="sa-figure-photo"><img src="assets/portrait-900.png" alt="" loading="lazy" decoding="async"></span><span class="sa-figure-node node-a"></span><span class="sa-figure-node node-b"></span>';
+    art.innerHTML='<span class="sa-figure-grid"></span><span class="sa-figure-orbit orbit-a"></span><span class="sa-figure-orbit orbit-b"></span><span class="sa-figure-panel panel-a"></span><span class="sa-figure-panel panel-b"></span><span class="sa-figure-arrow">↗</span><span class="sa-figure-label">'+kicker+'<b>'+label+'</b></span><span class="sa-figure-photo"><img src="'+imagePath+'" alt="" loading="lazy" decoding="async"></span><span class="sa-figure-node node-a"></span><span class="sa-figure-node node-b"></span>';
     host.appendChild(art);
   };
   scenes.forEach(([sel,type,kicker,label,imagePath])=>{
