@@ -248,7 +248,7 @@ def card(slug):
           </div>
         </div>
         <figure class="feature-media">
-          <a class="fm-link" href="{p['file']}" tabindex="-1" aria-hidden="true"><span class="fm-desktop"><img src="{esc(media['src'])}" alt="" width="1200" height="750" loading="lazy" decoding="async"></span></a>
+          <a class="fm-link" href="{p['file']}" tabindex="-1" aria-hidden="true"><span class="fm-desktop"><img src="{esc(media['src'])}" alt="" width="{media.get('width', 1200)}" height="{media.get('height', 750)}" loading="lazy" decoding="async"></span></a>
           <figcaption class="fm-cap">{('Project visual' if slug == 'newsmedia' else 'Screenshot')} · {esc(media['caption'])}</figcaption>
         </figure>
       </article>
@@ -266,7 +266,7 @@ def homepage_cards():
         alt = f"{p['name']} — {media.get('caption', 'project image')}"
         cards_html.append(f'''      <article class="home-project-card">
         <a class="home-project-media" href="{p['file']}" aria-label="Read the {esc(p['name'])} case study">
-          <img src="{esc(media['src'])}" alt="{esc(alt)}" width="1200" height="750" loading="lazy" decoding="async">
+          <img src="{esc(media['src'])}" alt="{esc(media.get('alt', alt))}" width="1200" height="750" loading="lazy" decoding="async">
         </a>
         <div class="home-project-body">
           <p class="home-project-built">Built in {esc(p['builtIn'])}</p>
