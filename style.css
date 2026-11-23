@@ -1979,3 +1979,28 @@ nav.breadcrumb {
   }
 }
 #work .section-head-row { margin-bottom: 1.35rem; }
+
+
+/* Final portfolio evidence and responsive gallery polish. */
+.cs-dashboard { margin: 1.25rem 0 2.25rem; }
+.cs-dashboard h2 { margin: 0 0 .85rem; font-family: var(--display); font-size: clamp(1.45rem, 2.5vw, 2rem); font-weight: 400; }
+.cs-dashboard-figure { margin: 0; padding: .65rem; background: var(--card); border: 1px solid var(--card-border); border-radius: var(--radius); box-shadow: var(--shadow-sm); }
+.cs-dashboard-figure img { display: block; width: 100%; height: auto; border-radius: calc(var(--radius) - 4px); }
+.cs-dashboard-figure figcaption { margin: .65rem .25rem .15rem; color: var(--muted); font-size: .82rem; line-height: 1.55; }
+.cs-shots .shot-desktop { aspect-ratio: auto; }
+.cs-shots .shot-desktop img { height: auto; object-fit: contain; }
+.cs-shots .shot-mobile { aspect-ratio: auto; width: min(100%, 375px); }
+.cs-shots .shot-mobile img { height: auto; object-fit: contain; }
+#work .section-head-row { margin-bottom: .65rem; }
+#work .home-project-grid { margin-top: .35rem; }
+#work .feature-all { position: relative; z-index: 510; display: flex; justify-content: flex-start; padding-right: 88px; }
+#work .feature-all a { position: relative; z-index: 511; }
+@media (min-width: 769px) and (max-width: 900px) {
+  #work .feature-all { justify-content: flex-start; padding-right: 100px; }
+  #work .section-head-row > .text-link { margin-right: 0; }
+}
+@media (max-width: 768px) {
+  .cs-shots { grid-template-columns: 1fr; }
+  .cs-shots .shot-mobile { width: min(100%, 375px); margin-inline: auto; }
+  #work .feature-all { padding-right: 72px; }
+}
