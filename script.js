@@ -130,6 +130,15 @@ function initMobileMenu() {
   btn.addEventListener('click', () => menu.classList.contains('open') ? shut() : open());
   close?.addEventListener('click', () => shut());
   menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => shut(false)));
+  menu.addEventListener('keydown', e => {
+    if (e.key !== 'Tab') return;
+    const items = Array.from(menu.querySelectorAll('a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled])'))
+      .filter(el => !el.hidden && el.getAttribute('tabindex') !== '-1');
+    if (!items.length) return;
+    const first = items[0], last = items[items.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') shut(); });
   window.matchMedia('(min-width: 1024px)').addEventListener?.('change', e => { if (e.matches) shut(false); });
 }
@@ -215,6 +224,20 @@ function initCopyEmail() {
 function initContactForm() {
   const form = document.getElementById('contactForm');
   if (!form) return;
+  const service = form.querySelector('#f-service');
+  const projectFields = form.querySelector('#projectScopeFields');
+  const budget = form.querySelector('#f-budget');
+  const timeline = form.querySelector('#f-timeline');
+  const syncInquiryFields = () => {
+    const isFullTime = service?.value === 'Full-time opportunity';
+    if (projectFields) projectFields.hidden = Boolean(isFullTime);
+    if (isFullTime) {
+      if (budget) budget.value = '';
+      if (timeline) timeline.value = '';
+    }
+  };
+  service?.addEventListener('change', syncInquiryFields);
+  syncInquiryFields();
   form.addEventListener('submit', handleSubmit);
 }
 
