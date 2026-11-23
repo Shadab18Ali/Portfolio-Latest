@@ -1051,8 +1051,8 @@
       "seo": {
         "title": "The Daily Ledger Case Study: Full-Stack Newsroom | Shadab Ali",
         "description": "A full-stack newsroom built with Next.js 16 and Supabase: public news site, editorial admin, scheduled publishing, SEO, media management and role-based security.",
-        "ogImage": "https://news-media-platform-jade.vercel.app/brand/og-default.png",
-        "ogImageAlt": "The Daily Ledger brand artwork"
+        "ogImage": "assets/screenshots/the-daily-ledger.webp",
+        "ogImageAlt": "The Daily Ledger public news homepage"
       },
       "hero": {
         "h1": "A full-stack <em>newsroom platform</em> built end to end",
