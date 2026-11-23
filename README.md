@@ -96,3 +96,15 @@ npm run build
 ```
 
 `tools/` is in `.vercelignore`, so the build folder is never deployed; only the built `assets/js/model3d.js` is.
+
+## Supplied project homepage screenshots
+
+The five current project homepage pairs are stored in `assets/screenshots/` and referenced from `src/data/projects.json` for cards and case-study galleries:
+
+- FreeToolsHub
+- The Daily Ledger
+- Portrait on Gold
+- Diviniti
+- Ratanarpan
+
+The Daily Ledger case study also uses a cropped, redacted admin-dashboard overview from the supplied screenshot. The original dashboard upload is not stored in public assets. The existing The Majestic India and Uncostly project thumbnails/galleries remain unchanged.
