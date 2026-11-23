@@ -760,27 +760,30 @@ function initModel3D() {
 
 /* Personal 3D scenes: geometric motion surrounds, never edits, the portrait. */
 function initPortfolioScenes() {
-  const portrait='assets/portrait-680.webp';
   const hero=document.querySelector('#hero .hero-visual');
   if(hero&&!hero.querySelector('.sa-avatar-stage')){
     const stage=document.createElement('div'); stage.className='sa-avatar-stage'; stage.setAttribute('aria-hidden','true');
     stage.innerHTML='<span class="sa-orbit-ring"></span><span class="sa-orbit-ring ring-two"></span><span class="sa-orbit-node node-one"></span><span class="sa-orbit-node node-two"></span><span class="sa-hero-arrow">↗</span>';
     hero.appendChild(stage);
   }
-  const scenes=[['#work','projects','01 / PROJECTS','Digital products'],['#impact','build','02 / WHAT I BUILD','Full-stack systems'],['#services-preview','services','03 / SERVICES','Shopify & web'],['#process','process','04 / PROCESS','Plan · Build · Ship'],['#about-preview','about','05 / ABOUT','The developer']];
-  scenes.forEach(([sel,type,kicker,label])=>{
-    const section=document.querySelector(sel), host=section&&(section.querySelector('.container')||section);
+  const scenes=[
+    ['#work','projects','01 / PROJECTS','Digital products','sprite-projects'],
+    ['#impact','build','02 / WHAT I BUILD','Full-stack systems','sprite-build'],
+    ['#services-preview','services','03 / SERVICES','Shopify & web','sprite-services'],
+    ['#process','process','04 / PROCESS','Plan · Build · Ship','sprite-hero'],
+    ['#about-preview','about','05 / ABOUT','The developer','sprite-about']
+  ];
+  const makeScene=(host,type,kicker,label,spriteClass)=>{
     if(!host||host.querySelector('.sa-figure-scene'))return;
     const art=document.createElement('div'); art.className='sa-figure-scene'; art.dataset.scene=type; art.setAttribute('aria-hidden','true');
-    art.innerHTML='<span class="sa-figure-grid"></span><span class="sa-figure-orbit orbit-a"></span><span class="sa-figure-orbit orbit-b"></span><span class="sa-figure-panel panel-a"></span><span class="sa-figure-panel panel-b"></span><span class="sa-figure-arrow">↗</span><span class="sa-figure-label">'+kicker+'<b>'+label+'</b></span><span class="sa-figure-photo"><img src="'+portrait+'" alt="" loading="lazy" decoding="async"></span><span class="sa-figure-node node-a"></span><span class="sa-figure-node node-b"></span>';
+    art.innerHTML='<span class="sa-figure-grid"></span><span class="sa-figure-orbit orbit-a"></span><span class="sa-figure-orbit orbit-b"></span><span class="sa-figure-panel panel-a"></span><span class="sa-figure-panel panel-b"></span><span class="sa-figure-arrow">↗</span><span class="sa-figure-label">'+kicker+'<b>'+label+'</b></span><span class="sa-figure-photo"><span class="sa-figure-sprite '+spriteClass+'"></span></span><span class="sa-figure-node node-a"></span><span class="sa-figure-node node-b"></span>';
     host.appendChild(art);
+  };
+  scenes.forEach(([sel,type,kicker,label,spriteClass])=>{
+    const section=document.querySelector(sel),host=section&&(section.querySelector('.container')||section);
+    makeScene(host,type,kicker,label,spriteClass);
   });
-  document.querySelectorAll('.final-cta .container').forEach(host=>{
-    if(host.querySelector('.sa-figure-scene'))return;
-    const art=document.createElement('div'); art.className='sa-figure-scene'; art.dataset.scene='contact'; art.setAttribute('aria-hidden','true');
-    art.innerHTML='<span class="sa-figure-grid"></span><span class="sa-figure-orbit orbit-a"></span><span class="sa-figure-orbit orbit-b"></span><span class="sa-figure-panel panel-a"></span><span class="sa-figure-panel panel-b"></span><span class="sa-figure-arrow">↗</span><span class="sa-figure-label">06 / CONTACT<b>Let’s build</b></span><span class="sa-figure-photo"><img src="'+portrait+'" alt="" loading="lazy" decoding="async"></span><span class="sa-figure-node node-a"></span><span class="sa-figure-node node-b"></span>';
-    host.appendChild(art);
-  });
+  document.querySelectorAll('.final-cta .container').forEach(host=>makeScene(host,'contact','06 / CONTACT','Let’s build','sprite-contact'));
   const arts=document.querySelectorAll('.sa-figure-scene');
   if('IntersectionObserver'in window){const io=new IntersectionObserver(entries=>entries.forEach(e=>{e.target.classList.toggle('is-visible',e.isIntersecting);e.target.classList.toggle('is-active',e.isIntersecting);}),{threshold:.18});arts.forEach(a=>io.observe(a));}
   else arts.forEach(a=>a.classList.add('is-visible','is-active'));
