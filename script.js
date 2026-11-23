@@ -273,8 +273,10 @@ async function handleSubmit(e) {
         service:    service || 'Not specified',
         store_url:  url     || 'Not provided',
         message: withProjectDetails(message, budget, timeline),
-        budget:   budget   || 'Not specified',
-        timeline: timeline || 'Not specified',
+        ...(service === 'Full-time opportunity' ? {} : {
+          budget: budget || 'Not specified',
+          timeline: timeline || 'Not specified',
+        }),
       });
       showSuccess(email);
     } catch {
