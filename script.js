@@ -39,6 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
   safe(initParallax);
   safe(initArc);
   safe(initModel3D);
+  safe(initPortfolioScenes);
   safe(initCopyEmail);
   safe(initContactForm);
   safe(initFAQ);
@@ -755,4 +756,55 @@ function initModel3D() {
   const go = () => ('requestIdleCallback' in window ? requestIdleCallback(load, { timeout: 4000 }) : setTimeout(load, 1500));
   if (document.readyState === 'complete') go();
   else window.addEventListener('load', go, { once: true });
+}
+
+/* Personal 3D scenes: geometric motion surrounds, never edits, the portrait. */
+function initPortfolioScenes() {
+  const heroVisual = document.querySelector('#hero .hero-visual');
+  if (heroVisual && !heroVisual.querySelector('.sa-avatar-stage')) {
+    const stage = document.createElement('div');
+    stage.className = 'sa-avatar-stage';
+    stage.setAttribute('aria-hidden', 'true');
+    stage.innerHTML = '<span class="sa-orbit-ring"></span><span class="sa-orbit-ring ring-two"></span><span class="sa-orbit-node node-one"></span><span class="sa-orbit-node node-two"></span>';
+    heroVisual.appendChild(stage);
+    [['Building digital experiences','tag-top'],['Shopify · React · APIs','tag-side']].forEach(([label,cls]) => {
+      const tag = document.createElement('span');
+      tag.className = 'sa-avatar-tag ' + cls;
+      tag.textContent = label;
+      tag.setAttribute('aria-hidden','true');
+      heroVisual.appendChild(tag);
+    });
+  }
+  [['#work','projects'],['#impact','services'],['#services-preview','services'],['#process','process'],['#about-preview','about']].forEach(([selector,scene]) => {
+    const section = document.querySelector(selector);
+    const host = section && (section.querySelector('.container') || section);
+    if (!host || host.querySelector('.sa-section-art')) return;
+    const art = document.createElement('div');
+    art.className = 'sa-section-art';
+    art.dataset.scene = scene;
+    art.setAttribute('aria-hidden','true');
+    art.innerHTML = '<span class="sa-art-orbit"></span><span class="sa-art-orbit orbit-b"></span><span class="sa-art-core"></span><span class="sa-art-dot"></span>';
+    host.appendChild(art);
+  });
+  if (REDUCED || IS_MOBILE || !heroVisual) return;
+  const wrap = heroVisual.querySelector('.hero-photo-wrap');
+  if (!wrap) return;
+  let rect = null, raf = 0, point = null;
+  heroVisual.addEventListener('pointermove', event => {
+    rect = rect || heroVisual.getBoundingClientRect();
+    point = {x:(event.clientX-rect.left)/rect.width-.5,y:(event.clientY-rect.top)/rect.height-.5};
+    if (raf) return;
+    raf = requestAnimationFrame(() => {
+      raf = 0;
+      if (!point) return;
+      const x=point.x, y=point.y;
+      wrap.style.transform = 'translate3d('+(x*10).toFixed(1)+'px,'+(y*8).toFixed(1)+'px,0) rotateY('+(x*-3).toFixed(2)+'deg) rotateX('+(y*2).toFixed(2)+'deg)';
+    });
+  }, {passive:true});
+  heroVisual.addEventListener('pointerleave', () => {point=null;rect=null;wrap.style.transform='';});
+  const arts = document.querySelectorAll('.sa-section-art');
+  if ('IntersectionObserver' in window && arts.length) {
+    const observer = new IntersectionObserver(entries => entries.forEach(entry => entry.target.classList.toggle('is-visible',entry.isIntersecting)),{threshold:.12});
+    arts.forEach(node => observer.observe(node));
+  } else arts.forEach(node => node.classList.add('is-visible'));
 }
