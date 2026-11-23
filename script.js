@@ -770,7 +770,6 @@ function initPortfolioScenes() {
     ['#work','projects','01 / PROJECTS','Digital products','assets/images/portfolio-poses/02-projects-crossed-arms.webp'],
     ['#impact','build','02 / WHAT I BUILD','Full-stack systems','assets/images/portfolio-poses/03-what-i-build-wave.webp'],
     ['#services-preview','services','03 / SERVICES','Shopify & web','assets/images/portfolio-poses/04-services-presenting.webp'],
-    ['#process','process','04 / PROCESS','Plan · Build · Ship','assets/images/portfolio-poses/01-hero-standing.webp'],
     ['#about-preview','about','05 / ABOUT','The developer','assets/images/portfolio-poses/05-about-seated.webp']
   ];
   const makeScene=(host,type,kicker,label,imagePath)=>{
