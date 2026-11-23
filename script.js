@@ -781,6 +781,9 @@ function initPortfolioScenes() {
     art.innerHTML='<span class="sa-figure-grid"></span><span class="sa-figure-orbit orbit-a"></span><span class="sa-figure-orbit orbit-b"></span><span class="sa-figure-panel panel-a"></span><span class="sa-figure-panel panel-b"></span><span class="sa-figure-arrow">↗</span><span class="sa-figure-label">06 / CONTACT<b>Let’s build</b></span><span class="sa-figure-photo"><img src="'+portrait+'" alt="" loading="lazy" decoding="async"></span><span class="sa-figure-node node-a"></span><span class="sa-figure-node node-b"></span>';
     host.appendChild(art);
   });
+  const arts=document.querySelectorAll('.sa-figure-scene');
+  if('IntersectionObserver'in window){const io=new IntersectionObserver(entries=>entries.forEach(e=>{e.target.classList.toggle('is-visible',e.isIntersecting);e.target.classList.toggle('is-active',e.isIntersecting);}),{threshold:.18});arts.forEach(a=>io.observe(a));}
+  else arts.forEach(a=>a.classList.add('is-visible','is-active'));
   if(REDUCED||IS_MOBILE||!hero)return;
   const wrap=hero.querySelector('.hero-photo-wrap'); if(!wrap)return;
   let rect=null,raf=0,point=null;
@@ -789,7 +792,4 @@ function initPortfolioScenes() {
     if(raf)return; raf=requestAnimationFrame(()=>{raf=0;if(!point)return;const x=point.x,y=point.y;wrap.style.transform='translate3d('+(x*12).toFixed(1)+'px,'+(y*9).toFixed(1)+'px,0) rotateY('+(x*-5).toFixed(2)+'deg) rotateX('+(y*3).toFixed(2)+'deg)';});
   },{passive:true});
   hero.addEventListener('pointerleave',()=>{point=null;rect=null;wrap.style.transform='';});
-  const arts=document.querySelectorAll('.sa-figure-scene');
-  if('IntersectionObserver'in window){const io=new IntersectionObserver(entries=>entries.forEach(e=>{e.target.classList.toggle('is-visible',e.isIntersecting);e.target.classList.toggle('is-active',e.isIntersecting);}),{threshold:.18});arts.forEach(a=>io.observe(a));}
-  else arts.forEach(a=>a.classList.add('is-visible','is-active'));
 }
