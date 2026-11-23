@@ -1926,3 +1926,9 @@ nav.breadcrumb {
 @media (max-width:420px) {
   .experience-full .exp-row { grid-template-columns: 1fr; }
 }
+
+
+/* The six portraits are authored directly in the homepage markup.
+   Disable the legacy JS-generated scene copies so every section shows
+   exactly one portrait in the placement defined by its HTML layout. */
+.sa-figure-scene { display: none !important; }
