@@ -767,23 +767,23 @@ function initPortfolioScenes() {
     hero.appendChild(stage);
   }
   const scenes=[
-    ['#work','projects','01 / PROJECTS','Digital products','sprite-projects'],
-    ['#impact','build','02 / WHAT I BUILD','Full-stack systems','sprite-build'],
-    ['#services-preview','services','03 / SERVICES','Shopify & web','sprite-services'],
-    ['#process','process','04 / PROCESS','Plan · Build · Ship','sprite-hero'],
-    ['#about-preview','about','05 / ABOUT','The developer','sprite-about']
+    ['#work','projects','01 / PROJECTS','Digital products','assets/images/portfolio-poses/02-projects-crossed-arms.webp'],
+    ['#impact','build','02 / WHAT I BUILD','Full-stack systems','assets/images/portfolio-poses/03-what-i-build-wave.webp'],
+    ['#services-preview','services','03 / SERVICES','Shopify & web','assets/images/portfolio-poses/04-services-presenting.webp'],
+    ['#process','process','04 / PROCESS','Plan · Build · Ship','assets/images/portfolio-poses/01-hero-standing.webp'],
+    ['#about-preview','about','05 / ABOUT','The developer','assets/images/portfolio-poses/05-about-seated.webp']
   ];
-  const makeScene=(host,type,kicker,label,spriteClass)=>{
+  const makeScene=(host,type,kicker,label,imagePath)=>{
     if(!host||host.querySelector('.sa-figure-scene'))return;
     const art=document.createElement('div'); art.className='sa-figure-scene'; art.dataset.scene=type; art.setAttribute('aria-hidden','true');
     art.innerHTML='<span class="sa-figure-grid"></span><span class="sa-figure-orbit orbit-a"></span><span class="sa-figure-orbit orbit-b"></span><span class="sa-figure-panel panel-a"></span><span class="sa-figure-panel panel-b"></span><span class="sa-figure-arrow">↗</span><span class="sa-figure-label">'+kicker+'<b>'+label+'</b></span><span class="sa-figure-photo"><img src="assets/portrait-900.webp" alt="" loading="lazy" decoding="async"></span><span class="sa-figure-node node-a"></span><span class="sa-figure-node node-b"></span>';
     host.appendChild(art);
   };
-  scenes.forEach(([sel,type,kicker,label,spriteClass])=>{
+  scenes.forEach(([sel,type,kicker,label,imagePath])=>{
     const section=document.querySelector(sel),host=section&&(section.querySelector('.container')||section);
-    makeScene(host,type,kicker,label,spriteClass);
+    makeScene(host,type,kicker,label,imagePath);
   });
-  document.querySelectorAll('.final-cta .container').forEach(host=>makeScene(host,'contact','06 / CONTACT','Let’s build','sprite-contact'));
+  document.querySelectorAll('.final-cta .container').forEach(host=>makeScene(host,'contact','06 / CONTACT','Let’s build','assets/images/portfolio-poses/06-contact-welcome.webp'));
   const arts=document.querySelectorAll('.sa-figure-scene');
   if('IntersectionObserver'in window){const io=new IntersectionObserver(entries=>entries.forEach(e=>{e.target.classList.toggle('is-visible',e.isIntersecting);e.target.classList.toggle('is-active',e.isIntersecting);}),{threshold:.18});arts.forEach(a=>io.observe(a));}
   else arts.forEach(a=>a.classList.add('is-visible','is-active'));
