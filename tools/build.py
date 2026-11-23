@@ -259,13 +259,8 @@ def card(slug):
 
 def homepage_cards():
     """Three recruiter-first project cards, independent of the longer project index."""
-    descriptions = {
-        'freetoolshub': 'I designed and built 74 browser-based tools in Next.js and TypeScript, including OCR that runs in a Web Worker.',
-        'newsmedia': 'I built the public publication site and protected editorial dashboard, including scheduled publishing and role-based access.',
-        'diviniti': 'I built 20+ reusable Shopify sections so merchandisers can update and reorder page content without code.'
-    }
     cards_html = []
-    for slug in ('freetoolshub', 'newsmedia', 'diviniti'):
+    for slug in DATA.get('homepageFeatured', ('freetoolshub', 'newsmedia', 'diviniti')):
         p = PROJECTS[slug]
         media = p['card']['media']
         alt = f"{p['name']} — {media.get('caption', 'project image')}"
@@ -277,7 +272,7 @@ def homepage_cards():
           <p class="home-project-built">Built in {esc(p['builtIn'])}</p>
           <h3>{esc(p['name'])}</h3>
           <p class="home-project-domain">{esc(p['domain'])}</p>
-          <p class="home-project-description">{esc(descriptions[slug])}</p>
+          <p class="home-project-description">{esc(p['homeDescription'])}</p>
           <div class="home-project-actions">
             <a class="btn btn-primary" href="{p['file']}">View Case Study</a>
             <a class="btn btn-ghost" href="{p['url']}" target="_blank" rel="noopener">Live Site<span class="sr-only"> (opens in a new tab)</span></a>
